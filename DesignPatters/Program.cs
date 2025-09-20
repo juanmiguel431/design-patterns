@@ -8,15 +8,39 @@ namespace DesignPatters;
 
 class Program
 {
+    public static int Area(Rectangle rectangle)
+    {
+        return rectangle.Width * rectangle.Height;
+    }
+    
     static void Main(string[] args)
     {
         // Single Responsibility Principle
         // CreateAndOpenJournalFile();
 
         // Open Closed Principle
-        CreateAndFilterProducts();
+        // CreateAndFilterProducts();
+        
+        // Liskov Substitution Principle
+        ShapesAreaCalculation();
 
         Console.WriteLine("End");
+    }
+
+    private static void ShapesAreaCalculation()
+    {
+        var rec = new Rectangle()
+        {
+            Height = 3,
+            Width = 6,
+        };
+        Console.WriteLine($"{rec} has area {Area(rec)}");
+
+        Rectangle sq = new Square();
+        sq.Height = 5;
+        sq.Width = 3;
+        
+        Console.WriteLine($"{sq} has area {Area(sq)}");
     }
 
     private static void CreateAndFilterProducts()
