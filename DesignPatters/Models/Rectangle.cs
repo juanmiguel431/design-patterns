@@ -1,12 +1,17 @@
 ﻿namespace DesignPatters.Models;
 
-public class Rectangle
+public class Rectangle : Shape
 {
     public virtual int Width { get; set; }
     public virtual int Height { get; set; }
 
     public override string ToString()
     {
-        return $"{nameof(Width)}: {Width}, {nameof(Height)}: {Height}";
+        return $"Rectangle: {nameof(Width)}: {Width}, {nameof(Height)}: {Height}";
+    }
+
+    public override int GetArea()
+    {
+        return Width * Height;
     }
 }

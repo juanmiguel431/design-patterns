@@ -1,22 +1,16 @@
 namespace DesignPatters.Models;
 
-public class Square : Rectangle
+public class Square : Shape
 {
-    public override int Width
+    public int Side { get; set; }
+
+    public override int GetArea()
     {
-        set
-        {
-            base.Width = value;
-            base.Height = value;
-        }
+        return Side * Side;
     }
 
-    public override int Height
+    public override string ToString()
     {
-        set
-        {
-            base.Height = value;
-            base.Width = value;
-        }
+        return $"Square: {nameof(Side)}: {Side}";
     }
 }

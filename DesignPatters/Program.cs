@@ -8,11 +8,6 @@ namespace DesignPatters;
 
 class Program
 {
-    public static int Area(Rectangle rectangle)
-    {
-        return rectangle.Width * rectangle.Height;
-    }
-    
     static void Main(string[] args)
     {
         // Single Responsibility Principle
@@ -34,13 +29,14 @@ class Program
             Height = 3,
             Width = 6,
         };
-        Console.WriteLine($"{rec} has area {Area(rec)}");
+        Console.WriteLine($"{rec} has area {rec.GetArea()}");
 
-        Rectangle sq = new Square();
-        sq.Height = 5;
-        sq.Width = 3;
+        Shape sq = new Square()
+        {
+            Side = 5
+        };
         
-        Console.WriteLine($"{sq} has area {Area(sq)}");
+        Console.WriteLine($"{sq} has area {sq.GetArea()}");
     }
 
     private static void CreateAndFilterProducts()
