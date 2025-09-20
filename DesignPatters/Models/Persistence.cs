@@ -1,4 +1,4 @@
-namespace DesignPatters;
+namespace DesignPatters.Models;
 
 public class Persistence
 {

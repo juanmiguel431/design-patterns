@@ -1,5 +1,6 @@
 ﻿
 using System.Diagnostics;
+using DesignPatters.Models;
 
 namespace DesignPatters;
 
