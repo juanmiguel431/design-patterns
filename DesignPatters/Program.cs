@@ -4,6 +4,46 @@ using DesignPatters.Models;
 
 namespace DesignPatters;
 
+public interface ISpecification<in T>
+{
+    bool IsSatisfiedBy(T item);
+}
+
+public interface IFilter<T>
+{
+    IEnumerable<T> Filter(IEnumerable<T> items, ISpecification<T> spec);
+}
+
+
+public class ColorSpecification : ISpecification<Product>
+{
+    private readonly Color _color;
+
+    public ColorSpecification(Color color)
+    {
+        _color = color;
+    }
+    
+    public bool IsSatisfiedBy(Product item)
+    {
+        return item.Color == _color;
+    }
+}
+
+public class BetterFilter : IFilter<Product>
+{
+    public IEnumerable<Product> Filter(IEnumerable<Product> items, ISpecification<Product> spec)
+    {
+        foreach (var item in items)
+        {
+            if (spec.IsSatisfiedBy(item))
+            {
+                yield return item;
+            }
+        }
+    }
+}
+
 class Program
 {
     static void Main(string[] args)
@@ -13,10 +53,7 @@ class Program
         
         // Open Closed Principle
         CreateAndFilterProducts();
-
-
-        Console.WriteLine("Green products (old): ");
-
+        
         Console.WriteLine("End");
     }
 
@@ -29,8 +66,17 @@ class Program
         var products = new [] { apple, tree, house };
         
         var filter = new ProductFilter();
-
+        Console.WriteLine("Green products (old):");
         foreach (var product in filter.FilterByColor(products, Color.Green))
+        {
+            Console.WriteLine($" - {product.Name} is Green");
+        }
+        
+        
+        var betterFilter = new BetterFilter();
+        var greenProducts = betterFilter.Filter(products, new ColorSpecification(Color.Green));
+        Console.WriteLine("Green products (new):");
+        foreach (var product in greenProducts)
         {
             Console.WriteLine($" - {product.Name} is Green");
         }
