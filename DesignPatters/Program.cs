@@ -7,6 +7,13 @@ class Program
 {
     static void Main(string[] args)
     {
+        CreateAndOpenJournalFile();
+
+        Console.WriteLine("End");
+    }
+
+    private static void CreateAndOpenJournalFile()
+    {
         var journal = new Journal();
         journal.AddEntry("I cried today.");
         journal.AddEntry("I ate a banana.");
@@ -22,8 +29,7 @@ class Program
             FileName = fileName,
             UseShellExecute = true
         };
+        
         Process.Start(psi);
-
-        Console.WriteLine("End");
     }
 }
