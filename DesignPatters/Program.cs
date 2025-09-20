@@ -1,9 +1,29 @@
-﻿namespace DesignPatters;
+﻿
+using System.Diagnostics;
+
+namespace DesignPatters;
 
 class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
+        var journal = new Journal();
+        journal.AddEntry("I cried today.");
+        journal.AddEntry("I ate a banana.");
+        
+        var persistence = new Persistence();
+        
+        var tempPath = Path.GetTempPath();
+        var fileName = tempPath + "journal.txt";
+        persistence.SaveToFile(journal, fileName, true);
+
+        var psi = new ProcessStartInfo
+        {
+            FileName = fileName,
+            UseShellExecute = true
+        };
+        Process.Start(psi);
+
+        Console.WriteLine("End");
     }
 }
