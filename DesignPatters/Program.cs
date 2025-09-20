@@ -1,48 +1,11 @@
 ﻿
 using System.Diagnostics;
+using DesignPatters.Filters;
 using DesignPatters.Models;
+using DesignPatters.Specifications;
+using DesignPatters.Specifications.ProductSpecifications;
 
 namespace DesignPatters;
-
-public interface ISpecification<in T>
-{
-    bool IsSatisfiedBy(T item);
-}
-
-public interface IFilter<T>
-{
-    IEnumerable<T> Filter(IEnumerable<T> items, ISpecification<T> spec);
-}
-
-
-public class ColorSpecification : ISpecification<Product>
-{
-    private readonly Color _color;
-
-    public ColorSpecification(Color color)
-    {
-        _color = color;
-    }
-    
-    public bool IsSatisfiedBy(Product item)
-    {
-        return item.Color == _color;
-    }
-}
-
-public class BetterFilter : IFilter<Product>
-{
-    public IEnumerable<Product> Filter(IEnumerable<Product> items, ISpecification<Product> spec)
-    {
-        foreach (var item in items)
-        {
-            if (spec.IsSatisfiedBy(item))
-            {
-                yield return item;
-            }
-        }
-    }
-}
 
 class Program
 {
