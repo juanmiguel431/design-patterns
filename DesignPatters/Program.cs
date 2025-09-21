@@ -27,7 +27,18 @@ class Program
         // CreateRelationshipsForResearch();
 
         // Builder Pattern
-        GenerateHtmlOutput();
+        // GenerateHtmlOutput();
+        
+        // var personJobBuilder = new PersonJobBuilder();
+        // personJobBuilder.Called("Juan Miguel");
+        
+        var person = Person.New
+            .WorksAsA("Software Engineer")
+            .Called("Juan Miguel")
+            .Build();
+
+        Console.WriteLine(person);
+        
 
         Console.WriteLine("End");
     }
