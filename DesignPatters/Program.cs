@@ -31,17 +31,24 @@ class Program
         
         // var personJobBuilder = new PersonJobBuilder();
         // personJobBuilder.Called("Juan Miguel");
-        
-        var person = Person.New
+
+        var person = new PersonBuilder()
             .SetFirstName("Juan")
-            .SetPosition("Software Engineer")
             .SetMiddleName("Miguel")
             .SetLastName("Paulino Carpio")
-            .SetCompany("MemberCare")
             .Build();
 
         Console.WriteLine(person);
         
+        var employee = new EmployeeBuilder()
+            .SetFirstName("Juan")
+            .SetPosition("Software Engineer")
+            .SetMiddleName("Miguel")
+            .SetLastName("Paulino Carpio")
+            .SetCompany("Company")
+            .Build();
+
+        Console.WriteLine(employee);
 
         Console.WriteLine("End");
     }

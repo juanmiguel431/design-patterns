@@ -5,65 +5,78 @@ public class Person
     public string FirstName { get; set; }
     public string MiddleName { get; set; }
     public string LastName { get; set; }
+
+    public override string ToString()
+    {
+        return
+            $"{{" +
+            $"{nameof(FirstName)}: {FirstName}," +
+            $" {nameof(MiddleName)}: {MiddleName}," +
+            $" {nameof(LastName)}: {LastName}" +
+            $"}}";
+    }
+}
+
+public class Employee : Person
+{
     public string Company { get; set; }
     public string Position { get; set; }
-
-    public class Builder : PersonJobBuilder<Builder>
-    {
-        
-    }
-    
-    public static Builder New => new();
-    
     
     public override string ToString()
     {
-        return $"{{{nameof(FirstName)}: {FirstName}, {nameof(MiddleName)}: {MiddleName}, {nameof(LastName)}: {LastName}, {nameof(Company)}: {Company}, {nameof(Position)}: {Position}}}";
+        return
+            $"{{" +
+            $"{nameof(FirstName)}: {FirstName}," +
+            $" {nameof(MiddleName)}: {MiddleName}," +
+            $" {nameof(LastName)}: {LastName}," +
+            $" {nameof(Company)}: {Company}," +
+            $" {nameof(Position)}: {Position}" +
+            $"}}";
     }
 }
 
-public abstract class PersonBuilder
+public class PersonBuilder : PersonBuilder<PersonBuilder, Person>
 {
-    protected Person Person { get; set; } = new();
-
-    public Person Build()
-    {
-        return Person;
-    }
 }
 
-public class PersonInfoBuilder<TSelf> : PersonBuilder where TSelf : PersonInfoBuilder<TSelf>
+public class PersonBuilder<TBuilder, TEntity>
+    where TBuilder : PersonBuilder<TBuilder, TEntity>
+    where TEntity : Person, new()
 {
-    public TSelf SetFirstName(string firstName)
+    protected TEntity Person { get; private set; } = new ();
+
+    public TEntity Build() => Person;
+
+    public TBuilder SetFirstName(string firstName)
     {
         Person.FirstName = firstName;
-        return (TSelf) this;
+        return (TBuilder)this;
     }
-    
-    public TSelf SetMiddleName(string middleName)
+
+    public TBuilder SetMiddleName(string middleName)
     {
         Person.MiddleName = middleName;
-        return (TSelf) this;
+        return (TBuilder)this;
     }
-    
-    public TSelf SetLastName(string lastName)
+
+    public TBuilder SetLastName(string lastName)
     {
         Person.LastName = lastName;
-        return (TSelf) this;
+        return (TBuilder)this;
     }
 }
 
-public class PersonJobBuilder<TSelf> : PersonInfoBuilder<PersonJobBuilder<TSelf>> where TSelf : PersonJobBuilder<TSelf>
+public class EmployeeBuilder : PersonBuilder<EmployeeBuilder, Employee>
 {
-    public TSelf SetPosition(string position)
+    public EmployeeBuilder SetPosition(string position)
     {
         Person.Position = position;
-        return (TSelf) this;
+        return this;
     }
-    
-    public TSelf SetCompany(string company)
+
+    public EmployeeBuilder SetCompany(string company)
     {
         Person.Company = company;
-        return (TSelf) this;
+        return this;
     }
 }
