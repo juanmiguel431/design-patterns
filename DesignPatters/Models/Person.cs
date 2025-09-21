@@ -6,6 +6,8 @@ public class Person
     public string MiddleName { get; set; }
     public string LastName { get; set; }
 
+    public static PersonBuilder Builder() => new();
+
     public override string ToString()
     {
         return
@@ -21,7 +23,9 @@ public class Employee : Person
 {
     public string Company { get; set; }
     public string Position { get; set; }
-    
+
+    public new static EmployeeBuilder Builder() => new();
+
     public override string ToString()
     {
         return
@@ -43,7 +47,7 @@ public abstract class PersonBuilder<TBuilder, TEntity>
     where TBuilder : PersonBuilder<TBuilder, TEntity>
     where TEntity : Person, new()
 {
-    protected TEntity Person { get; private set; } = new ();
+    protected TEntity Person { get; private set; } = new();
 
     public TEntity Build() => Person;
 

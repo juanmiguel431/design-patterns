@@ -32,7 +32,7 @@ class Program
         // var personJobBuilder = new PersonJobBuilder();
         // personJobBuilder.Called("Juan Miguel");
 
-        var person = new PersonBuilder()
+        var person = Person.Builder()
             .SetFirstName("Juan")
             .SetMiddleName("Miguel")
             .SetLastName("Paulino Carpio")
@@ -40,7 +40,7 @@ class Program
 
         Console.WriteLine(person);
         
-        var employee = new EmployeeBuilder()
+        var employee = Employee.Builder()
             .SetFirstName("Juan")
             .SetPosition("Software Engineer")
             .SetMiddleName("Miguel")
