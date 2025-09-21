@@ -39,7 +39,7 @@ public class PersonBuilder : PersonBuilder<PersonBuilder, Person>
 {
 }
 
-public class PersonBuilder<TBuilder, TEntity>
+public abstract class PersonBuilder<TBuilder, TEntity>
     where TBuilder : PersonBuilder<TBuilder, TEntity>
     where TEntity : Person, new()
 {
