@@ -39,7 +39,6 @@ class Program
         sb.Append("<b>");
         sb.Append(hello);
         sb.Append("</b>");
-
         Console.WriteLine(sb);
 
         var words = new [] {"Hello", "World"};
@@ -50,8 +49,12 @@ class Program
             sb.AppendFormat("<li>{0}</li>", word);
         }
         sb.Append("</ul>");
-
         Console.WriteLine(sb);
+
+        var htmlBuilder = new HtmlBuilder("ul");
+        htmlBuilder.AddChild("li", "Hello");
+        htmlBuilder.AddChild("li", "World");
+        Console.WriteLine(htmlBuilder);
     }
 
     private static void CreateRelationshipsForResearch()
