@@ -2,19 +2,23 @@
 
 public class HtmlBuilder
 {
-    private readonly string _rootName;
-    private HtmlElement _root = new ();
+    private HtmlElement _root;
 
-    public HtmlBuilder(string rootName)
+    public HtmlBuilder(string name, string? text = null)
     {
-        _rootName = rootName;
-        _root.Name = rootName;
+        _root = new HtmlElement(name, text);
     }
     
-    public void AddChild(string childName, string childText)
+    public HtmlBuilder(HtmlElement root)
     {
-        var child = new HtmlElement(childName, childText);
+        _root = root;
+    }
+    
+    public HtmlBuilder AddChild(string name, string? text = null)
+    {
+        var child = new HtmlElement(name, text);
         _root.Children.Add(child);
+        return new HtmlBuilder(child);
     }
 
     public override string ToString()
@@ -24,7 +28,6 @@ public class HtmlBuilder
     
     public void Clear()
     {
-        _root = new HtmlElement();
-        _root.Name = _rootName;
+        _root = new HtmlElement(_root.Name, _root.Text);
     }
 }

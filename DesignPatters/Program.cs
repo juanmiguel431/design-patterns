@@ -51,10 +51,14 @@ class Program
         sb.Append("</ul>");
         Console.WriteLine(sb);
 
-        var htmlBuilder = new HtmlBuilder("ul");
-        htmlBuilder.AddChild("li", "Hello");
-        htmlBuilder.AddChild("li", "World");
-        Console.WriteLine(htmlBuilder);
+        var root = new HtmlBuilder("html");
+        var body = root.AddChild("body");
+        body.AddChild("h1", "Hello World");
+        body.AddChild("p", "This is a paragraph");
+        var li = body.AddChild("ul");
+        li.AddChild("li", "Hello");
+        li.AddChild("li", "World");
+        Console.WriteLine(root);
     }
 
     private static void CreateRelationshipsForResearch()

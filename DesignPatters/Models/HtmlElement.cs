@@ -5,18 +5,15 @@ namespace DesignPatters.Models;
 public class HtmlElement
 {
     public string Name { get; set; }
-    public string Text { get; set; }
-    public List<HtmlElement> Children { get; set; } = [];
+    public string? Text { get; set; }
+    public List<HtmlElement> Children { get; set; }
     private const int IndentSize = 2;
 
-    public HtmlElement()
-    {
-    }
-
-    public HtmlElement(string name, string text)
+    public HtmlElement(string name, string? text = null)
     {
         Name = name ?? throw new ArgumentNullException(nameof(name));
-        Text = text ?? throw new ArgumentNullException(nameof(text));
+        Text = text;
+        Children = [];
     }
 
     public string ToString(int indent)
