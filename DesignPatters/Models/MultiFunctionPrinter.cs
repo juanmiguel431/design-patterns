@@ -1,6 +1,6 @@
 namespace DesignPatters.Models;
 
-public class MultiFunctionPrinter : IMachine
+public class MultiFunctionPrinter : IMultifunctionDevice
 {
     public void Print()
     {

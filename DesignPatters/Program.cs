@@ -17,13 +17,18 @@ class Program
         // CreateAndFilterProducts();
         
         // Liskov Substitution Principle
-        ShapesAreaCalculation();
+        // ShapesAreaCalculation();
         
         // Interface Segregation Principle
-        var oldFashionedPrinter = new OldFashionedPrinter();
-        oldFashionedPrinter.Fax(); // Not implemented exception
+        OldFashionedPrinter();
 
         Console.WriteLine("End");
+    }
+
+    private static void OldFashionedPrinter()
+    {
+        var oldFashionedPrinter = new OldFashionedPrinter();
+        oldFashionedPrinter.Print(); // It can only print
     }
 
     private static void ShapesAreaCalculation()

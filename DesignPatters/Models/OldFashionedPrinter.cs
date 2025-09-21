@@ -1,19 +1,9 @@
 namespace DesignPatters.Models;
 
-public class OldFashionedPrinter : IMachine
+public class OldFashionedPrinter : IPrinter
 {
     public void Print()
     {
         Console.WriteLine("Printing");
-    }
-
-    public void Scan()
-    {
-        throw new NotImplementedException();
-    }
-
-    public void Fax()
-    {
-        throw new NotImplementedException();
     }
 }
