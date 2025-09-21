@@ -12,7 +12,7 @@ public class Relationships : IRelationshipBrowser
     
     public IEnumerable<(Person, Relationship, Person)> FindAllChildrenOf(string name)
     {
-        foreach (var r in _relations.Where(p => p.Item1.Name == name && p.Item2 == Relationship.Parent))
+        foreach (var r in _relations.Where(p => p.Item1.FirstName == name && p.Item2 == Relationship.Parent))
         {
             yield return r;
         }

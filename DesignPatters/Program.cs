@@ -33,8 +33,11 @@ class Program
         // personJobBuilder.Called("Juan Miguel");
         
         var person = Person.New
-            .WorksAsA("Software Engineer")
-            .Called("Juan Miguel")
+            .SetFirstName("Juan")
+            .SetPosition("Software Engineer")
+            .SetMiddleName("Miguel")
+            .SetLastName("Paulino Carpio")
+            .SetCompany("MemberCare")
             .Build();
 
         Console.WriteLine(person);
@@ -74,9 +77,9 @@ class Program
 
     private static void CreateRelationshipsForResearch()
     {
-        var parent = new Person() { Name = "John" };
-        var child1 = new Person() { Name = "Chris" };
-        var child2 = new Person() { Name = "Mary" };
+        var parent = new Person() { FirstName = "John" };
+        var child1 = new Person() { FirstName = "Chris" };
+        var child2 = new Person() { FirstName = "Mary" };
         
         var relationships = new Relationships();
         relationships.AddParentAndChild(parent, child1);

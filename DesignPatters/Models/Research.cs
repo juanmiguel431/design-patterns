@@ -13,7 +13,7 @@ public class Research
     {
         foreach (var r in _relationshipBrowser.FindAllChildrenOf(name))
         {
-            Console.WriteLine($"John has a child called {r.Item3.Name}.");
+            Console.WriteLine($"John has a child called {r.Item3.FirstName}.");
         }
     }
 }
