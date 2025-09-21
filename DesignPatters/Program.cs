@@ -23,6 +23,13 @@ class Program
         // OldFashionedPrinter();
         
         // Dependency Inversion Principle
+        CreateRelationshipsForResearch();
+
+        Console.WriteLine("End");
+    }
+
+    private static void CreateRelationshipsForResearch()
+    {
         var parent = new Person() { Name = "John" };
         var child1 = new Person() { Name = "Chris" };
         var child2 = new Person() { Name = "Mary" };
@@ -32,8 +39,7 @@ class Program
         relationships.AddParentAndChild(parent, child2);
         
         var research = new Research(relationships);
-
-        Console.WriteLine("End");
+        research.PrintAllChildrenOf("John");
     }
 
     private static void OldFashionedPrinter()

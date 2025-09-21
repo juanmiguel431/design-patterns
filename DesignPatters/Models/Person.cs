@@ -13,24 +13,42 @@ public enum Relationship
 }
 
 // Low Level Module
-public class Relationships
+public interface IRelationshipBrowser
+{
+    IEnumerable<(Person, Relationship, Person)> FindAllChildrenOf(string name);
+}
+
+public class Relationships : IRelationshipBrowser
 {
     private readonly List<(Person, Relationship, Person)> _relations = new();
-    public List<(Person, Relationship, Person)> Relations => _relations;
 
     public void AddParentAndChild(Person parent, Person child)
     {
         _relations.Add((parent, Relationship.Parent, child));
         _relations.Add((child, Relationship.Child, parent));
     }
+    
+    public IEnumerable<(Person, Relationship, Person)> FindAllChildrenOf(string name)
+    {
+        foreach (var r in _relations.Where(p => p.Item1.Name == name && p.Item2 == Relationship.Parent))
+        {
+            yield return r;
+        }
+    }
 }
 
 public class Research
 {
-    public Research(Relationships relationships)
+    private readonly IRelationshipBrowser _relationshipBrowser;
+
+    public Research(IRelationshipBrowser relationshipBrowser)
     {
-        var relations = relationships.Relations;
-        foreach (var r in relations.Where(p => p.Item1.Name == "John" && p.Item2 == Relationship.Parent))
+        _relationshipBrowser = relationshipBrowser;
+    }
+
+    public void PrintAllChildrenOf(string name)
+    {
+        foreach (var r in _relationshipBrowser.FindAllChildrenOf(name))
         {
             Console.WriteLine($"John has a child called {r.Item3.Name}.");
         }
