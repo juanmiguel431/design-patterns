@@ -18,6 +18,10 @@ class Program
         
         // Liskov Substitution Principle
         ShapesAreaCalculation();
+        
+        // Interface Segregation Principle
+        var oldFashionedPrinter = new OldFashionedPrinter();
+        oldFashionedPrinter.Fax(); // Not implemented exception
 
         Console.WriteLine("End");
     }
