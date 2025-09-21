@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Text;
 using DesignPatters.Filters;
 using DesignPatters.Models;
 using DesignPatters.Specifications;
@@ -23,9 +24,34 @@ class Program
         // OldFashionedPrinter();
         
         // Dependency Inversion Principle
-        CreateRelationshipsForResearch();
+        // CreateRelationshipsForResearch();
+
+        // Builder Pattern
+        GenerateHtmlOutput();
 
         Console.WriteLine("End");
+    }
+
+    private static void GenerateHtmlOutput()
+    {
+        var hello = "Hello";
+        var sb = new StringBuilder();
+        sb.Append("<b>");
+        sb.Append(hello);
+        sb.Append("</b>");
+
+        Console.WriteLine(sb);
+
+        var words = new [] {"Hello", "World"};
+        sb.Clear();
+        sb.Append("<ul>");
+        foreach (var word in words)
+        {
+            sb.AppendFormat("<li>{0}</li>", word);
+        }
+        sb.Append("</ul>");
+
+        Console.WriteLine(sb);
     }
 
     private static void CreateRelationshipsForResearch()
