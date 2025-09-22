@@ -33,7 +33,7 @@ class Program
         // CreateAndDisplayPersonAndEmployee();
 
         // Stepwise Builder
-        var car = CarBuilder.Create()
+        var car = Car.Builder()
             .OfType(CarType.Sedan)
             .WheelSize(15)
             .Build();
