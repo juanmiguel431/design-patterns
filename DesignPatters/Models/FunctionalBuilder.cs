@@ -2,7 +2,7 @@
 
 public abstract class FunctionalBuilder<TSelf, TEntity>
     where TSelf : FunctionalBuilder<TSelf, TEntity>
-    where TEntity : Person, new()
+    where TEntity : new()
 {
     private readonly List<Func<TEntity, TEntity>> _actions = [];
     
