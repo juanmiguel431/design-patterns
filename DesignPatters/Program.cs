@@ -28,19 +28,33 @@ class Program
 
         // Builder Pattern
         // GenerateHtmlOutput();
-        // var personJobBuilder = new PersonJobBuilder();
-        // personJobBuilder.Called("Juan Miguel");
+        // var personJobBuilder = new EmployeeBuilder();
+        // personJobBuilder.SetFirstName("Juan Miguel");
         // CreateAndDisplayPersonAndEmployee();
 
         // Stepwise Builder
+        // StepwiseBuilder();
+
+        // Functional Builder
+        var person = new PersonFunctionalBuilder()
+            .SetFirstName("Juan")
+            .SetMiddleName("Miguel")
+            .SetLastName("Paulino Carpio")
+            .Build();
+
+        Console.WriteLine(person);
+        
+        Console.WriteLine("End");
+    }
+
+    private static void StepwiseBuilder()
+    {
         var car = Car.Builder()
             .OfType(CarType.Sedan)
             .WheelSize(15)
             .Build();
 
         Console.WriteLine(car);
-        
-        Console.WriteLine("End");
     }
 
     private static void CreateAndDisplayPersonAndEmployee()
