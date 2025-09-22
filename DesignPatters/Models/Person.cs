@@ -39,7 +39,7 @@ public class Employee : Person
     }
 }
 
-public class PersonBuilder : PersonBuilder<PersonBuilder, Person>
+public sealed class PersonBuilder : PersonBuilder<PersonBuilder, Person>
 {
 }
 
@@ -70,7 +70,7 @@ public abstract class PersonBuilder<TBuilder, TEntity>
     }
 }
 
-public class EmployeeBuilder : PersonBuilder<EmployeeBuilder, Employee>
+public sealed class EmployeeBuilder : PersonBuilder<EmployeeBuilder, Employee>
 {
     public EmployeeBuilder SetPosition(string position)
     {
