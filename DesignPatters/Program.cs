@@ -28,10 +28,15 @@ class Program
 
         // Builder Pattern
         // GenerateHtmlOutput();
-        
         // var personJobBuilder = new PersonJobBuilder();
         // personJobBuilder.Called("Juan Miguel");
+        // CreateAndDisplayPersonAndEmployee();
 
+        Console.WriteLine("End");
+    }
+
+    private static void CreateAndDisplayPersonAndEmployee()
+    {
         var person = Person.Builder()
             .SetFirstName("Juan")
             .SetMiddleName("Miguel")
@@ -49,8 +54,6 @@ class Program
             .Build();
 
         Console.WriteLine(employee);
-
-        Console.WriteLine("End");
     }
 
     private static void GenerateHtmlOutput()
