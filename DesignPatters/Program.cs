@@ -32,6 +32,14 @@ class Program
         // personJobBuilder.Called("Juan Miguel");
         // CreateAndDisplayPersonAndEmployee();
 
+        // Stepwise Builder
+        var car = CarBuilder.Create()
+            .OfType(CarType.Sedan)
+            .WheelSize(15)
+            .Build();
+
+        Console.WriteLine(car);
+        
         Console.WriteLine("End");
     }
 
