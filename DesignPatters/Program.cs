@@ -40,6 +40,7 @@ class Program
             .SetFirstName("Juan")
             .SetMiddleName("Miguel")
             .SetLastName("Paulino Carpio")
+            .AddFullName("Juan 1", "Miguel 1", "Paulino Carpio 1")
             .Build();
 
         Console.WriteLine(person);
