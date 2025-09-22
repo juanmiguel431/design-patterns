@@ -7,6 +7,7 @@ public class Person
     public string LastName { get; set; }
 
     public static PersonBuilder Builder() => new();
+    public static PersonFunctionalBuilder FunctionalBuilder() => new();
 
     public override string ToString()
     {

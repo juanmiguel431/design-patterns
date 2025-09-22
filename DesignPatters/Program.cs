@@ -36,7 +36,7 @@ class Program
         // StepwiseBuilder();
 
         // Functional Builder
-        var person = new PersonFunctionalBuilder()
+        var person = Person.FunctionalBuilder()
             .SetFirstName("Juan")
             .SetMiddleName("Miguel")
             .SetLastName("Paulino Carpio")
