@@ -23,16 +23,3 @@ public abstract class PersonFunctionalBuilder<TBuilder, TEntity> : FunctionalBui
 public sealed class PersonFunctionalBuilder : PersonFunctionalBuilder<PersonFunctionalBuilder, Person>
 {
 }
-
-public sealed class EmployeeFunctionalBuilder : PersonFunctionalBuilder<EmployeeFunctionalBuilder, Employee>
-{
-    public EmployeeFunctionalBuilder SetCompany(string company)
-    {
-        return Do(person => person.Company = company);
-    }
-
-    public EmployeeFunctionalBuilder SetPosition(string position)
-    {
-        return Do(person => person.Position = position);
-    }
-}
