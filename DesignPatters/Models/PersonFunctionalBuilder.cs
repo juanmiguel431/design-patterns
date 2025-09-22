@@ -1,19 +1,38 @@
 ﻿namespace DesignPatters.Models;
 
-public class PersonFunctionalBuilder : FunctionalBuilder<PersonFunctionalBuilder, Person>
+public abstract class PersonFunctionalBuilder<TBuilder, TEntity> : FunctionalBuilder<TBuilder, TEntity>
+    where TBuilder : PersonFunctionalBuilder<TBuilder, TEntity>
+    where TEntity : Person, new()
 {
-    public PersonFunctionalBuilder SetFirstName(string firstName)
+    public TBuilder SetFirstName(string firstName)
     {
         return Do(person => person.FirstName = firstName);
     }
     
-    public PersonFunctionalBuilder SetMiddleName(string middleName)
+    public TBuilder SetMiddleName(string middleName)
     {
         return Do(person => person.MiddleName = middleName);
     }
     
-    public PersonFunctionalBuilder SetLastName(string lastName)
+    public TBuilder SetLastName(string lastName)
     {
         return Do(person => person.LastName = lastName);
+    }
+}
+
+public sealed class PersonFunctionalBuilder : PersonFunctionalBuilder<PersonFunctionalBuilder, Person>
+{
+}
+
+public sealed class EmployeeFunctionalBuilder : PersonFunctionalBuilder<EmployeeFunctionalBuilder, Employee>
+{
+    public EmployeeFunctionalBuilder SetCompany(string company)
+    {
+        return Do(person => person.Company = company);
+    }
+
+    public EmployeeFunctionalBuilder SetPosition(string position)
+    {
+        return Do(person => person.Position = position);
     }
 }

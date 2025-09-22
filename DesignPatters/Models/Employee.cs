@@ -6,6 +6,7 @@ public class Employee : Person
     public string Position { get; set; }
 
     public new static EmployeeBuilder Builder() => new();
+    public new static EmployeeFunctionalBuilder FunctionalBuilder() => new();
 
     public override string ToString()
     {

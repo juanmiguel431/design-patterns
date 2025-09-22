@@ -36,16 +36,30 @@ class Program
         // StepwiseBuilder();
 
         // Functional Builder
+        FunctionalBuilder();
+
+        Console.WriteLine("End");
+    }
+
+    private static void FunctionalBuilder()
+    {
         var person = Person.FunctionalBuilder()
             .SetFirstName("Juan")
             .SetMiddleName("Miguel")
             .SetLastName("Paulino Carpio")
-            .AddFullName("Juan 1", "Miguel 1", "Paulino Carpio 1")
+            .Build();
+        
+        Console.WriteLine(person);
+
+        var employee = Employee.FunctionalBuilder()
+            .SetFirstName("Juan")
+            .SetMiddleName("Miguel")
+            .SetLastName("Paulino Carpio")
+            .SetCompany("Company")
+            .SetPosition("Developer")
             .Build();
 
-        Console.WriteLine(person);
-        
-        Console.WriteLine("End");
+        Console.WriteLine(employee);
     }
 
     private static void StepwiseBuilder()
