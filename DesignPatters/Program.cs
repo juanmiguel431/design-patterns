@@ -36,9 +36,32 @@ class Program
         // StepwiseBuilder();
 
         // Functional Builder
-        FunctionalBuilder();
+        // FunctionalBuilder();
+        
+        // Faceted Builder
+        CreatePersonWithFacetedBuilder();
+
 
         Console.WriteLine("End");
+    }
+
+    private static void CreatePersonWithFacetedBuilder()
+    {
+        var person = Person.PersonFacetedBuilder()
+            .SetFirstName("Juan")
+            .SetMiddleName("Miguel")
+            .SetLastName("Paulino Carpio")
+            .Location
+                .SetLatitude(1.5f)
+                .SetLongitude(-15.2f)
+            .Address
+                .SetStreet("1822 Seward Ave.")
+                .SetCity("Bronx")
+                .SetState("New York")
+                .SetZipCode("10473")
+            .Build();
+        
+        Console.WriteLine(person);
     }
 
     private static void FunctionalBuilder()
