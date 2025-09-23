@@ -47,7 +47,7 @@ class Program
 
     private static void CreatePersonWithFacetedBuilder()
     {
-        var person = Person.PersonFacetedBuilder()
+        Person person = Person.PersonFacetedBuilder()
             .SetFirstName("Juan")
             .SetMiddleName("Miguel")
             .SetLastName("Paulino Carpio")
@@ -58,8 +58,7 @@ class Program
                 .SetStreet("1822 Seward Ave.")
                 .SetCity("Bronx")
                 .SetState("New York")
-                .SetZipCode("10473")
-            .Build();
+                .SetZipCode("10473");
         
         Console.WriteLine(person);
     }
