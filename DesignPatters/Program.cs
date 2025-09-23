@@ -41,8 +41,19 @@ class Program
         // Faceted Builder
         CreatePersonWithFacetedBuilder();
 
+        // Builder Pattern Exercise
+        BuilderPatternExercise();
 
         Console.WriteLine("End");
+    }
+
+    private static void BuilderPatternExercise()
+    {
+        var codeBuilder = new CodeBuilder("Person")
+            .AddField("Name", "string")
+            .AddField("Age", "int");
+
+        Console.WriteLine(codeBuilder);
     }
 
     private static void CreatePersonWithFacetedBuilder()
