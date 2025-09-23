@@ -42,8 +42,12 @@ class Program
         // CreatePersonWithFacetedBuilder();
 
         // Builder Pattern Exercise
-        BuilderPatternExercise();
+        // BuilderPatternExercise();
 
+        // Factory Pattern
+        var point = new Point(4, 5, CoordinateSystem.Cartesian);
+        
+        
         Console.WriteLine("End");
     }
 
