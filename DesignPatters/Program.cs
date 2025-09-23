@@ -45,10 +45,16 @@ class Program
         // BuilderPatternExercise();
 
         // Factory Pattern
-        var point = new Point(4, 5, CoordinateSystem.Cartesian);
-        
-        
+        FactoryPattern();
+
         Console.WriteLine("End");
+    }
+
+    private static void FactoryPattern()
+    {
+        var point = Point.CreateNewPolarPoint(1.0, Math.PI / 2);
+
+        Console.WriteLine(point);
     }
 
     private static void BuilderPatternExercise()
