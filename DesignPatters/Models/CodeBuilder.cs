@@ -18,7 +18,7 @@ public class CodeBuilder
 
     public override string ToString()
     {
-        var fields = string.Join("\n", _fields.Select(f => $"  public {f.Item2} {f.Item1};"));
-        return $"public class {_className}\n{{\n{fields}\n}}\n";
+        var fields = string.Join("", _fields.Select(f => $"  public {f.Item2} {f.Item1};\n"));
+        return $"public class {_className}\n{{\n{fields}}}\n";
     }
 }

@@ -39,7 +39,7 @@ class Program
         // FunctionalBuilder();
         
         // Faceted Builder
-        CreatePersonWithFacetedBuilder();
+        // CreatePersonWithFacetedBuilder();
 
         // Builder Pattern Exercise
         BuilderPatternExercise();
