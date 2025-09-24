@@ -73,7 +73,7 @@ class Program
 
         // Abstract Factory Pattern
         var hotDrinkMachine = new HotDrinkMachine();
-        var hotDrink = hotDrinkMachine.MakeDrink(HotDrinkMachine.AvailableDrinks.Tea, 100);
+        var hotDrink = hotDrinkMachine.MakeDrink(DrinkType.Coffee, 100);
         hotDrink.Consume();
         
         Console.WriteLine("End");
