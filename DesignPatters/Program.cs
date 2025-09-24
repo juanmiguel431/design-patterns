@@ -72,11 +72,32 @@ class Program
         // BulkReplacementWithFactoryClass();
 
         // Abstract Factory Pattern
+        AbstractFactoryPattern();
+
+        // Prototype Pattern
+        PrototypePatternTheProblem();
+
+        Console.WriteLine("End");
+    }
+
+    private static void PrototypePatternTheProblem()
+    {
+        var person1 = new Person("Juan Miguel", "Paulino Carpio", new ContactInfo("juanmiguel431@gmail.com", "8298205436", "juanmiguel431"));;
+        
+        var person2 = person1.Clone() as Person;
+        person2.FirstName = "Luigi";
+        person2.ContactInfo.Email = "luimiguel424@gmail.com";
+        person2.ContactInfo.Phone = "809256619";
+        
+        Console.WriteLine(person1);
+        Console.WriteLine(person2);
+    }
+
+    private static void AbstractFactoryPattern()
+    {
         var hotDrinkMachine = new HotDrinkMachine();
         var hotDrink = hotDrinkMachine.MakeDrink(DrinkType.Coffee, 100);
         hotDrink.Consume();
-        
-        Console.WriteLine("End");
     }
 
     private static void BulkReplacementWithFactoryClass()

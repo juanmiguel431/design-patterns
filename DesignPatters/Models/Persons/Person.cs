@@ -1,6 +1,6 @@
 ﻿namespace DesignPatters.Models.Persons;
 
-public class Person
+public class Person : ICloneable
 {
     public string FirstName { get; set; }
     public string MiddleName { get; set; }
@@ -13,6 +13,19 @@ public class Person
 
     public float Latitude { get; set; }
     public float Longitude { get; set; }
+
+    public ContactInfo? ContactInfo { get; set; }
+
+    public Person()
+    {
+    }
+
+    public Person(string firstName, string lastName, ContactInfo contactInfo) : this()
+    {
+        FirstName = firstName;
+        LastName = lastName;
+        ContactInfo = contactInfo;
+    }
 
     public static PersonBuilder Builder() => new();
     public static PersonFunctionalBuilder FunctionalBuilder() => new();
@@ -30,7 +43,16 @@ public class Person
             $" {nameof(State)}: {State},\n" +
             $" {nameof(ZipCode)}: {ZipCode},\n" +
             $" {nameof(Latitude)}: {Latitude},\n" +
-            $" {nameof(Longitude)}: {Longitude}\n" +
+            $" {nameof(Longitude)}: {Longitude},\n" +
+            $" {nameof(ContactInfo.Email)}: {ContactInfo?.Email},\n" +
+            $" {nameof(ContactInfo.Phone)}: {ContactInfo?.Phone},\n" +
+            $" {nameof(ContactInfo.Facebook)}: {ContactInfo?.Facebook}\n" +
             $"}}\n";
+    }
+
+    public object Clone()
+    {
+        var contactInfo = ContactInfo != null ? (ContactInfo) ContactInfo.Clone() : new ContactInfo();
+        return new Person(FirstName, LastName, contactInfo);
     }
 }
