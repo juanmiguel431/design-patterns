@@ -5,6 +5,9 @@ public class Point
     private readonly double _x;
     private readonly double _y;
 
+    public static Point Origin = new Point(0, 0);
+    // public static Point Origin2 => new(0, 0);
+
     private Point(double x, double y)
     {
         _x = x;
