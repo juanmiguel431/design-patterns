@@ -72,17 +72,33 @@ class Program
         // BulkReplacementWithFactoryClass();
 
         // Abstract Factory Pattern
-        AbstractFactoryPattern();
+        // AbstractFactoryPattern();
 
-        // Prototype Pattern
-        PrototypePatternTheProblem();
+        // Prototype Pattern - The problem
+        // PrototypePatternTheProblem();
+        
+        // Prototype Pattern - Copy constructor
+        CopyConstructor();
 
         Console.WriteLine("End");
     }
 
+    private static void CopyConstructor()
+    {
+        var person1 = new Person("Juan Miguel", "Paulino Carpio", new ContactInfo("juanmiguel431@gmail.com", "8298205436", "juanmiguel431"));
+        var person2 = new Person(person1);
+        person2.FirstName = "Luigi";
+        person2.ContactInfo.Email = "luimiguel424@gmail.com";
+        person2.ContactInfo.Phone = "809256619";
+        person2.ContactInfo.Facebook = "luimiguel424";
+        
+        Console.WriteLine(person1);
+        Console.WriteLine(person2);
+    }
+
     private static void PrototypePatternTheProblem()
     {
-        var person1 = new Person("Juan Miguel", "Paulino Carpio", new ContactInfo("juanmiguel431@gmail.com", "8298205436", "juanmiguel431"));;
+        var person1 = new Person("Juan Miguel", "Paulino Carpio", new ContactInfo("juanmiguel431@gmail.com", "8298205436", "juanmiguel431"));
         
         var person2 = person1.Clone() as Person;
         person2.FirstName = "Luigi";

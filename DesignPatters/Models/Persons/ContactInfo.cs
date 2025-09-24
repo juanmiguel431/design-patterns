@@ -9,6 +9,13 @@ public class ContactInfo: ICloneable
     public ContactInfo()
     {
     }
+    
+    public ContactInfo(ContactInfo other)
+    {
+        Email = other.Email;
+        Phone = other.Phone;
+        Facebook = other.Facebook;
+    }
 
     public ContactInfo(string email, string phone, string facebook)
     {

@@ -20,6 +20,20 @@ public class Person : ICloneable
     {
     }
 
+    public Person(Person other)
+    {
+        FirstName = other.FirstName;
+        MiddleName = other.MiddleName;
+        LastName = other.LastName;
+        Street = other.Street;
+        City = other.City;
+        State = other.State;
+        ZipCode = other.ZipCode;
+        Latitude = other.Latitude;
+        Longitude = other.Longitude;
+        ContactInfo = other.ContactInfo is null ? null : new ContactInfo(other.ContactInfo);
+    }
+
     public Person(string firstName, string lastName, ContactInfo contactInfo) : this()
     {
         FirstName = firstName;
