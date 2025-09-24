@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace DesignPatters.Models;
+namespace DesignPatters.Models.Html;
 
 public class HtmlElement
 {

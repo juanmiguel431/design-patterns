@@ -1,4 +1,4 @@
-﻿namespace DesignPatters.Models;
+﻿namespace DesignPatters.Models.Persons;
 
 public abstract class FunctionalBuilder<TSelf, TEntity>
     where TSelf : FunctionalBuilder<TSelf, TEntity>

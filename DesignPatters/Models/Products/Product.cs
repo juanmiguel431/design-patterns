@@ -1,4 +1,4 @@
-namespace DesignPatters.Models;
+namespace DesignPatters.Models.Products;
 
 public class Product
 {
@@ -17,14 +17,4 @@ public class Product
         Color = color;
         Size = size;
     }
-}
-
-public enum Color
-{
-    Red, Green, Blue
-}
-
-public enum Size
-{
-    Small, Medium, Large, Huge
 }

@@ -1,4 +1,5 @@
 using DesignPatters.Models;
+using DesignPatters.Models.Products;
 
 namespace DesignPatters.Specifications.ProductSpecifications;
 
