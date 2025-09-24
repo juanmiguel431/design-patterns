@@ -6,7 +6,7 @@ public class TrackingThemeFactory
 {
     private readonly List<WeakReference<ITheme>> _themes = new();
     
-    public ITheme CreateTheme(bool dark = false)
+    public ITheme CreateTheme(bool dark)
     {
         ITheme theme = dark ? new DarkTheme() : new LightTheme();
         _themes.Add(new WeakReference<ITheme>(theme));

@@ -55,15 +55,27 @@ class Program
         // ClassFactoryPattern();
         
         // Object tracking with Factory Method
-        GenerateThemesWithFactory();
+        // GenerateThemesWithFactory();
+
+        // Bulk Replacement with Factory Class
+        BulkReplacementWithFactoryClass();
 
         Console.WriteLine("End");
+    }
+
+    private static void BulkReplacementWithFactoryClass()
+    {
+        var factory2 = new ReplaceableThemeFactory();
+        var magicTheme = factory2.CreateTheme(true);
+        Console.WriteLine(magicTheme.Value.BrgColor);
+        factory2.ReplaceTheme(false);
+        Console.WriteLine(magicTheme.Value.BrgColor);
     }
 
     private static void GenerateThemesWithFactory()
     {
         var factory = new TrackingThemeFactory();
-        var theme1 = factory.CreateTheme();
+        var theme1 = factory.CreateTheme(false);
         var theme2 = factory.CreateTheme(true);
 
         Console.WriteLine(factory.Info);
