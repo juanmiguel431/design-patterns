@@ -68,8 +68,13 @@ class Program
         // GenerateThemesWithFactory();
 
         // Bulk Replacement with Factory Class
-        BulkReplacementWithFactoryClass();
+        // BulkReplacementWithFactoryClass();
 
+        // Abstract Factory Pattern
+        var hotDrinkMachine = new HotDrinkMachine();
+        var hotDrink = hotDrinkMachine.MakeDrink(HotDrinkMachine.AvailableDrinks.Tea, 100);
+        hotDrink.Consume();
+        
         Console.WriteLine("End");
     }
 
