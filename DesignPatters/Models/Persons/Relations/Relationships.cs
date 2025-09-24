@@ -1,4 +1,4 @@
-﻿namespace DesignPatters.Models.Persons;
+﻿namespace DesignPatters.Models.Persons.Relations;
 
 public class Relationships : IRelationshipBrowser
 {
