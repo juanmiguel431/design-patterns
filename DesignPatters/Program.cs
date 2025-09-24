@@ -2,6 +2,7 @@
 using System.Text;
 using DesignPatters.Filters;
 using DesignPatters.Models;
+using DesignPatters.Models.Themes;
 using DesignPatters.Specifications;
 using DesignPatters.Specifications.ProductSpecifications;
 
@@ -51,9 +52,21 @@ class Program
         // var foo = await Foo.CreateAsync();
 
         // Class Factory Pattern
-        ClassFactoryPattern();
+        // ClassFactoryPattern();
         
+        // Object tracking with Factory Method
+        GenerateThemesWithFactory();
+
         Console.WriteLine("End");
+    }
+
+    private static void GenerateThemesWithFactory()
+    {
+        var factory = new TrackingThemeFactory();
+        var theme1 = factory.CreateTheme();
+        var theme2 = factory.CreateTheme(true);
+
+        Console.WriteLine(factory.Info);
     }
 
     private static void ClassFactoryPattern()
