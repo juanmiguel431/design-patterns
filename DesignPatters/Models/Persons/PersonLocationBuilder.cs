@@ -1,4 +1,4 @@
-namespace DesignPatters.Models;
+namespace DesignPatters.Models.Persons;
 
 public class PersonLocationBuilder : PersonFacetedBuilder
 {

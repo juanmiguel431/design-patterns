@@ -1,4 +1,4 @@
-﻿namespace DesignPatters.Models;
+﻿namespace DesignPatters.Models.Persons;
 
 public abstract class PersonBuilder<TBuilder, TEntity>
     where TBuilder : PersonBuilder<TBuilder, TEntity>
