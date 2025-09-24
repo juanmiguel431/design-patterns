@@ -14,9 +14,9 @@ public class HotDrinkMachine
     {
         foreach (var drink in Enum.GetValues<AvailableDrinks>())
         {
-            var factory = (IHotDrinkFactory)Activator.CreateInstance(
-                Type.GetType("DesignPatters.Models." + Enum.GetName(typeof(AvailableDrinks), drink) + "Factory")
-            );
+            var enumName = Enum.GetName(drink);
+            var type = Type.GetType($"DesignPatters.Models.Drinks.{enumName}Factory");
+            var factory = (IHotDrinkFactory)Activator.CreateInstance(type);
 
             _factories.Add(drink, factory);
         }
