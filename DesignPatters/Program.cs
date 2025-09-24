@@ -9,7 +9,7 @@ namespace DesignPatters;
 
 class Program
 {
-    static void Main(string[] args)
+    public static async Task Main(string[] args)
     {
         // Single Responsibility Principle
         // CreateAndOpenJournalFile();
@@ -45,7 +45,10 @@ class Program
         // BuilderPatternExercise();
 
         // Factory Pattern
-        FactoryPattern();
+        // FactoryPattern();
+        
+        // Asynchronous Factory Method
+        var foo = await Foo.CreateAsync();
 
         Console.WriteLine("End");
     }
