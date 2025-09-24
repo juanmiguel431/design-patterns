@@ -93,14 +93,14 @@ class Program
 
     private static void ClassFactoryPattern()
     {
-        var point = PointFactory.CreateNewPolarPoint(1.0, Math.PI / 2);
+        var point = Point.Factory.CreateNewPolarPoint(1.0, Math.PI / 2);
 
         Console.WriteLine(point);
     }
     
     private static void FactoryPattern()
     {
-        var point = Point.CreateNewPolarPoint(1.0, Math.PI / 2);
+        var point = Point.Factory.CreateNewPolarPoint(1.0, Math.PI / 2);
 
         Console.WriteLine(point);
     }
