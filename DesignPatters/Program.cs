@@ -3,6 +3,7 @@ using System.Text;
 using DesignPatters.Filters;
 using DesignPatters.Models;
 using DesignPatters.Models.Cars;
+using DesignPatters.Models.Drinks;
 using DesignPatters.Models.Html;
 using DesignPatters.Models.Journals;
 using DesignPatters.Models.Persons;
