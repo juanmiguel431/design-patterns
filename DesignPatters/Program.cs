@@ -2,6 +2,7 @@
 using System.Text;
 using DesignPatters.Filters;
 using DesignPatters.Models;
+using DesignPatters.Models.Cars;
 using DesignPatters.Models.Points;
 using DesignPatters.Models.Themes;
 using DesignPatters.Specifications;
