@@ -5,7 +5,7 @@ public class Point
     private readonly double _x;
     private readonly double _y;
 
-    private Point(double x, double y)
+    public Point(double x, double y)
     {
         _x = x;
         _y = y;
@@ -31,4 +31,17 @@ public class Point
 public enum CoordinateSystem
 {
     Cartesian, Polar
+}
+
+public class PointFactory
+{
+    public static Point CreateNewCartesianPoint(double x, double y)
+    {
+        return new Point(x, y);
+    }
+    
+    public static Point CreateNewPolarPoint(double rho, double theta)
+    {
+        return new Point(rho * Math.Cos(theta), rho * Math.Sin(theta));
+    }
 }
