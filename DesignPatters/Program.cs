@@ -4,6 +4,7 @@ using DesignPatters.Filters;
 using DesignPatters.Models;
 using DesignPatters.Models.Cars;
 using DesignPatters.Models.Html;
+using DesignPatters.Models.Journals;
 using DesignPatters.Models.Persons;
 using DesignPatters.Models.Persons.Employees;
 using DesignPatters.Models.Persons.Relations;
