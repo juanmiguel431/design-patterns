@@ -1,6 +1,11 @@
 ﻿namespace DesignPatters.Models.Persons;
 
-public class Person : ICloneable
+public interface IPrototype<T>
+{
+    T DeepCopy();
+}
+
+public class Person : ICloneable, IPrototype<Person>
 {
     public string FirstName { get; set; }
     public string MiddleName { get; set; }
@@ -32,6 +37,11 @@ public class Person : ICloneable
         Latitude = other.Latitude;
         Longitude = other.Longitude;
         ContactInfo = other.ContactInfo is null ? null : new ContactInfo(other.ContactInfo);
+    }
+    
+    public Person DeepCopy()
+    {
+        return new Person(this);
     }
 
     public Person(string firstName, string lastName, ContactInfo contactInfo) : this()

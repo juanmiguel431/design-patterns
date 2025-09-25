@@ -78,9 +78,25 @@ class Program
         // PrototypePatternTheProblem();
         
         // Prototype Pattern - Copy constructor
-        CopyConstructor();
+        // CopyConstructor();
+        
+        // Prototype Pattern - Clone method
+        DeepCopyMethod();
 
         Console.WriteLine("End");
+    }
+
+    private static void DeepCopyMethod()
+    {
+        var person1 = new Person("Juan Miguel", "Paulino Carpio", new ContactInfo("juanmiguel431@gmail.com", "8298205436", "juanmiguel431"));
+        var person2 = person1.DeepCopy();
+        person2.FirstName = "Luigi";
+        person2.ContactInfo.Email = "luimiguel424@gmail.com";
+        person2.ContactInfo.Phone = "809256619";
+        person2.ContactInfo.Facebook = "luimiguel424";
+        
+        Console.WriteLine(person1);
+        Console.WriteLine(person2);
     }
 
     private static void CopyConstructor()

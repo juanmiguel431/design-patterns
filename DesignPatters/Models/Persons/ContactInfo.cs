@@ -1,6 +1,6 @@
 namespace DesignPatters.Models.Persons;
 
-public class ContactInfo: ICloneable
+public class ContactInfo: ICloneable, IPrototype<ContactInfo>
 {
     public string Email { get; set; }
     public string Phone { get; set; }
@@ -15,6 +15,11 @@ public class ContactInfo: ICloneable
         Email = other.Email;
         Phone = other.Phone;
         Facebook = other.Facebook;
+    }
+    
+    public ContactInfo DeepCopy()
+    {
+        return new ContactInfo(this);
     }
 
     public ContactInfo(string email, string phone, string facebook)
