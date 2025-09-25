@@ -1,10 +1,5 @@
 ﻿namespace DesignPatters.Models.Persons;
 
-public interface IPrototype<T>
-{
-    T DeepCopy();
-}
-
 public class Person : ICloneable, IPrototype<Person>
 {
     public string FirstName { get; set; }
