@@ -1,22 +1,41 @@
 ﻿namespace DesignPatters.Models.Persons.Employees;
 
-public class Employee : Person
+public class Employee : Person, IDeepCopyable<Employee>
 {
     public string Company { get; set; }
     public string Position { get; set; }
+    public decimal Salary { get; set; }
+    public string[] Responsibilities { get; set; } = [];
+
+    public Employee()
+    {
+    }
+    
+    public Employee(Employee other) : base(other)
+    {
+        Company = other.Company;
+        Position = other.Position;
+        Salary = other.Salary;
+        Responsibilities = (string[])other.Responsibilities.Clone();
+    }
 
     public new static EmployeeBuilder Builder() => new();
     public new static EmployeeFunctionalBuilder FunctionalBuilder() => new();
 
+    public Employee DeepCopy()
+    {
+        return new Employee(this);
+    }
+
     public override string ToString()
     {
         return
-            $"{{" +
-            $"{nameof(FirstName)}: {FirstName}," +
-            $" {nameof(MiddleName)}: {MiddleName}," +
-            $" {nameof(LastName)}: {LastName}," +
-            $" {nameof(Company)}: {Company}," +
-            $" {nameof(Position)}: {Position}" +
+            $"{{\n" +
+            $" {base.ToString()}" +
+            $" {nameof(Company)}: {Company},\n" +
+            $" {nameof(Position)}: {Position},\n" +
+            $" {nameof(Salary)}: {Salary},\n" +
+            $" {nameof(Responsibilities)}: {string.Join(",", Responsibilities)}\n" +
             $"}}";
     }
 }

@@ -1,6 +1,6 @@
 namespace DesignPatters.Models.Persons;
 
-public class ContactInfo: ICloneable, IPrototype<ContactInfo>
+public class ContactInfo: ICloneable, IPrototype<ContactInfo>, IDeepCopyable<ContactInfo>
 {
     public string Email { get; set; }
     public string Phone { get; set; }

@@ -1,6 +1,6 @@
 ﻿namespace DesignPatters.Models.Persons;
 
-public class Person : ICloneable, IPrototype<Person>
+public class Person : ICloneable, IPrototype<Person>, IDeepCopyable<Person>
 {
     public string FirstName { get; set; }
     public string MiddleName { get; set; }
@@ -13,6 +13,7 @@ public class Person : ICloneable, IPrototype<Person>
 
     public float Latitude { get; set; }
     public float Longitude { get; set; }
+    public string[] Nicknames { get; set; } = [];
 
     public ContactInfo? ContactInfo { get; set; }
 
@@ -31,9 +32,10 @@ public class Person : ICloneable, IPrototype<Person>
         ZipCode = other.ZipCode;
         Latitude = other.Latitude;
         Longitude = other.Longitude;
+        Nicknames = (string[])other.Nicknames.Clone();
         ContactInfo = other.ContactInfo is null ? null : new ContactInfo(other.ContactInfo);
     }
-    
+
     public Person DeepCopy()
     {
         return new Person(this);
@@ -63,6 +65,7 @@ public class Person : ICloneable, IPrototype<Person>
             $" {nameof(ZipCode)}: {ZipCode},\n" +
             $" {nameof(Latitude)}: {Latitude},\n" +
             $" {nameof(Longitude)}: {Longitude},\n" +
+            $" {nameof(Nicknames)}: {string.Join(",", Nicknames)},\n" +
             $" {nameof(ContactInfo.Email)}: {ContactInfo?.Email},\n" +
             $" {nameof(ContactInfo.Phone)}: {ContactInfo?.Phone},\n" +
             $" {nameof(ContactInfo.Facebook)}: {ContactInfo?.Facebook}\n" +
@@ -71,7 +74,7 @@ public class Person : ICloneable, IPrototype<Person>
 
     public object Clone()
     {
-        var contactInfo = ContactInfo != null ? (ContactInfo) ContactInfo.Clone() : new ContactInfo();
+        var contactInfo = ContactInfo != null ? (ContactInfo)ContactInfo.Clone() : new ContactInfo();
         return new Person(FirstName, LastName, contactInfo);
     }
 }
