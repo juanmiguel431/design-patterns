@@ -1,3 +1,5 @@
+using Newtonsoft.Json;
+
 namespace DesignPatters.Models.Persons;
 
 public static class ExtensionMethods
@@ -6,5 +8,11 @@ public static class ExtensionMethods
         where T : IDeepCopyable<T>, new()
     {
         return item.DeepClone();
+    }
+    
+    public static T CloneWithSerialization<T>(this T self)
+    {
+        var json = JsonConvert.SerializeObject(self);
+        return JsonConvert.DeserializeObject<T>(json)!;
     }
 }
