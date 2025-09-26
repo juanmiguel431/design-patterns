@@ -118,7 +118,22 @@ class Program
             }
         };
         
-        var employee2 = employee1.DeepCopy();
+        var employee2 = employee1.DeepClone();
+        var person2 = employee1.DeepClone<Person>();
+        person2.FirstName = "Antonia";
+        person2.MiddleName = "";
+        person2.LastName = "Carpio";
+        person2.Street = "Street";
+        person2.City = "City";
+        person2.State = "State";
+        person2.ZipCode = "ZipCode";
+        person2.Latitude = 1;
+        person2.Longitude = 2;
+        person2.Nicknames[0] = "antonia";
+        person2.Nicknames[1] = "carpio";
+        person2.ContactInfo.Email = "antonia@gmail.com";
+        person2.ContactInfo.Facebook = "antonia";
+        
         employee2.FirstName = "Oscar";
         employee2.MiddleName = "Ivan";
         employee2.LastName = "Polanco";
@@ -137,10 +152,10 @@ class Program
         employee2.Nicknames[1] = "polanco";
         employee2.ContactInfo.Email = "ivanpolanco@gmail.com";
         employee2.ContactInfo.Facebook = "ivanpolanco";
-        
 
         Console.WriteLine(employee1);
         Console.WriteLine(employee2);
+        Console.WriteLine(person2);
     }
 
     private static void DeepCopyAndInheritanceWithCopyConstructor()
