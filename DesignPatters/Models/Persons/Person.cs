@@ -36,7 +36,7 @@ public class Person : ICloneable, IPrototype<Person>, IDeepCopyable<Person>
         ContactInfo = other.ContactInfo is null ? null : new ContactInfo(other.ContactInfo);
     }
 
-    public Person DeepCopy()
+    public virtual Person DeepCopy()
     {
         return new Person(this);
     }
@@ -76,5 +76,20 @@ public class Person : ICloneable, IPrototype<Person>, IDeepCopyable<Person>
     {
         var contactInfo = ContactInfo != null ? (ContactInfo)ContactInfo.Clone() : new ContactInfo();
         return new Person(FirstName, LastName, contactInfo);
+    }
+
+    public void CopyTo(Person target)
+    {
+        target.FirstName = FirstName;
+        target.MiddleName = MiddleName;
+        target.LastName = LastName;
+        target.Street = Street;
+        target.City = City;
+        target.State = State;
+        target.ZipCode = ZipCode;
+        target.Latitude = Latitude;
+        target.Longitude = Longitude;
+        target.Nicknames = (string[])Nicknames.Clone();
+        target.ContactInfo = ContactInfo is null ? null : ContactInfo.DeepClone();
     }
 }

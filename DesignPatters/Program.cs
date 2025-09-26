@@ -83,13 +83,67 @@ class Program
         // Prototype Pattern - Clone method
         // DeepCopyMethod();
         
-        // Prototype Pattern - Inheritance
-        CreateEmployeeWithDeepCopyAndInheritance();
+        // Prototype Pattern - Inheritance - Copy constructor
+        // DeepCopyAndInheritanceWithCopyConstructor();
 
+        // Prototype Pattern - Inheritance - Clone method
+        DeepCopyWithInterface();
+        
         Console.WriteLine("End");
     }
+    
+    private static void DeepCopyWithInterface()
+    {
+        var employee1 = new Employee()
+        {
+            FirstName = "Juan",
+            MiddleName = "Miguel",
+            LastName = "Paulino Carpio",
+            Position = "Software Engineer",
+            Company = "Company",
+            Salary = 1000000,
+            Responsibilities = ["Develop", "Test"],
+            Nicknames = ["juanmiguel431", "carpio"],
+            Street = "Amparo Decena",
+            City = "Villa Carmen",
+            State = "Santo Domingo Este",
+            ZipCode = "10473",
+            Latitude = 123,
+            Longitude = 456,
+            ContactInfo = new ()
+            {
+                Email = "juanmiguel431@gmail.com",
+                Phone = "8298205436",
+                Facebook = "juanmiguel431"
+            }
+        };
+        
+        var employee2 = employee1.DeepCopy();
+        employee2.FirstName = "Oscar";
+        employee2.MiddleName = "Ivan";
+        employee2.LastName = "Polanco";
+        employee2.Street = "Doña Emma Balaguer";
+        employee2.City = "Villa Carmen";
+        employee2.State = "Santo Domingo Este";
+        employee2.ZipCode = "10473";
+        employee2.Latitude = 963;
+        employee2.Longitude = 852;
+        employee2.Company = "Altice";
+        employee2.Salary = 45000;
+        employee2.Position = "Seller";
+        employee2.Responsibilities[0] = "Sell";
+        employee2.Responsibilities[1] = "Bey";
+        employee2.Nicknames[0] = "ivanpolanco";
+        employee2.Nicknames[1] = "polanco";
+        employee2.ContactInfo.Email = "ivanpolanco@gmail.com";
+        employee2.ContactInfo.Facebook = "ivanpolanco";
+        
 
-    private static void CreateEmployeeWithDeepCopyAndInheritance()
+        Console.WriteLine(employee1);
+        Console.WriteLine(employee2);
+    }
+
+    private static void DeepCopyAndInheritanceWithCopyConstructor()
     {
         var employee1 = new Employee()
         {

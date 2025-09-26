@@ -1,6 +1,6 @@
 ﻿namespace DesignPatters.Models.Persons.Employees;
 
-public class Employee : Person, IDeepCopyable<Employee>
+public class Employee : Person, IPrototype<Employee>, IDeepCopyable<Employee>
 {
     public string Company { get; set; }
     public string Position { get; set; }
@@ -22,7 +22,7 @@ public class Employee : Person, IDeepCopyable<Employee>
     public new static EmployeeBuilder Builder() => new();
     public new static EmployeeFunctionalBuilder FunctionalBuilder() => new();
 
-    public Employee DeepCopy()
+    public override Employee DeepCopy()
     {
         return new Employee(this);
     }
@@ -37,5 +37,14 @@ public class Employee : Person, IDeepCopyable<Employee>
             $" {nameof(Salary)}: {Salary},\n" +
             $" {nameof(Responsibilities)}: {string.Join(",", Responsibilities)}\n" +
             $"}}";
+    }
+
+    public void CopyTo(Employee target)
+    {
+        base.CopyTo(target);
+        target.Company = Company;
+        target.Position = Position;
+        target.Salary = Salary;
+        target.Responsibilities = (string[])Responsibilities.Clone();
     }
 }

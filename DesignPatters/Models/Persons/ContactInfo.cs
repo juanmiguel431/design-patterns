@@ -16,7 +16,14 @@ public class ContactInfo: ICloneable, IPrototype<ContactInfo>, IDeepCopyable<Con
         Phone = other.Phone;
         Facebook = other.Facebook;
     }
-    
+
+    public void CopyTo(ContactInfo target)
+    {
+        target.Email = Email;
+        target.Phone = Phone;
+        target.Facebook = Facebook;
+    }
+
     public ContactInfo DeepCopy()
     {
         return new ContactInfo(this);
