@@ -1,6 +1,8 @@
-﻿namespace DesignPatters.Models.Points;
+﻿using DesignPatters.Models.Persons;
 
-public class Point
+namespace DesignPatters.Models.Points;
+
+public class Point : IPrototype<Point>
 {
     private readonly double _x;
     private readonly double _y;
@@ -12,6 +14,17 @@ public class Point
     {
         _x = x;
         _y = y;
+    }
+
+    public Point(Point other)
+    {
+        _x = other._x;
+        _y = other._y;
+    }
+
+    public Point DeepCopy()
+    {
+        return new Point(this);
     }
 
     public override string ToString()

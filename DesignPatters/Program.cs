@@ -91,12 +91,30 @@ class Program
         
         // Prototype Pattern - Serialization
         // DeepCopyWithJsonSerialization();
+        // DeepCopyWithXmlSerialization();
         
-        DeepCopyWithXmlSerialization();
-        
+        // Prototype Pattern - Exercise
+        CreateAndDisplayLines();
+
         Console.WriteLine("End");
     }
-    
+
+    private static void CreateAndDisplayLines()
+    {
+        var line = new Line
+        {
+            Start = Point.Origin,
+            End = Point.Factory.CreateNewCartesianPoint(10, 10)
+        };
+
+        var line2 = line.DeepCopy();
+        line2.Start = Point.Factory.CreateNewCartesianPoint(100, 100);
+        line2.End = Point.Factory.CreateNewCartesianPoint(200, 200);
+
+        Console.WriteLine(line);
+        Console.WriteLine(line2);
+    }
+
     private static void DeepCopyWithXmlSerialization()
     {
         var employee1 = new Employee()
