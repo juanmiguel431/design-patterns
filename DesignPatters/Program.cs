@@ -94,9 +94,27 @@ class Program
         // DeepCopyWithXmlSerialization();
         
         // Prototype Pattern - Exercise
-        CreateAndDisplayLines();
+        // CreateAndDisplayLines();
+
+        // Singleton Pattern
+        SingletonPattern();
+
+        // var db1 = SingletonDatabase.Instance;
+
+        // if (db == db1)
+        // {
+        //     Console.WriteLine("Yes");
+        // }
 
         Console.WriteLine("End");
+    }
+
+    private static void SingletonPattern()
+    {
+        var db = SingletonDatabase.Instance;
+        var city = "New York";
+        var population = db.GetPopulation(city);
+        Console.WriteLine($"The population of {city} is {population}");
     }
 
     private static void CreateAndDisplayLines()
