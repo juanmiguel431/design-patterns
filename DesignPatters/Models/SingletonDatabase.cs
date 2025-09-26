@@ -6,8 +6,8 @@ public class SingletonDatabase : IDatabase
 {
     private readonly Dictionary<string, int> _capitals;
 
-    private static readonly Lazy<SingletonDatabase> _instance = new(() => new SingletonDatabase());
-    public static SingletonDatabase Instance => _instance.Value;
+    private static readonly Lazy<SingletonDatabase> LazyInstance = new(() => new SingletonDatabase());
+    public static SingletonDatabase Instance => LazyInstance.Value;
 
     private SingletonDatabase()
     {
