@@ -15,4 +15,13 @@ public class SingletonDatabaseTests
         Assert.That(db1, Is.SameAs(db2));
         Assert.That(SingletonDatabase.Count, Is.EqualTo(1));
     }
+
+    [Test]
+    public void SingletonTotalPopulationTest()
+    {
+        var rf = new SingletonRecordFinder();
+        var names = new string[] {"Seoul", "Mexico City"};
+        var total = rf.GetTotalPopulationAsync(names);
+        Assert.That(total, Is.EqualTo(34900000));
+    }
 }

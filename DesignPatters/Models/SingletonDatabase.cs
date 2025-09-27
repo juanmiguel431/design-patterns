@@ -13,7 +13,7 @@ public class SingletonDatabase : IDatabase
         return db;
     });
     
-    public static Task<SingletonDatabase> Instance => LazyInstance.Value;
+    public static SingletonDatabase Instance => LazyInstance.Value.GetAwaiter().GetResult();
     private static int _count = 0;
     public static int Count => _count;
 
@@ -25,7 +25,7 @@ public class SingletonDatabase : IDatabase
     private async Task InitializeAsync()
     {
         Console.WriteLine("Initializing Database");
-        await Task.Delay(1000);
+        await Task.Delay(3000);
         var data = await File.ReadAllLinesAsync("capitals.txt");
         _capitals = data.Batch(2)
             .ToDictionary(l =>
