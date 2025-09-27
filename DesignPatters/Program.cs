@@ -107,23 +107,31 @@ class Program
         // ExecutePerThreadSingletonTasks();
         
         // Ambient Context
+        BuildWallsWithContexts();
+
+        Console.WriteLine("End");
+    }
+
+    private static void BuildWallsWithContexts()
+    {
         var building = new Building();
         
-        // gnd 3000
-        BuildingContext.WallHeight = 3000;
-        building.Walls.Add(new Wall(Point.Origin, Point.Factory.CreateNewCartesianPoint(5000, 0)));
-        building.Walls.Add(new Wall(Point.Origin, Point.Factory.CreateNewCartesianPoint(0, 4000)));
+        using (new BuildingContext(3000)) // gnd 3000
+        {
+            building.Walls.Add(new Wall(Point.Origin, Point.Factory.CreateNewCartesianPoint(5000, 0)));
+            building.Walls.Add(new Wall(Point.Origin, Point.Factory.CreateNewCartesianPoint(0, 4000)));
 
-        // 1st 3500
-        BuildingContext.WallHeight = 3500;
-        building.Walls.Add(new Wall(Point.Origin, Point.Factory.CreateNewCartesianPoint(6000, 0)));
-        building.Walls.Add(new Wall(Point.Origin, Point.Factory.CreateNewCartesianPoint(0, 4000)));
-        
-        // 1st 3000
-        BuildingContext.WallHeight = 3000;
-        building.Walls.Add(new Wall(Point.Origin, Point.Factory.CreateNewCartesianPoint(5000, 4000)));
-        
-        Console.WriteLine("End");
+            using (new BuildingContext(3500)) // 1st 3500
+            {
+                building.Walls.Add(new Wall(Point.Origin, Point.Factory.CreateNewCartesianPoint(6000, 0)));
+                building.Walls.Add(new Wall(Point.Origin, Point.Factory.CreateNewCartesianPoint(0, 4000)));
+            }
+            
+            // gnd 3000
+            building.Walls.Add(new Wall(Point.Origin, Point.Factory.CreateNewCartesianPoint(5000, 4000)));
+        }
+
+        Console.WriteLine(building);
     }
 
     private static void ExecutePerThreadSingletonTasks()

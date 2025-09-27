@@ -16,6 +16,11 @@ public class Wall
     {
         Start = start;
         End = end;
-        Height = BuildingContext.WallHeight;
+        Height = BuildingContext.Current.WallHeight;
+    }
+
+    public override string ToString()
+    {
+        return $"{nameof(Start)}: {Start}, {nameof(End)}: {End}, {nameof(Height)}: {Height}";
     }
 }
