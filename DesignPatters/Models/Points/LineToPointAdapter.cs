@@ -7,11 +7,12 @@ public class LineToPointAdapter : IEnumerable<Point>
 {
     private static int _count;
     private static Dictionary<int, List<Point>> _cache = new();
+    private readonly int _hashCode;
 
     public LineToPointAdapter(Line line)
     {
-        var hashCode = line.GetHashCode();
-        if (_cache.ContainsKey(hashCode))
+        _hashCode = line.GetHashCode();
+        if (_cache.ContainsKey(_hashCode))
         {
             return;
         }
@@ -43,12 +44,12 @@ public class LineToPointAdapter : IEnumerable<Point>
             }
         }
         
-        _cache.Add(hashCode, points);
+        _cache.Add(_hashCode, points);
     }
 
     public IEnumerator<Point> GetEnumerator()
     {
-        return _cache.Values.SelectMany(x => x).GetEnumerator();
+        return _cache[_hashCode].GetEnumerator();
     }
 
     IEnumerator IEnumerable.GetEnumerator()
