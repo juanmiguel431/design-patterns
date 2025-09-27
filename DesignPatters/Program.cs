@@ -107,9 +107,27 @@ class Program
         // ExecutePerThreadSingletonTasks();
         
         // Ambient Context
-        BuildWallsWithContexts();
+        // BuildWallsWithContexts();
+        
+        // Singleton tester - Exercise
+        SingletonTester();
 
         Console.WriteLine("End");
+    }
+
+    private static void SingletonTester()
+    {
+        var cb = () => SingletonDatabase.Instance;
+        var result = IsSingleton(cb);
+        Console.WriteLine(result);
+    }
+    
+    public static bool IsSingleton(Func<object> func)
+    {
+        var result1 = func();
+        var result2 = func();
+        
+        return result1 == result2;
     }
 
     private static void BuildWallsWithContexts()
