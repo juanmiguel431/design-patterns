@@ -100,11 +100,29 @@ class Program
         // Singleton Pattern
         // SingletonPattern();
 
-
         // Singleton Pattern - Mono state
-        SingletonMonoState();
+        // SingletonMonoState();
+        
+        // Singleton per Thread
+        ExecutePerThreadSingletonTasks();
 
         Console.WriteLine("End");
+    }
+
+    private static void ExecutePerThreadSingletonTasks()
+    {
+        var t1 = Task.Factory.StartNew(() =>
+        {
+            Console.WriteLine($"t1: " + PerThreadSingleton.Instance.Id);
+        });
+        
+        var t2 = Task.Factory.StartNew(() =>
+        {
+            Console.WriteLine($"t2: " + PerThreadSingleton.Instance.Id);
+            Console.WriteLine($"t2: " + PerThreadSingleton.Instance.Id);
+        });
+        
+        Task.WaitAll(t1, t2);
     }
 
     private static void SingletonMonoState()
