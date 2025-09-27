@@ -4,7 +4,7 @@ namespace DesignPatters.Models.Singleton;
 
 public class OrdinaryDatabase : IDatabase
 {
-    private Dictionary<string, int>? _capitals;
+    private Dictionary<string, int> _capitals = null!;
 
     private static readonly Lazy<Task<OrdinaryDatabase>> LazyInstance = new(async () =>
     {
@@ -32,6 +32,6 @@ public class OrdinaryDatabase : IDatabase
 
     public int GetPopulation(string name)
     {
-        return _capitals![name];
+        return _capitals[name];
     }
 }
