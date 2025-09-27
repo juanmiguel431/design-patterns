@@ -98,16 +98,22 @@ class Program
         // CreateAndDisplayLines();
 
         // Singleton Pattern
-        SingletonPattern();
+        // SingletonPattern();
 
-        // var db1 = SingletonDatabase.Instance;
 
-        // if (db == db1)
-        // {
-        //     Console.WriteLine("Yes");
-        // }
+        // Singleton Pattern - Mono state
+        SingletonMonoState();
 
         Console.WriteLine("End");
+    }
+
+    private static void SingletonMonoState()
+    {
+        var ceo = new Ceo("Juan", 37);
+        var ceo2 = new Ceo("Luis", 35);
+
+        Console.WriteLine(ceo);
+        Console.WriteLine(ceo2);
     }
 
     private static void SingletonPattern()
