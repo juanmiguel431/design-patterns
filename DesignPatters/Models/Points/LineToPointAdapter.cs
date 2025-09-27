@@ -1,21 +1,17 @@
 ﻿using System.Collections;
-using System.Collections.ObjectModel;
 
 namespace DesignPatters.Models.Points;
 
 public class LineToPointAdapter : IEnumerable<Point>
 {
     private static int _count;
-    private static Dictionary<int, List<Point>> _cache = new();
+    private static readonly Dictionary<int, List<Point>> Cache = new();
     private readonly int _hashCode;
 
     public LineToPointAdapter(Line line)
     {
         _hashCode = line.GetHashCode();
-        if (_cache.ContainsKey(_hashCode))
-        {
-            return;
-        }
+        if (Cache.ContainsKey(_hashCode)) return;
         
         Console.WriteLine($"{++_count}: Generating points for line [{line.Start.X},{line.Start.Y}]-[{line.End.X},{line.End.Y}]");
         
@@ -44,12 +40,12 @@ public class LineToPointAdapter : IEnumerable<Point>
             }
         }
         
-        _cache.Add(_hashCode, points);
+        Cache.Add(_hashCode, points);
     }
 
     public IEnumerator<Point> GetEnumerator()
     {
-        return _cache[_hashCode].GetEnumerator();
+        return Cache[_hashCode].GetEnumerator();
     }
 
     IEnumerator IEnumerable.GetEnumerator()
