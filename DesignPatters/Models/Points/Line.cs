@@ -4,10 +4,17 @@ namespace DesignPatters.Models.Points;
 
 public class Line : IPrototype<Line>
 {
-    public Point Start, End;
+    public Point Start { get; set;}
+    public Point End { get; set; }
 
     public Line()
     {
+    }
+    
+    public Line(Point start, Point end)
+    {
+        Start = start;
+        End = end;
     }
     
     public Line(Line other)

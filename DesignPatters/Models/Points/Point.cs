@@ -6,8 +6,11 @@ public class Point : IPrototype<Point>
 {
     private readonly double _x;
     private readonly double _y;
+    
+    public double X => _x;
+    public double Y => _y;
 
-    public static Point Origin = new Point(0, 0);
+    public static readonly Point Origin = new (0, 0);
     // public static Point Origin2 => new(0, 0);
 
     private Point(double x, double y)

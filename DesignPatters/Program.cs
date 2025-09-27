@@ -17,6 +17,7 @@ using DesignPatters.Models.Singleton;
 using DesignPatters.Models.Themes;
 using DesignPatters.Specifications;
 using DesignPatters.Specifications.ProductSpecifications;
+using MoreLinq;
 
 namespace DesignPatters;
 
@@ -110,9 +111,36 @@ class Program
         // BuildWallsWithContexts();
         
         // Singleton tester - Exercise
-        SingletonTester();
+        // SingletonTester();
+
+        // Adapter Pattern
+        Draw();
 
         Console.WriteLine("End");
+    }
+
+    private static readonly List<VectorObject> VectorObjects = new()
+    {
+        new VectorRectangle(1, 1, 10, 10),
+        new VectorRectangle(3, 3, 6, 6),
+    };
+    
+    private static void Draw()
+    {
+        foreach (var vectorObject in VectorObjects)
+        {
+            foreach (var line in vectorObject)
+            {
+                var adapter = new LineToPointAdapter(line);
+                adapter.ForEach(DrawPoint);
+            }
+        }
+        Console.WriteLine("");
+    }
+    
+    public static void DrawPoint(Point point)
+    {
+        Console.Write(".");
     }
 
     private static void SingletonTester()
