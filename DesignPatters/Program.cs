@@ -97,7 +97,7 @@ class Program
         // CreateAndDisplayLines();
 
         // Singleton Pattern
-        SingletonPattern();
+        await SingletonPattern();
 
         // var db1 = SingletonDatabase.Instance;
 
@@ -109,9 +109,9 @@ class Program
         Console.WriteLine("End");
     }
 
-    private static void SingletonPattern()
+    private static async Task SingletonPattern()
     {
-        var db = SingletonDatabase.Instance;
+        var db = await SingletonDatabase.Instance;
         var city = "New York";
         var population = db.GetPopulation(city);
         Console.WriteLine($"The population of {city} is {population}");
