@@ -8,9 +8,12 @@ public class SingletonDatabase : IDatabase
 
     private static readonly Lazy<SingletonDatabase> LazyInstance = new(() => new SingletonDatabase());
     public static SingletonDatabase Instance => LazyInstance.Value;
+    private static int _count = 0;
+    public static int Count => _count;
 
     private SingletonDatabase()
     {
+        _count++;
         Console.WriteLine("Initializing Database");
 
         _capitals = File.ReadAllLines("capitals.txt")
