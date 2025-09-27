@@ -104,8 +104,25 @@ class Program
         // SingletonMonoState();
         
         // Singleton per Thread
-        ExecutePerThreadSingletonTasks();
+        // ExecutePerThreadSingletonTasks();
+        
+        // Ambient Context
+        var building = new Building();
+        
+        // gnd 3000
+        var height = 3000;
+        building.Walls.Add(new Wall(Point.Origin, Point.Factory.CreateNewCartesianPoint(5000, 0), height));
+        building.Walls.Add(new Wall(Point.Origin, Point.Factory.CreateNewCartesianPoint(0, 4000), height));
 
+        // 1st 3500
+        height = 3500;
+        building.Walls.Add(new Wall(Point.Origin, Point.Factory.CreateNewCartesianPoint(6000, 0), height));
+        building.Walls.Add(new Wall(Point.Origin, Point.Factory.CreateNewCartesianPoint(0, 4000), height));
+        
+        // 1st 3000
+        height = 3000;
+        building.Walls.Add(new Wall(Point.Origin, Point.Factory.CreateNewCartesianPoint(5000, 4000), height));
+        
         Console.WriteLine("End");
     }
 
