@@ -25,6 +25,24 @@ public class Point : IPrototype<Point>
         _y = other._y;
     }
 
+    protected bool Equals(Point other)
+    {
+        return _x.Equals(other._x) && _y.Equals(other._y);
+    }
+
+    public override bool Equals(object? obj)
+    {
+        if (obj is null) return false;
+        if (ReferenceEquals(this, obj)) return true;
+        if (obj.GetType() != GetType()) return false;
+        return Equals((Point)obj);
+    }
+
+    public override int GetHashCode()
+    {
+        return HashCode.Combine(_x, _y);
+    }
+
     public Point DeepCopy()
     {
         return new Point(this);

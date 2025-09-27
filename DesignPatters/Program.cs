@@ -115,6 +115,7 @@ class Program
 
         // Adapter Pattern
         Draw();
+        Draw();
 
         Console.WriteLine("End");
     }
