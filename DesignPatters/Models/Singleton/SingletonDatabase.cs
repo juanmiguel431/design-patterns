@@ -1,6 +1,6 @@
 using MoreLinq;
 
-namespace DesignPatters.Models;
+namespace DesignPatters.Models.Singleton;
 
 public class SingletonDatabase : IDatabase
 {

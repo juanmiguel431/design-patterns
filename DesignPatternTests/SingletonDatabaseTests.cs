@@ -1,4 +1,5 @@
 ﻿using DesignPatters.Models;
+using DesignPatters.Models.Singleton;
 
 namespace DesignPatternTests;
 
@@ -23,5 +24,14 @@ public class SingletonDatabaseTests
         var names = new string[] {"Seoul", "Mexico City"};
         var total = rf.GetTotalPopulationAsync(names);
         Assert.That(total, Is.EqualTo(34900000));
+    }
+
+    [Test]
+    public void ConfigurableTotalPopulationTest()
+    {
+        var rf = new ConfigurableRecordFinder(new DummyDatabase());
+        var names = new string[] {"Alpha", "Gamma"};
+        var total = rf.GetTotalPopulationAsync(names);
+        Assert.That(total, Is.EqualTo(4));
     }
 }

@@ -13,6 +13,7 @@ using DesignPatters.Models.Points;
 using DesignPatters.Models.Printers;
 using DesignPatters.Models.Products;
 using DesignPatters.Models.Shapes;
+using DesignPatters.Models.Singleton;
 using DesignPatters.Models.Themes;
 using DesignPatters.Specifications;
 using DesignPatters.Specifications.ProductSpecifications;
