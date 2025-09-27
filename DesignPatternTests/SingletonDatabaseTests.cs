@@ -1,4 +1,5 @@
-﻿using DesignPatters.Models;
+﻿using Autofac;
+using DesignPatters.Models;
 using DesignPatters.Models.Singleton;
 
 namespace DesignPatternTests;
@@ -33,5 +34,24 @@ public class SingletonDatabaseTests
         var names = new string[] {"Alpha", "Gamma"};
         var total = rf.GetTotalPopulationAsync(names);
         Assert.That(total, Is.EqualTo(4));
+    }
+
+    [Test]
+    public async Task DiPopulationTest()
+    {
+        var cb = new ContainerBuilder();
+
+        var ordinary = await OrdinaryDatabase.Instance;
+        
+        cb.RegisterInstance(ordinary)
+            .As<IDatabase>()
+            .SingleInstance();
+        cb.RegisterType<ConfigurableRecordFinder>();
+
+        await using var container = cb.Build();
+        var rf = container.Resolve<ConfigurableRecordFinder>();
+        var names = new string[] {"Seoul", "Mexico City"};
+        var total = rf.GetTotalPopulationAsync(names);
+        Assert.That(total, Is.EqualTo(34900000));
     }
 }
