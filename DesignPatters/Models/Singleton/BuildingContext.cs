@@ -10,7 +10,6 @@ public sealed class BuildingContext : IDisposable
     static BuildingContext()
     {
         Stack = new Stack<BuildingContext>();
-        Stack.Push(new BuildingContext(0));
     }
 
     public BuildingContext(int wallHeight)

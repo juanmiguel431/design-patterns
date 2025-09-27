@@ -116,12 +116,12 @@ class Program
     {
         var building = new Building();
         
-        using (new BuildingContext(3000)) // gnd 3000
+        using (var ctx1 = new BuildingContext(3000)) // gnd 3000
         {
             building.Walls.Add(new Wall(Point.Origin, Point.Factory.CreateNewCartesianPoint(5000, 0)));
             building.Walls.Add(new Wall(Point.Origin, Point.Factory.CreateNewCartesianPoint(0, 4000)));
 
-            using (new BuildingContext(3500)) // 1st 3500
+            using (var ctx2 = new BuildingContext(3500)) // 1st 3500
             {
                 building.Walls.Add(new Wall(Point.Origin, Point.Factory.CreateNewCartesianPoint(6000, 0)));
                 building.Walls.Add(new Wall(Point.Origin, Point.Factory.CreateNewCartesianPoint(0, 4000)));
