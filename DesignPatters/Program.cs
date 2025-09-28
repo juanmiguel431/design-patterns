@@ -1,8 +1,11 @@
 ﻿using System.Diagnostics;
 using System.Text;
+using Autofac;
+using Autofac.Features.Metadata;
 using DesignPatters.Filters;
 using DesignPatters.Models;
 using DesignPatters.Models.Cars;
+using DesignPatters.Models.Commands;
 using DesignPatters.Models.Drinks;
 using DesignPatters.Models.Html;
 using DesignPatters.Models.Journals;
@@ -118,10 +121,36 @@ class Program
         // AdapterCaching();
 
         // Generic Value Adapter
-        GenericValueAdapter();
+        // GenericValueAdapter();
 
+        await AdapterInDependencyInjection();
 
         Console.WriteLine("End");
+    }
+
+    private static async Task AdapterInDependencyInjection()
+    {
+        var b = new ContainerBuilder();
+        b.RegisterType<SaveCommand>().As<ICommand>().WithMetadata("Name", "Save");
+        b.RegisterType<OpenCommand>().As<ICommand>().WithMetadata("Name", "Open");
+
+        // b.RegisterType<Button>();
+        // b.RegisterAdapter<ICommand, Button>(cmd => new Button(cmd));
+        b.RegisterAdapter<Meta<ICommand>, Button>(cmd =>
+        {
+            var name = (string) cmd.Metadata["Name"];
+            return new Button(cmd.Value, name);
+        });
+        
+        b.RegisterType<Editor>();
+
+        await using var c = b.Build();
+        var editor = c.Resolve<Editor>();
+        editor.ClickAll();
+        foreach (var button in editor.Buttons)
+        {
+            button.PrintMe();
+        }
     }
 
     private static void GenericValueAdapter()
