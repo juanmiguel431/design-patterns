@@ -123,9 +123,24 @@ class Program
         // Generic Value Adapter
         // GenericValueAdapter();
 
+        // Adapter In Dependency Injection
         await AdapterInDependencyInjection();
 
+        // Adapter Exercise
+        CreateSquareAdapter();
+
+
         Console.WriteLine("End");
+    }
+
+    private static void CreateSquareAdapter()
+    {
+        var square = new Square
+        {
+            Side = 5
+        };
+
+        var adapter = new SquareToRectangleAdapter(square);
     }
 
     private static async Task AdapterInDependencyInjection()

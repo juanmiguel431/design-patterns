@@ -1,6 +1,6 @@
 ﻿namespace DesignPatters.Models.Shapes;
 
-public class Rectangle : Shape
+public class Rectangle : Shape, IRectangle
 {
     public virtual int Width { get; set; }
     public virtual int Height { get; set; }
