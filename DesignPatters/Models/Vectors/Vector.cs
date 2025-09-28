@@ -16,27 +16,21 @@ public class Vector<TSelf, T, D>
     {
         var requiredSize = new D().Value;
         _data = new T[requiredSize];
-        
-        var providedSized = values.Length;
-        if (providedSized > requiredSize)
-        {
-            throw new ArgumentException("Provided values are too big");
-        }
-        
-        var min = Math.Min(requiredSize, providedSized);
-        for (var i = 0; i < min; i++)
-        {
-            _data[i] = values[i];
-        }
+        PopulateData(_data, requiredSize, values);
     }
 
     public static TSelf Create(params T[] values)
     {
         var result = new TSelf();
-        
         var requiredSize = new D().Value;
         result._data = new T[requiredSize];
         
+        PopulateData(result._data, requiredSize, values);
+        return result;
+    }
+
+    private static void PopulateData(T[] data, int requiredSize, params T[] values)
+    {
         var providedSized = values.Length;
         if (providedSized > requiredSize)
         {
@@ -46,10 +40,8 @@ public class Vector<TSelf, T, D>
         var min = Math.Min(requiredSize, providedSized);
         for (var i = 0; i < min; i++)
         {
-            result._data[i] = values[i];
+            data[i] = values[i];
         }
-
-        return result;
     }
 
     public T this[int index]
