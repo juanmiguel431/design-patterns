@@ -124,13 +124,26 @@ class Program
         // GenericValueAdapter();
 
         // Adapter In Dependency Injection
-        await AdapterInDependencyInjection();
+        // await AdapterInDependencyInjection();
 
         // Adapter Exercise
-        CreateSquareAdapter();
+        // CreateSquareAdapter();
 
+        // Bridge Pattern
+        BridgePattern();
 
         Console.WriteLine("End");
+    }
+
+    private static void BridgePattern()
+    {
+        IRenderer rasterRenderer = new RasterRenderer();
+        IRenderer vectorRenderer = new VectorRenderer();
+        var circle = new Circle(vectorRenderer, 5);
+        
+        circle.Draw();
+        circle.Resize(2);
+        circle.Draw();
     }
 
     private static void CreateSquareAdapter()
