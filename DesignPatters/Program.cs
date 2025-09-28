@@ -15,6 +15,7 @@ using DesignPatters.Models.Products;
 using DesignPatters.Models.Shapes;
 using DesignPatters.Models.Singleton;
 using DesignPatters.Models.Themes;
+using DesignPatters.Models.Vectors;
 using DesignPatters.Specifications;
 using DesignPatters.Specifications.ProductSpecifications;
 using MoreLinq;
@@ -114,10 +115,33 @@ class Program
         // SingletonTester();
 
         // Adapter Pattern
-        Draw();
-        Draw();
+        // AdapterCaching();
+
+        // Generic Value Adapter
+        GenericValueAdapter();
+
 
         Console.WriteLine("End");
+    }
+
+    private static void GenericValueAdapter()
+    {
+        var v = new Vector2i(1, 2);
+        v[0] = 0;
+        v[1] = 1;
+
+        var vv = new Vector2i(3, 4);
+
+        var result = v + vv;
+        
+        
+        var u = Vector3f.Create(3.5f, 2.2f, 1f);
+    }
+
+    private static void AdapterCaching()
+    {
+        Draw();
+        Draw();
     }
 
     private static readonly List<VectorObject> VectorObjects = new()
