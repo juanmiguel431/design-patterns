@@ -1,3 +1,5 @@
+using DesignPatters.Specifications;
+
 namespace DesignPatters.Filters;
 
 public interface IFilter<T>

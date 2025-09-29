@@ -1,5 +1,5 @@
-using DesignPatters.Models;
 using DesignPatters.Models.Products;
+using DesignPatters.Specifications;
 
 namespace DesignPatters.Filters;
 
