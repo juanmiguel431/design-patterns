@@ -133,9 +133,20 @@ class Program
         // BridgePattern();
 
         // Composite Pattern
-        CompositePattern();
+        // CompositePattern();
+        RenderCircleGroup();
 
         Console.WriteLine("End");
+    }
+
+    private static void RenderCircleGroup()
+    {
+        var rasterRenderer = new RasterRenderer();
+        var circle = new Circle(rasterRenderer, 30);
+        var group = new FigureGroup();
+        group.Add(circle);
+        
+        group.Draw();
     }
 
     private static void CompositePattern()
