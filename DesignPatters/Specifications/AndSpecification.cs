@@ -1,6 +1,7 @@
 namespace DesignPatters.Specifications;
 
-public class AndSpecification<T> : ISpecification<T>
+// combinator
+public class AndSpecification<T> : Specification<T>
 {
     private readonly ISpecification<T> _left, _right;
 
@@ -10,7 +11,7 @@ public class AndSpecification<T> : ISpecification<T>
         _right = right;
     }
     
-    public bool IsSatisfiedBy(T item)
+    public override bool IsSatisfiedBy(T item)
     {
         return _left.IsSatisfiedBy(item) && _right.IsSatisfiedBy(item);
     }
