@@ -9,6 +9,7 @@ using DesignPatters.Models.Commands;
 using DesignPatters.Models.Drinks;
 using DesignPatters.Models.Html;
 using DesignPatters.Models.Journals;
+using DesignPatters.Models.NeuralNetworks;
 using DesignPatters.Models.Persons;
 using DesignPatters.Models.Persons.Employees;
 using DesignPatters.Models.Persons.Relations;
@@ -136,7 +137,24 @@ class Program
         // CompositePattern();
         RenderCircleGroup();
 
+        // Composite Pattern - Neural Networks
+        EstablishNeuronConnections();
+
         Console.WriteLine("End");
+    }
+
+    private static void EstablishNeuronConnections()
+    {
+        var neuron1 = new Neuron();
+        var neuron2 = new Neuron();
+        
+        neuron1.ConnectTo(neuron2);
+
+        var layer1 = new NeuronLayer();
+        var layer2 = new NeuronLayer();
+        
+        neuron1.ConnectTo(layer1);
+        layer1.ConnectTo(layer2);
     }
 
     private static void RenderCircleGroup()
