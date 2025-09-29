@@ -130,9 +130,27 @@ class Program
         // CreateSquareAdapter();
 
         // Bridge Pattern
-        BridgePattern();
+        // BridgePattern();
+
+        // Composite Pattern
+        CompositePattern();
 
         Console.WriteLine("End");
+    }
+
+    private static void CompositePattern()
+    {
+        var drawing = new GraphicalObject() { Name = "My Drawing" };
+        drawing.Children.Add(new SquareObject() { Color = "Red" });
+        drawing.Children.Add(new CircleObject() { Color = "Yellow" });
+
+        var group = new GraphicalObject();
+        group.Children.Add(new CircleObject() { Color = "Blue" });
+        group.Children.Add(new CircleObject() { Color = "Blue" });
+        
+        drawing.Children.Add(group);
+
+        Console.WriteLine(drawing);
     }
 
     private static void BridgePattern()
