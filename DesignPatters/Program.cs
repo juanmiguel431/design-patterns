@@ -137,9 +137,27 @@ class Program
 
     private static void BridgePattern()
     {
-        IRenderer rasterRenderer = new RasterRenderer();
-        IRenderer vectorRenderer = new VectorRenderer();
-        var circle = new Circle(vectorRenderer, 5);
+        // Using containerBuilder for dependency injection
+        var cb = new ContainerBuilder();
+        cb.RegisterType<VectorRenderer>()
+            .As<IRenderer>()
+            .SingleInstance();
+
+        cb.Register((c, p) =>
+        {
+            var renderer = c.Resolve<IRenderer>();
+            return new Circle(renderer, p.Positional<float>(0));
+        });
+        
+        using var container = cb.Build();
+        
+        var circle = container.Resolve<Circle>(new PositionalParameter(0, 5f));
+        
+
+        // This is the old way (Manually)
+        // IRenderer rasterRenderer = new RasterRenderer();
+        // IRenderer vectorRenderer = new VectorRenderer();
+        // var circle = new Circle(vectorRenderer, 5);
         
         circle.Draw();
         circle.Resize(2);
