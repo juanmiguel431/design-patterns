@@ -15,4 +15,9 @@ public class AndSpecification<T> : Specification<T>
     {
         return _left.IsSatisfiedBy(item) && _right.IsSatisfiedBy(item);
     }
+    
+    public static AndSpecification<T> operator &(AndSpecification<T> left, AndSpecification<T> right)
+    {
+        return new AndSpecification<T>(left, right);
+    }
 }

@@ -14,4 +14,9 @@ public class OrSpecification<T> : Specification<T>
     {
         return _left.IsSatisfiedBy(item) || _right.IsSatisfiedBy(item);
     }
+    
+    public static OrSpecification<T> operator &(OrSpecification<T> left, OrSpecification<T> right)
+    {
+        return new OrSpecification<T>(left, right);
+    }
 }
