@@ -1,18 +1,14 @@
 ﻿namespace DesignPatters.Specifications;
 
-public class OrSpecification<T> : Specification<T>
+public class OrSpecification<T> : CompositeSpecification<T>
 {
-    private readonly ISpecification<T> _left, _right;
-
-    public OrSpecification(ISpecification<T> left, ISpecification<T> right)
+    public OrSpecification(params ISpecification<T>[] specifications) : base(specifications)
     {
-        _left = left;
-        _right = right;
     }
     
     public override bool IsSatisfiedBy(T item)
     {
-        return _left.IsSatisfiedBy(item) || _right.IsSatisfiedBy(item);
+        return Specifications.Any(spec => spec.IsSatisfiedBy(item));
     }
     
     public static OrSpecification<T> operator &(OrSpecification<T> left, OrSpecification<T> right)
