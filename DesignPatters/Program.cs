@@ -151,6 +151,11 @@ class Program
             .AppendLine("}");
 
         Console.WriteLine(codeGenerator);
+
+        CodeGenerator myCodeGen = "Hello";
+        myCodeGen += " World";
+        Console.WriteLine(myCodeGen);
+        
         
         Console.WriteLine("End");
     }

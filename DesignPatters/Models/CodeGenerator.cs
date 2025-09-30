@@ -7,6 +7,19 @@ public class CodeGenerator
 {
     private StringBuilder _stringBuilder = new();
 
+    public static implicit operator CodeGenerator(string value)
+    {
+        var codeGenerator = new CodeGenerator();
+        codeGenerator._stringBuilder.Append(value);
+        return codeGenerator;
+    }
+
+    public static CodeGenerator operator +(CodeGenerator left, string right)
+    {
+        left.Append(right);
+        return left;
+    }
+    
     public override string ToString()
     {
         return _stringBuilder.ToString();
