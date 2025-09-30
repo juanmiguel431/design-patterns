@@ -3,18 +3,18 @@ using System.Text;
 
 namespace DesignPatters.Models;
 
-public class CodeGenerator
+public class MyStringBuilder
 {
     private StringBuilder _stringBuilder = new();
 
-    public static implicit operator CodeGenerator(string value)
+    public static implicit operator MyStringBuilder(string value)
     {
-        var codeGenerator = new CodeGenerator();
+        var codeGenerator = new MyStringBuilder();
         codeGenerator._stringBuilder.Append(value);
         return codeGenerator;
     }
 
-    public static CodeGenerator operator +(CodeGenerator left, string right)
+    public static MyStringBuilder operator +(MyStringBuilder left, string right)
     {
         left.Append(right);
         return left;
@@ -30,250 +30,250 @@ public class CodeGenerator
         ((ISerializable)_stringBuilder).GetObjectData(info, context);
     }
 
-    public CodeGenerator Append(bool value)
+    public MyStringBuilder Append(bool value)
     {
         _stringBuilder.Append(value);
         return this;
     }
 
-    public CodeGenerator Append(byte value)
+    public MyStringBuilder Append(byte value)
     {
         _stringBuilder.Append(value);
         return this;
     }
 
-    public CodeGenerator Append(char value)
+    public MyStringBuilder Append(char value)
     {
         _stringBuilder.Append(value);
         return this;
     }
 
-    public unsafe CodeGenerator Append(char* value, int valueCount)
+    public unsafe MyStringBuilder Append(char* value, int valueCount)
     {
         _stringBuilder.Append(value, valueCount);
         return this;
     }
 
-    public CodeGenerator Append(char value, int repeatCount)
+    public MyStringBuilder Append(char value, int repeatCount)
     {
         _stringBuilder.Append(value, repeatCount);
         return this;
     }
 
-    public CodeGenerator Append(char[]? value)
+    public MyStringBuilder Append(char[]? value)
     {
         _stringBuilder.Append(value);
         return this;
     }
 
-    public CodeGenerator Append(char[]? value, int startIndex, int charCount)
+    public MyStringBuilder Append(char[]? value, int startIndex, int charCount)
     {
         _stringBuilder.Append(value, startIndex, charCount);
         return this;
     }
 
-    public CodeGenerator Append(decimal value)
+    public MyStringBuilder Append(decimal value)
     {
         _stringBuilder.Append(value);
         return this;
     }
 
-    public CodeGenerator Append(double value)
+    public MyStringBuilder Append(double value)
     {
         _stringBuilder.Append(value);
         return this;
     }
 
-    public CodeGenerator Append(IFormatProvider? provider, ref StringBuilder.AppendInterpolatedStringHandler handler)
+    public MyStringBuilder Append(IFormatProvider? provider, ref StringBuilder.AppendInterpolatedStringHandler handler)
     {
         _stringBuilder.Append(provider, ref handler);
         return this;
     }
 
-    public CodeGenerator Append(short value)
+    public MyStringBuilder Append(short value)
     {
         _stringBuilder.Append(value);
         return this;
     }
 
-    public CodeGenerator Append(int value)
+    public MyStringBuilder Append(int value)
     {
         _stringBuilder.Append(value);
         return this;
     }
 
-    public CodeGenerator Append(long value)
+    public MyStringBuilder Append(long value)
     {
         _stringBuilder.Append(value);
         return this;
     }
 
-    public CodeGenerator Append(object? value)
+    public MyStringBuilder Append(object? value)
     {
         _stringBuilder.Append(value);
         return this;
     }
 
-    public CodeGenerator Append(ReadOnlyMemory<char> value)
+    public MyStringBuilder Append(ReadOnlyMemory<char> value)
     {
         _stringBuilder.Append(value);
         return this;
     }
 
-    public CodeGenerator Append(ReadOnlySpan<char> value)
+    public MyStringBuilder Append(ReadOnlySpan<char> value)
     {
         _stringBuilder.Append(value);
         return this;
     }
 
-    public CodeGenerator Append(sbyte value)
+    public MyStringBuilder Append(sbyte value)
     {
         _stringBuilder.Append(value);
         return this;
     }
 
-    public CodeGenerator Append(float value)
+    public MyStringBuilder Append(float value)
     {
         _stringBuilder.Append(value);
         return this;
     }
 
-    public CodeGenerator Append(string? value)
+    public MyStringBuilder Append(string? value)
     {
         _stringBuilder.Append(value);
         return this;
     }
 
-    public CodeGenerator Append(string? value, int startIndex, int count)
+    public MyStringBuilder Append(string? value, int startIndex, int count)
     {
         _stringBuilder.Append(value, startIndex, count);
         return this;
     }
 
-    public CodeGenerator Append(StringBuilder? value)
+    public MyStringBuilder Append(StringBuilder? value)
     {
         _stringBuilder.Append(value);
         return this;
     }
 
-    public CodeGenerator Append(StringBuilder? value, int startIndex, int count)
+    public MyStringBuilder Append(StringBuilder? value, int startIndex, int count)
     {
         _stringBuilder.Append(value, startIndex, count);
         return this;
     }
 
-    public CodeGenerator Append(ref StringBuilder.AppendInterpolatedStringHandler handler)
+    public MyStringBuilder Append(ref StringBuilder.AppendInterpolatedStringHandler handler)
     {
         _stringBuilder.Append(ref handler);
         return this;
     }
 
-    public CodeGenerator Append(ushort value)
+    public MyStringBuilder Append(ushort value)
     {
         _stringBuilder.Append(value);
         return this;
     }
 
-    public CodeGenerator Append(uint value)
+    public MyStringBuilder Append(uint value)
     {
         _stringBuilder.Append(value);
         return this;
     }
 
-    public CodeGenerator Append(ulong value)
+    public MyStringBuilder Append(ulong value)
     {
         _stringBuilder.Append(value);
         return this;
     }
 
-    public CodeGenerator AppendFormat(IFormatProvider? provider, string format, object? arg0)
+    public MyStringBuilder AppendFormat(IFormatProvider? provider, string format, object? arg0)
     {
         _stringBuilder.AppendFormat(provider, format, arg0);
         return this;
     }
 
-    public CodeGenerator AppendFormat(IFormatProvider? provider, string format, object? arg0, object? arg1)
+    public MyStringBuilder AppendFormat(IFormatProvider? provider, string format, object? arg0, object? arg1)
     {
         _stringBuilder.AppendFormat(provider, format, arg0, arg1);
         return this;
     }
 
-    public CodeGenerator AppendFormat(IFormatProvider? provider, string format, object? arg0, object? arg1,
+    public MyStringBuilder AppendFormat(IFormatProvider? provider, string format, object? arg0, object? arg1,
         object? arg2)
     {
         _stringBuilder.AppendFormat(provider, format, arg0, arg1, arg2);
         return this;
     }
 
-    public CodeGenerator AppendFormat(IFormatProvider? provider, string format, params object?[] args)
+    public MyStringBuilder AppendFormat(IFormatProvider? provider, string format, params object?[] args)
     {
         _stringBuilder.AppendFormat(provider, format, args);
         return this;
     }
 
-    public CodeGenerator AppendFormat(IFormatProvider? provider, string format, params ReadOnlySpan<object?> args)
+    public MyStringBuilder AppendFormat(IFormatProvider? provider, string format, params ReadOnlySpan<object?> args)
     {
         _stringBuilder.AppendFormat(provider, format, args);
         return this;
     }
 
-    public CodeGenerator AppendFormat(IFormatProvider? provider, CompositeFormat format, params object?[] args)
+    public MyStringBuilder AppendFormat(IFormatProvider? provider, CompositeFormat format, params object?[] args)
     {
         _stringBuilder.AppendFormat(provider, format, args);
         return this;
     }
 
-    public CodeGenerator AppendFormat(IFormatProvider? provider, CompositeFormat format,
+    public MyStringBuilder AppendFormat(IFormatProvider? provider, CompositeFormat format,
         params ReadOnlySpan<object?> args)
     {
         _stringBuilder.AppendFormat(provider, format, args);
         return this;
     }
 
-    public CodeGenerator AppendFormat(string format, object? arg0)
+    public MyStringBuilder AppendFormat(string format, object? arg0)
     {
         _stringBuilder.AppendFormat(format, arg0);
         return this;
     }
 
-    public CodeGenerator AppendFormat(string format, object? arg0, object? arg1)
+    public MyStringBuilder AppendFormat(string format, object? arg0, object? arg1)
     {
         _stringBuilder.AppendFormat(format, arg0, arg1);
         return this;
     }
 
-    public CodeGenerator AppendFormat(string format, object? arg0, object? arg1, object? arg2)
+    public MyStringBuilder AppendFormat(string format, object? arg0, object? arg1, object? arg2)
     {
         _stringBuilder.AppendFormat(format, arg0, arg1, arg2);
         return this;
     }
 
-    public CodeGenerator AppendFormat(string format, params object?[] args)
+    public MyStringBuilder AppendFormat(string format, params object?[] args)
     {
         _stringBuilder.AppendFormat(format, args);
         return this;
     }
 
-    public CodeGenerator AppendFormat(string format, params ReadOnlySpan<object?> args)
+    public MyStringBuilder AppendFormat(string format, params ReadOnlySpan<object?> args)
     {
         _stringBuilder.AppendFormat(format, args);
         return this;
     }
 
-    public CodeGenerator AppendFormat<TArg0>(IFormatProvider? provider, CompositeFormat format, TArg0 arg0)
+    public MyStringBuilder AppendFormat<TArg0>(IFormatProvider? provider, CompositeFormat format, TArg0 arg0)
     {
         _stringBuilder.AppendFormat(provider, format, arg0);
         return this;
     }
 
-    public CodeGenerator AppendFormat<TArg0, TArg1>(IFormatProvider? provider, CompositeFormat format, TArg0 arg0,
+    public MyStringBuilder AppendFormat<TArg0, TArg1>(IFormatProvider? provider, CompositeFormat format, TArg0 arg0,
         TArg1 arg1)
     {
         _stringBuilder.AppendFormat(provider, format, arg0, arg1);
         return this;
     }
 
-    public CodeGenerator AppendFormat<TArg0, TArg1, TArg2>(IFormatProvider? provider, CompositeFormat format,
+    public MyStringBuilder AppendFormat<TArg0, TArg1, TArg2>(IFormatProvider? provider, CompositeFormat format,
         TArg0 arg0,
         TArg1 arg1, TArg2 arg2)
     {
@@ -281,92 +281,92 @@ public class CodeGenerator
         return this;
     }
 
-    public CodeGenerator AppendJoin(char separator, params object?[] values)
+    public MyStringBuilder AppendJoin(char separator, params object?[] values)
     {
         _stringBuilder.AppendJoin(separator, values);
         return this;
     }
 
-    public CodeGenerator AppendJoin(char separator, params string?[] values)
+    public MyStringBuilder AppendJoin(char separator, params string?[] values)
     {
         _stringBuilder.AppendJoin(separator, values);
         return this;
     }
 
-    public CodeGenerator AppendJoin(char separator, params ReadOnlySpan<object?> values)
+    public MyStringBuilder AppendJoin(char separator, params ReadOnlySpan<object?> values)
     {
         _stringBuilder.AppendJoin(separator, values);
         return this;
     }
 
-    public CodeGenerator AppendJoin(char separator, params ReadOnlySpan<string?> values)
+    public MyStringBuilder AppendJoin(char separator, params ReadOnlySpan<string?> values)
     {
         _stringBuilder.AppendJoin(separator, values);
         return this;
     }
 
-    public CodeGenerator AppendJoin(string? separator, params object?[] values)
+    public MyStringBuilder AppendJoin(string? separator, params object?[] values)
     {
         _stringBuilder.AppendJoin(separator, values);
         return this;
     }
 
-    public CodeGenerator AppendJoin(string? separator, params string?[] values)
+    public MyStringBuilder AppendJoin(string? separator, params string?[] values)
     {
         _stringBuilder.AppendJoin(separator, values);
         return this;
     }
 
-    public CodeGenerator AppendJoin(string? separator, params ReadOnlySpan<object?> values)
+    public MyStringBuilder AppendJoin(string? separator, params ReadOnlySpan<object?> values)
     {
         _stringBuilder.AppendJoin(separator, values);
         return this;
     }
 
-    public CodeGenerator AppendJoin(string? separator, params ReadOnlySpan<string?> values)
+    public MyStringBuilder AppendJoin(string? separator, params ReadOnlySpan<string?> values)
     {
         _stringBuilder.AppendJoin(separator, values);
         return this;
     }
 
-    public CodeGenerator AppendJoin<T>(char separator, IEnumerable<T> values)
+    public MyStringBuilder AppendJoin<T>(char separator, IEnumerable<T> values)
     {
         _stringBuilder.AppendJoin(separator, values);
         return this;
     }
 
-    public CodeGenerator AppendJoin<T>(string? separator, IEnumerable<T> values)
+    public MyStringBuilder AppendJoin<T>(string? separator, IEnumerable<T> values)
     {
         _stringBuilder.AppendJoin(separator, values);
         return this;
     }
 
-    public CodeGenerator AppendLine()
+    public MyStringBuilder AppendLine()
     {
         _stringBuilder.AppendLine();
         return this;
     }
 
-    public CodeGenerator AppendLine(IFormatProvider? provider,
+    public MyStringBuilder AppendLine(IFormatProvider? provider,
         ref StringBuilder.AppendInterpolatedStringHandler handler)
     {
         _stringBuilder.AppendLine(provider, ref handler);
         return this;
     }
 
-    public CodeGenerator AppendLine(string? value)
+    public MyStringBuilder AppendLine(string? value)
     {
         _stringBuilder.AppendLine(value);
         return this;
     }
 
-    public CodeGenerator AppendLine(ref StringBuilder.AppendInterpolatedStringHandler handler)
+    public MyStringBuilder AppendLine(ref StringBuilder.AppendInterpolatedStringHandler handler)
     {
         _stringBuilder.AppendLine(ref handler);
         return this;
     }
 
-    public CodeGenerator Clear()
+    public MyStringBuilder Clear()
     {
         _stringBuilder.Clear();
         return this;
@@ -402,157 +402,157 @@ public class CodeGenerator
         return _stringBuilder.GetChunks();
     }
 
-    public CodeGenerator Insert(int index, bool value)
+    public MyStringBuilder Insert(int index, bool value)
     {
         _stringBuilder.Insert(index, value);
         return this;
     }
 
-    public CodeGenerator Insert(int index, byte value)
+    public MyStringBuilder Insert(int index, byte value)
     {
         _stringBuilder.Insert(index, value);
         return this;
     }
 
-    public CodeGenerator Insert(int index, char value)
+    public MyStringBuilder Insert(int index, char value)
     {
         _stringBuilder.Insert(index, value);
         return this;
     }
 
-    public CodeGenerator Insert(int index, char[]? value)
+    public MyStringBuilder Insert(int index, char[]? value)
     {
         _stringBuilder.Insert(index, value);
         return this;
     }
 
-    public CodeGenerator Insert(int index, char[]? value, int startIndex, int charCount)
+    public MyStringBuilder Insert(int index, char[]? value, int startIndex, int charCount)
     {
         _stringBuilder.Insert(index, value, startIndex, charCount);
         return this;
     }
 
-    public CodeGenerator Insert(int index, decimal value)
+    public MyStringBuilder Insert(int index, decimal value)
     {
         _stringBuilder.Insert(index, value);
         return this;
     }
 
-    public CodeGenerator Insert(int index, double value)
+    public MyStringBuilder Insert(int index, double value)
     {
         _stringBuilder.Insert(index, value);
         return this;
     }
 
-    public CodeGenerator Insert(int index, short value)
+    public MyStringBuilder Insert(int index, short value)
     {
         _stringBuilder.Insert(index, value);
         return this;
     }
 
-    public CodeGenerator Insert(int index, int value)
+    public MyStringBuilder Insert(int index, int value)
     {
         _stringBuilder.Insert(index, value);
         return this;
     }
 
-    public CodeGenerator Insert(int index, long value)
+    public MyStringBuilder Insert(int index, long value)
     {
         _stringBuilder.Insert(index, value);
         return this;
     }
 
-    public CodeGenerator Insert(int index, object? value)
+    public MyStringBuilder Insert(int index, object? value)
     {
         _stringBuilder.Insert(index, value);
         return this;
     }
 
-    public CodeGenerator Insert(int index, ReadOnlySpan<char> value)
+    public MyStringBuilder Insert(int index, ReadOnlySpan<char> value)
     {
         _stringBuilder.Insert(index, value);
         return this;
     }
 
-    public CodeGenerator Insert(int index, sbyte value)
+    public MyStringBuilder Insert(int index, sbyte value)
     {
         _stringBuilder.Insert(index, value);
         return this;
     }
 
-    public CodeGenerator Insert(int index, float value)
+    public MyStringBuilder Insert(int index, float value)
     {
         _stringBuilder.Insert(index, value);
         return this;
     }
 
-    public CodeGenerator Insert(int index, string? value)
+    public MyStringBuilder Insert(int index, string? value)
     {
         _stringBuilder.Insert(index, value);
         return this;
     }
 
-    public CodeGenerator Insert(int index, string? value, int count)
+    public MyStringBuilder Insert(int index, string? value, int count)
     {
         _stringBuilder.Insert(index, value, count);
         return this;
     }
 
-    public CodeGenerator Insert(int index, ushort value)
+    public MyStringBuilder Insert(int index, ushort value)
     {
         _stringBuilder.Insert(index, value);
         return this;
     }
 
-    public CodeGenerator Insert(int index, uint value)
+    public MyStringBuilder Insert(int index, uint value)
     {
         _stringBuilder.Insert(index, value);
         return this;
     }
 
-    public CodeGenerator Insert(int index, ulong value)
+    public MyStringBuilder Insert(int index, ulong value)
     {
         _stringBuilder.Insert(index, value);
         return this;
     }
 
-    public CodeGenerator Remove(int startIndex, int length)
+    public MyStringBuilder Remove(int startIndex, int length)
     {
         _stringBuilder.Remove(startIndex, length);
         return this;
     }
 
-    public CodeGenerator Replace(char oldChar, char newChar)
+    public MyStringBuilder Replace(char oldChar, char newChar)
     {
         _stringBuilder.Replace(oldChar, newChar);
         return this;
     }
 
-    public CodeGenerator Replace(char oldChar, char newChar, int startIndex, int count)
+    public MyStringBuilder Replace(char oldChar, char newChar, int startIndex, int count)
     {
         _stringBuilder.Replace(oldChar, newChar, startIndex, count);
         return this;
     }
 
-    public CodeGenerator Replace(ReadOnlySpan<char> oldValue, ReadOnlySpan<char> newValue)
+    public MyStringBuilder Replace(ReadOnlySpan<char> oldValue, ReadOnlySpan<char> newValue)
     {
         _stringBuilder.Replace(oldValue, newValue);
         return this;
     }
 
-    public CodeGenerator Replace(ReadOnlySpan<char> oldValue, ReadOnlySpan<char> newValue, int startIndex, int count)
+    public MyStringBuilder Replace(ReadOnlySpan<char> oldValue, ReadOnlySpan<char> newValue, int startIndex, int count)
     {
         _stringBuilder.Replace(oldValue, newValue, startIndex, count);
         return this;
     }
 
-    public CodeGenerator Replace(string oldValue, string? newValue)
+    public MyStringBuilder Replace(string oldValue, string? newValue)
     {
         _stringBuilder.Replace(oldValue, newValue);
         return this;
     }
 
-    public CodeGenerator Replace(string oldValue, string? newValue, int startIndex, int count)
+    public MyStringBuilder Replace(string oldValue, string? newValue, int startIndex, int count)
     {
         _stringBuilder.Replace(oldValue, newValue, startIndex, count);
         return this;

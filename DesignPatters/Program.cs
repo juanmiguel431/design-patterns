@@ -145,19 +145,27 @@ class Program
         // CompositePatternExercise();
 
         // Decorator Pattern
-        var codeGenerator = new CodeGenerator();
+        DecoratorPattern();
+        AdapterAndDecoratorPattern();
+
+        Console.WriteLine("End");
+    }
+
+    private static void DecoratorPattern()
+    {
+        var codeGenerator = new MyStringBuilder();
         codeGenerator.AppendLine("class Foo")
             .AppendLine("{")
             .AppendLine("}");
 
         Console.WriteLine(codeGenerator);
+    }
 
-        CodeGenerator myCodeGen = "Hello";
+    private static void AdapterAndDecoratorPattern()
+    {
+        MyStringBuilder myCodeGen = "Hello";
         myCodeGen += " World";
         Console.WriteLine(myCodeGen);
-        
-        
-        Console.WriteLine("End");
     }
 
     private static void CompositePatternExercise()
