@@ -142,8 +142,16 @@ class Program
         // EstablishNeuronConnections();
 
         // Composite Pattern - Exercise
-        CompositePatternExercise();
+        // CompositePatternExercise();
 
+        // Decorator Pattern
+        var codeGenerator = new CodeGenerator();
+        codeGenerator.AppendLine("class Foo")
+            .AppendLine("{")
+            .AppendLine("}");
+
+        Console.WriteLine(codeGenerator);
+        
         Console.WriteLine("End");
     }
 
