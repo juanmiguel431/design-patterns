@@ -6,6 +6,7 @@ using DesignPatters.Filters;
 using DesignPatters.Models;
 using DesignPatters.Models.Cars;
 using DesignPatters.Models.Commands;
+using DesignPatters.Models.Composite;
 using DesignPatters.Models.Drinks;
 using DesignPatters.Models.Html;
 using DesignPatters.Models.Journals;
@@ -135,12 +136,30 @@ class Program
 
         // Composite Pattern
         // CompositePattern();
-        RenderCircleGroup();
+        // RenderCircleGroup();
 
         // Composite Pattern - Neural Networks
-        EstablishNeuronConnections();
+        // EstablishNeuronConnections();
+
+        // Composite Pattern - Exercise
+        CompositePatternExercise();
 
         Console.WriteLine("End");
+    }
+
+    private static void CompositePatternExercise()
+    {
+        var singleValue = new SingleValue() { Value = 6 };
+        var manyValues = new ManyValues();
+        manyValues.Add(5);
+        manyValues.Add(4);
+
+        var values = new List<IValueContainer>();
+        values.Add(singleValue);
+        values.Add(manyValues);
+
+        var result = values.Sum();
+        Console.WriteLine(result);
     }
 
     private static void EstablishNeuronConnections()
