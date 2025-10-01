@@ -149,8 +149,32 @@ class Program
         DecoratorPattern();
         AdapterAndDecoratorPattern();
         DecoratorWithMultipleInheritance();
+        HandleMultipleInheritance();
 
         Console.WriteLine("End");
+    }
+
+    private static void HandleMultipleInheritance()
+    {
+        var drake = new Drake()
+        {
+            Age = 5
+        };
+
+        // Without Extension Methods
+        if (drake is IAvian d)
+        {
+            d.Fly();
+        }
+
+        if (drake is IReptile r)
+        {
+            r.Crawl();
+        }
+        
+        // With Extension Methods
+        drake.Crawl();
+        drake.Fly();
     }
 
     private static void DecoratorWithMultipleInheritance()
