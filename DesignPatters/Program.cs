@@ -165,6 +165,9 @@ class Program
         
         var transparentStructure = new TransparentStructure(coloredStructure, 0.5f);
         Console.WriteLine(transparentStructure.AsString());
+        
+        // This will throw an exception, Cannot add a transparent structure to another transparent structure
+        var transparentStructure2 = new TransparentStructure(transparentStructure, 0.5f);
     }
 
     private static void HandleMultipleInheritance()

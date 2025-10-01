@@ -8,6 +8,11 @@ public class ColoredStructure : IStructure
 
     public ColoredStructure(IStructure structure, string color)
     {
+        if (structure is ColoredStructure)
+        {
+            throw new ArgumentException("Cannot add a colored structure to another colored structure");
+        }
+        
         _structure = structure ?? throw new ArgumentNullException(nameof(structure));
         _color = color ?? throw new ArgumentNullException(nameof(color));
     }
