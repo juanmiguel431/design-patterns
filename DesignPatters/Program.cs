@@ -146,12 +146,25 @@ class Program
         // CompositePatternExercise();
 
         // Decorator Pattern
-        DecoratorPattern();
-        AdapterAndDecoratorPattern();
-        DecoratorWithMultipleInheritance();
-        HandleMultipleInheritance();
+        // DecoratorPattern();
+        // AdapterAndDecoratorPattern();
+        // DecoratorWithMultipleInheritance();
+        // HandleMultipleInheritance();
+        DynamicDecoratorComposition();
 
         Console.WriteLine("End");
+    }
+
+    private static void DynamicDecoratorComposition()
+    {
+        var box = new Box(1.23f);
+        Console.WriteLine(box.AsString());
+
+        var coloredStructure = new ColoredStructure(box, "Green");
+        Console.WriteLine(coloredStructure.AsString());
+        
+        var transparentStructure = new TransparentStructure(coloredStructure, 0.5f);
+        Console.WriteLine(transparentStructure.AsString());
     }
 
     private static void HandleMultipleInheritance()
