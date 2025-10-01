@@ -4,6 +4,7 @@ using Autofac;
 using Autofac.Features.Metadata;
 using DesignPatters.Filters;
 using DesignPatters.Models;
+using DesignPatters.Models.Animals;
 using DesignPatters.Models.Cars;
 using DesignPatters.Models.Commands;
 using DesignPatters.Models.Composite;
@@ -147,8 +148,17 @@ class Program
         // Decorator Pattern
         DecoratorPattern();
         AdapterAndDecoratorPattern();
+        DecoratorWithMultipleInheritance();
 
         Console.WriteLine("End");
+    }
+
+    private static void DecoratorWithMultipleInheritance()
+    {
+        var dragon = new Dragon();
+        dragon.Weight = 30;
+        dragon.Fly();
+        dragon.Crawl();
     }
 
     private static void DecoratorPattern()
