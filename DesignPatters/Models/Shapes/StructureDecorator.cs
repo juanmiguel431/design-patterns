@@ -1,20 +1,20 @@
 namespace DesignPatters.Models.Shapes;
 
-public abstract class StructureDecorator<TSelf, TCyclePolicy> : StructureDecorator
-    where TCyclePolicy : StructureDecoratorCyclePolicy, new()
+public abstract class StructureDecorator<TSelf, TPolicy> : StructureDecorator
+    where TPolicy : StructureDecoratorCyclePolicy, new()
 {
-    protected readonly TCyclePolicy CyclePolicy = new();
+    protected readonly TPolicy Policy = new();
     protected StructureDecorator(IStructure structure) : base(structure)
     {
-        CyclePolicy.TypeAdditionAllowed(typeof(TSelf), Types);
+        Policy.TypeAdditionAllowed(typeof(TSelf), Types);
         Types.Add(typeof(TSelf));
     }
 }
 
 public abstract class StructureDecorator : IStructure
 {
-    protected internal readonly List<Type> Types = new();
-    protected internal IStructure Structure;
+    protected readonly List<Type> Types = new();
+    protected readonly IStructure Structure;
 
     protected StructureDecorator(IStructure structure)
     {

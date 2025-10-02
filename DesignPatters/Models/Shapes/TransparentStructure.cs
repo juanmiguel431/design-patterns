@@ -13,7 +13,7 @@ public class TransparentStructure : StructureDecoratorWithPolicy<TransparentStru
     {
         var sb = new MyStringBuilder(Structure.AsString());
         
-        var allowed = CyclePolicy.ApplicationAllowed(Types[0], Types.Skip(1).ToArray());
+        var allowed = Policy.ApplicationAllowed(Types[0], Types.Skip(1).ToArray());
         
         if (allowed) 
             sb.Append($" has the transparency of {_transparency * 100}%");

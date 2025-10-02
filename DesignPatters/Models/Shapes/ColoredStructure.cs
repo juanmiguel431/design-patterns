@@ -13,7 +13,7 @@ public class ColoredStructure : StructureDecoratorWithPolicy<ColoredStructure>
     {
         var sb = new MyStringBuilder(Structure.AsString());
         
-        var allowed = CyclePolicy.ApplicationAllowed(Types[0], Types.Skip(1).ToArray());
+        var allowed = Policy.ApplicationAllowed(Types[0], Types.Skip(1).ToArray());
         
         if (allowed) 
             sb.Append($" has the color {_color}");
