@@ -11,6 +11,13 @@ public class TransparentStructure : StructureDecoratorWithPolicy<TransparentStru
 
     public override string AsString()
     {
-        return $"{Structure.AsString()} has the transparency of {_transparency * 100}%";
+        var sb = new MyStringBuilder(Structure.AsString());
+        
+        var allowed = CyclePolicy.ApplicationAllowed(Types[0], Types.Skip(1).ToArray());
+        
+        if (allowed) 
+            sb.Append($" has the transparency of {_transparency * 100}%");
+
+        return sb.ToString();
     }
 }

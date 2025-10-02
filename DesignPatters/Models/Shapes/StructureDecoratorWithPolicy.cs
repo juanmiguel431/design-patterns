@@ -1,6 +1,9 @@
 namespace DesignPatters.Models.Shapes;
 
-public class StructureDecoratorWithPolicy<T> : StructureDecorator<T, ThrowOnCyclePolicy>
+// CyclesAllowedPolicy
+// ThrowOnCyclePolicy
+// AbsorbCyclePolicy
+public class StructureDecoratorWithPolicy<T> : StructureDecorator<T, AbsorbCyclePolicy>
 {
     public StructureDecoratorWithPolicy(IStructure structure) : base(structure)
     {

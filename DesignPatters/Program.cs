@@ -160,17 +160,20 @@ class Program
         var box = new Box(1.23f);
         Console.WriteLine(box.AsString());
 
-        var coloredStructure = new ColoredStructure(box, "Green");
-        Console.WriteLine(coloredStructure.AsString());
+        var colored1 = new ColoredStructure(box, "Green");
+        Console.WriteLine(colored1.AsString());
         
-        var transparentStructure = new TransparentStructure(coloredStructure, 0.5f);
-        Console.WriteLine(transparentStructure.AsString());
+        var transparent1 = new TransparentStructure(colored1, 0.5f);
+        Console.WriteLine(transparent1.AsString());
         
-        var colored2 = new ColoredStructure(transparentStructure, "Red");
+        var colored2 = new ColoredStructure(transparent1, "Red");
         Console.WriteLine(colored2.AsString());
         
-        // This will throw an exception, Cannot add a transparent structure to another transparent structure
-        // var transparentStructure2 = new TransparentStructure(transparentStructure, 0.5f);
+        var transparent2 = new TransparentStructure(colored2, 0.7f);
+        Console.WriteLine(transparent2.AsString());
+        
+        var transparent3 = new TransparentStructure(transparent2, 0.7f);
+        Console.WriteLine(transparent3.AsString());
     }
 
     private static void HandleMultipleInheritance()

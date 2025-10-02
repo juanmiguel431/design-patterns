@@ -15,8 +15,9 @@ public class ThrowOnCyclePolicy : StructureDecoratorCyclePolicy
         Handler(type, allTypes);
     }
 
-    public override void ApplicationAllowed(Type type, IList<Type> allTypes)
+    public override bool ApplicationAllowed(Type type, IList<Type> allTypes)
     {
         Handler(type, allTypes);
+        return true;
     }
 }

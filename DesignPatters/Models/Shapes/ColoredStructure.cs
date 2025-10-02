@@ -9,5 +9,15 @@ public class ColoredStructure : StructureDecoratorWithPolicy<ColoredStructure>
         _color = color ?? throw new ArgumentNullException(nameof(color));
     }
 
-    public override string AsString() => $"{Structure.AsString()} has the color {_color}";
+    public override string AsString()
+    {
+        var sb = new MyStringBuilder(Structure.AsString());
+        
+        var allowed = CyclePolicy.ApplicationAllowed(Types[0], Types.Skip(1).ToArray());
+        
+        if (allowed) 
+            sb.Append($" has the color {_color}");
+
+        return sb.ToString();
+    }
 }

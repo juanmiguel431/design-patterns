@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using System.Runtime.CompilerServices;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace DesignPatters.Models;
@@ -7,6 +8,15 @@ public class MyStringBuilder
 {
     private StringBuilder _stringBuilder = new();
 
+    public MyStringBuilder()
+    {
+    }
+
+    public MyStringBuilder(string value)
+    {
+        _stringBuilder.Append(value);
+    }
+    
     public static implicit operator MyStringBuilder(string value)
     {
         var codeGenerator = new MyStringBuilder();
@@ -162,11 +172,12 @@ public class MyStringBuilder
         return this;
     }
 
-    public MyStringBuilder Append(ref StringBuilder.AppendInterpolatedStringHandler handler)
-    {
-        _stringBuilder.Append(ref handler);
-        return this;
-    }
+    // TODO Implement class [InterpolatedStringHandler]
+    // public MyStringBuilder Append([InterpolatedStringHandlerArgument("")] ref StringBuilder.AppendInterpolatedStringHandler handler)
+    // {
+    //     _stringBuilder.Append(ref handler);
+    //     return this;
+    // }
 
     public MyStringBuilder Append(ushort value)
     {
