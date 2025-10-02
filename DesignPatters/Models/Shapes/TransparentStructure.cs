@@ -1,24 +1,16 @@
 ﻿namespace DesignPatters.Models.Shapes;
 
-public class TransparentStructure : IStructure
+public class TransparentStructure : StructureDecoratorWithPolicy<TransparentStructure>
 {
-    private readonly IStructure _structure;
-    
     private readonly float _transparency;
 
-    public TransparentStructure(IStructure structure, float transparency)
+    public TransparentStructure(IStructure structure, float transparency) : base(structure)
     {
-        if (structure is TransparentStructure)
-        {
-            throw new ArgumentException("Cannot add a transparent structure to another transparent structure");
-        }
-        
-        _structure = structure ?? throw new ArgumentNullException(nameof(structure));
         _transparency = transparency;
     }
 
-    public string AsString()
+    public override string AsString()
     {
-        return $"{_structure.AsString()} has the transparency of {_transparency * 100}%";
+        return $"{Structure.AsString()} has the transparency of {_transparency * 100}%";
     }
 }
