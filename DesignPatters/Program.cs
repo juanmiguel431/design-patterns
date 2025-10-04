@@ -18,6 +18,7 @@ using DesignPatters.Models.Persons.Relations;
 using DesignPatters.Models.Points;
 using DesignPatters.Models.Printers;
 using DesignPatters.Models.Products;
+using DesignPatters.Models.Reporting;
 using DesignPatters.Models.Shapes;
 using DesignPatters.Models.Singleton;
 using DesignPatters.Models.Themes;
@@ -151,9 +152,30 @@ class Program
         // DecoratorWithMultipleInheritance();
         // HandleMultipleInheritance();
         // DynamicDecoratorComposition();
-        StaticDecoratorComposition();
+        // StaticDecoratorComposition();
+
+        // Decorator In Dependency Injection
+        DecoratorInDependencyInjection();
 
         Console.WriteLine("End");
+    }
+
+    private static void DecoratorInDependencyInjection()
+    {
+        var builder = new ContainerBuilder();
+        builder.RegisterType<ReportingService>().Named<IReportingService>("reporting");
+        
+        builder.RegisterDecorator<IReportingService>((context, service) =>
+        {
+            return new ReportingServiceWithLogging(service);
+        }, "reporting");
+        
+        using var container = builder.Build();
+        var reportingServiceDecorator = container.Resolve<IReportingService>();
+        reportingServiceDecorator.Report();
+        
+        var baseReporting = container.ResolveNamed<IReportingService>("reporting");
+        baseReporting.Report();
     }
 
     private static void StaticDecoratorComposition()
