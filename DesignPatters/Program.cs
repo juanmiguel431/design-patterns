@@ -163,6 +163,23 @@ class Program
         // FacadeExercise();
 
         // Flyweight Pattern
+        // FlyweightPattern();
+        
+        // Flyweight Pattern - Exercise
+        FlyweightPatternExercise();
+
+        Console.WriteLine("End");
+    }
+
+    private static void FlyweightPatternExercise()
+    {
+        var sentence = new Sentence("hello world");
+        sentence[1].Capitalize = true;
+        Console.WriteLine(sentence); // writes "hello WORLD"
+    }
+
+    private static void FlyweightPattern()
+    {
         var ft = new FormattedText("This is a brave new world.");
         ft.Capitalize(10, 15);
         Console.WriteLine(ft);
@@ -170,8 +187,6 @@ class Program
         var bft = new BetterFormattedText("This is a brave new world.");
         bft.GetRange(10, 15).Capitalize = true;
         Console.WriteLine(bft);
-        
-        Console.WriteLine("End");
     }
 
     private static void FacadeExercise()
