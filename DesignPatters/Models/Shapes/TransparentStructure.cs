@@ -21,3 +21,24 @@ public class TransparentStructure : StructureDecoratorWithPolicy<TransparentStru
         return sb.ToString();
     }
 }
+
+public class TransparentStructure<T> : Structure
+    where T : IStructure, new()
+{
+    private readonly float _transparency;
+    private readonly T _structure = new();
+
+    public TransparentStructure() : this(0)
+    {
+    }
+    
+    public TransparentStructure(float transparency)
+    {
+        _transparency = transparency;
+    }
+
+    public override string AsString()
+    {
+        return $"{_structure.AsString()} has the transparency of {_transparency * 100}%";
+    }
+}

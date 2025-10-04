@@ -21,3 +21,25 @@ public class ColoredStructure : StructureDecoratorWithPolicy<ColoredStructure>
         return sb.ToString();
     }
 }
+
+// CRTP - Curiously Recurring Template Pattern - Not supported in C#
+public class ColoredStructure<T> : Structure
+    where T : IStructure, new()
+{
+    private readonly string _color;
+    private readonly T _structure = new();
+
+    public ColoredStructure() : this("black")
+    {
+    }
+    
+    public ColoredStructure(string color)
+    {
+        _color = color ?? throw new ArgumentNullException(nameof(color));
+    }
+
+    public override string AsString()
+    {
+        return $"{_structure.AsString()} has the color {_color}";
+    }
+}

@@ -150,9 +150,16 @@ class Program
         // AdapterAndDecoratorPattern();
         // DecoratorWithMultipleInheritance();
         // HandleMultipleInheritance();
-        DynamicDecoratorComposition();
+        // DynamicDecoratorComposition();
+        StaticDecoratorComposition();
 
         Console.WriteLine("End");
+    }
+
+    private static void StaticDecoratorComposition()
+    {
+        var box = new TransparentStructure<ColoredStructure<Box>>(0.6f);
+        Console.WriteLine(box.AsString());
     }
 
     private static void DynamicDecoratorComposition()
