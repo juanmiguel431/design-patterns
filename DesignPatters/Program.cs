@@ -10,6 +10,7 @@ using DesignPatters.Models.Commands;
 using DesignPatters.Models.Composite;
 using DesignPatters.Models.Drinks;
 using DesignPatters.Models.Facade;
+using DesignPatters.Models.Flyweight;
 using DesignPatters.Models.Html;
 using DesignPatters.Models.Journals;
 using DesignPatters.Models.NeuralNetworks;
@@ -159,8 +160,14 @@ class Program
         // DecoratorInDependencyInjection();
         
         // Facade Exercise
-        FacadeExercise();
+        // FacadeExercise();
 
+        // Flyweight Pattern
+        var ft = new FormattedText("This is a brave new world.");
+        ft.Capitalize(10, 15);
+
+        Console.WriteLine(ft);
+        
         Console.WriteLine("End");
     }
 
