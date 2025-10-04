@@ -9,6 +9,7 @@ using DesignPatters.Models.Cars;
 using DesignPatters.Models.Commands;
 using DesignPatters.Models.Composite;
 using DesignPatters.Models.Drinks;
+using DesignPatters.Models.Facade;
 using DesignPatters.Models.Html;
 using DesignPatters.Models.Journals;
 using DesignPatters.Models.NeuralNetworks;
@@ -155,9 +156,20 @@ class Program
         // StaticDecoratorComposition();
 
         // Decorator In Dependency Injection
-        DecoratorInDependencyInjection();
+        // DecoratorInDependencyInjection();
+        
+        // Facade Exercise
+        FacadeExercise();
 
         Console.WriteLine("End");
+    }
+
+    private static void FacadeExercise()
+    {
+        var magicSquareGenerator = new MagicSquareGenerator();
+        var magicSquare = magicSquareGenerator.Generate(3);
+
+        Console.WriteLine("Success");
     }
 
     private static void DecoratorInDependencyInjection()
