@@ -166,9 +166,24 @@ class Program
         // FlyweightPattern();
         
         // Flyweight Pattern - Exercise
-        FlyweightPatternExercise();
+        // FlyweightPatternExercise();
+        
+        // Flyweight Pattern - Factory
+        FlyweightWithFactory();
 
         Console.WriteLine("End");
+    }
+
+    private static void FlyweightWithFactory()
+    {
+        var threeFactory = new ThreeTypeFactory();
+        var forest = new Forest();
+        var type = threeFactory.GetType("Roble", "Verde", "Madera");
+        
+        forest.Add(new Three(type, 0, 0));
+        forest.Add(new Three(type, 1, 1));
+
+        Console.WriteLine(forest);
     }
 
     private static void FlyweightPatternExercise()
