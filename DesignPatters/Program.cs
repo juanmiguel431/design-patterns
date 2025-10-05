@@ -173,10 +173,22 @@ class Program
         // FlyweightWithFactory();
 
         // Proxy Pattern - Protection
-        ProtectionProxy();
+        // ProtectionProxy();
+        PropertyProxy();
 
 
         Console.WriteLine("End");
+    }
+
+    private static void PropertyProxy()
+    {
+        var sportCarProperty = new Property<SportCar>();
+        SportCar car = sportCarProperty;
+        Property<SportCar> sportCarPropertyImplicitConversion = car;
+
+        var c = new Creature();
+        c.Agility = 10;
+        c.Agility = 10;
     }
 
     private static void ProtectionProxy()
