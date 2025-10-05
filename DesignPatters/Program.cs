@@ -182,14 +182,18 @@ class Program
 
         // Composite Proxy - Array backed properties
         // CompositeProxyWithArrayBackedProperties();
-
         
-        var ba = new BankAccount();
+        DynamicProxyForLogging();
+
+        Console.WriteLine("End");
+    }
+
+    private static void DynamicProxyForLogging()
+    {
+        var ba = Log<BankAccount>.As<IBankAccount>();
         ba.Deposit(100);
         ba.Withdraw(50);
         Console.WriteLine(ba);
-        
-        Console.WriteLine("End");
     }
 
     private static void CompositeProxyWithArrayBackedProperties()
