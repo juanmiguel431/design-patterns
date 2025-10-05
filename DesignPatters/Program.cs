@@ -174,10 +174,20 @@ class Program
 
         // Proxy Pattern - Protection
         // ProtectionProxy();
-        PropertyProxy();
+        // PropertyProxy();
 
+        // Value Proxy
+        ValueProxy();
 
         Console.WriteLine("End");
+    }
+
+    private static void ValueProxy()
+    {
+        Console.WriteLine(10f * 5.Percent());
+
+        var percentage = 2.Percent() + 3.Percent();
+        Console.WriteLine(percentage); //5%
     }
 
     private static void PropertyProxy()
