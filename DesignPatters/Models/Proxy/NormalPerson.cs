@@ -1,6 +1,14 @@
 ﻿namespace DesignPatters.Models.Proxy;
 
-public class NormalPerson
+public interface INormalPerson
+{
+    int Age { get; set; }
+    string Drink();
+    string Drive();
+    string DrinkAndDrive();
+}
+
+public class NormalPerson : INormalPerson
 {
     public int Age { get; set; }
 
@@ -21,7 +29,7 @@ public class NormalPerson
 }
 
 
-public class ResponsiblePerson
+public class ResponsiblePerson : INormalPerson
 {
     private readonly NormalPerson _person;
     
