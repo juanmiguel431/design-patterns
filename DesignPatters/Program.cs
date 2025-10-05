@@ -178,8 +178,26 @@ class Program
 
         // Value Proxy
         ValueProxy();
+        CompositeProxy();
 
         Console.WriteLine("End");
+    }
+
+    private static void CompositeProxy()
+    {
+        // AoS - Array of Structures
+        var monsters = new Monster[100];
+        foreach (var monster in monsters)
+        {
+            monster.X++;
+        }
+        
+        // AOS/SOA duality
+        var monsters2 = new Monsters(100); // SoA - Structure of Arrays
+        foreach (var monster in monsters2)
+        {
+            monster.X++;
+        }
     }
 
     private static void ValueProxy()
