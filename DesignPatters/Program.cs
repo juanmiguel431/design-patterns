@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Reflection;
 using System.Text;
 using Autofac;
 using Autofac.Features.Metadata;
@@ -190,7 +191,12 @@ class Program
 
     private static void DynamicProxyForLogging()
     {
-        var ba = Log<BankAccount>.As<IBankAccount>();
+        // var ba = Log<BankAccount>.As<IBankAccount>();
+        // ba.Deposit(100);
+        // ba.Withdraw(50);
+        // Console.WriteLine(ba);
+
+        var ba = BankAccountProxy.Create();
         ba.Deposit(100);
         ba.Withdraw(50);
         Console.WriteLine(ba);
