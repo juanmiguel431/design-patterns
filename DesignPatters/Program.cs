@@ -184,9 +184,19 @@ class Program
         // Composite Proxy - Array backed properties
         // CompositeProxyWithArrayBackedProperties();
         // DynamicProxyForLogging();
-        ProxyViewModel();
+        // ProxyViewModel();
+        
+        // Protection Proxy Pattern - Exercise
+        ProtectionProxyExercise();
 
         Console.WriteLine("End");
+    }
+
+    private static void ProtectionProxyExercise()
+    {
+        var person = new NormalPerson{ Age = 16 };
+        var responsiblePerson = new ResponsiblePerson(person);
+        responsiblePerson.DrinkAndDrive();
     }
 
     private static void ProxyViewModel()
