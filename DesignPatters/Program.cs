@@ -20,6 +20,7 @@ using DesignPatters.Models.Persons.Relations;
 using DesignPatters.Models.Points;
 using DesignPatters.Models.Printers;
 using DesignPatters.Models.Products;
+using DesignPatters.Models.Proxy;
 using DesignPatters.Models.Reporting;
 using DesignPatters.Models.Shapes;
 using DesignPatters.Models.Singleton;
@@ -169,9 +170,20 @@ class Program
         // FlyweightPatternExercise();
         
         // Flyweight Pattern - Factory
-        FlyweightWithFactory();
+        // FlyweightWithFactory();
+
+        // Proxy Pattern - Protection
+        ProtectionProxy();
+
 
         Console.WriteLine("End");
+    }
+
+    private static void ProtectionProxy()
+    {
+        var driver = new Driver() { Age = 15 };
+        var car = new SportCarProxy(driver);
+        car.Drive();
     }
 
     private static void FlyweightWithFactory()
