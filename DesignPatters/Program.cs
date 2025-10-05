@@ -177,10 +177,20 @@ class Program
         // PropertyProxy();
 
         // Value Proxy
-        ValueProxy();
-        CompositeProxy();
+        // ValueProxy();
+        // CompositeProxy();
+
+        // Composite Proxy - Array backed properties
+        CompositeProxyArrayBackedProperties();
 
         Console.WriteLine("End");
+    }
+
+    private static void CompositeProxyArrayBackedProperties()
+    {
+        var ms = new MasonrySettings();
+        ms.All = true;
+        Console.WriteLine($"Walls: {ms.Walls} Pillars: {ms.Pillars} Floors: {ms.Floors}");
     }
 
     private static void CompositeProxy()
