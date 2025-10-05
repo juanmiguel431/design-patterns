@@ -183,10 +183,26 @@ class Program
 
         // Composite Proxy - Array backed properties
         // CompositeProxyWithArrayBackedProperties();
-        
-        DynamicProxyForLogging();
+        // DynamicProxyForLogging();
+        ProxyViewModel();
 
         Console.WriteLine("End");
+    }
+
+    private static void ProxyViewModel()
+    {
+        var person = new DeveloperPerson("Juan", "Paulino");
+        var viewModel = new DeveloperPersonViewModel(person);
+
+        viewModel.PropertyChanged += (sender, args) =>
+        {
+            Console.WriteLine("Event");
+        };
+            
+        viewModel.FirstName = "Oscar";
+        viewModel.LastName = "Polanco";
+        
+        Console.WriteLine(person);
     }
 
     private static void DynamicProxyForLogging()
