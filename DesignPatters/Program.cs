@@ -181,12 +181,18 @@ class Program
         // CompositeProxy();
 
         // Composite Proxy - Array backed properties
-        CompositeProxyArrayBackedProperties();
+        // CompositeProxyWithArrayBackedProperties();
 
+        
+        var ba = new BankAccount();
+        ba.Deposit(100);
+        ba.Withdraw(50);
+        Console.WriteLine(ba);
+        
         Console.WriteLine("End");
     }
 
-    private static void CompositeProxyArrayBackedProperties()
+    private static void CompositeProxyWithArrayBackedProperties()
     {
         var ms = new MasonrySettings();
         ms.All = true;
