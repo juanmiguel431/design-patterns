@@ -1,4 +1,6 @@
-﻿using System.Diagnostics;
+﻿using System.Collections;
+using System.Collections.Specialized;
+using System.Diagnostics;
 using System.Reflection;
 using System.Text;
 using Autofac;
@@ -187,9 +189,41 @@ class Program
         // ProxyViewModel();
         
         // Protection Proxy Pattern - Exercise
-        ProtectionProxyExercise();
+        // ProtectionProxyExercise();
+        BitFragging();
 
         Console.WriteLine("End");
+    }
+
+    private static void BitFragging()
+    {
+        // BitVector32 bitVector32 = new BitVector32(10);
+        // BitArray bitArray = new BitArray(5);
+        // var bytes = BitConverter.GetBytes(0b11UL);
+        
+        var numbers = new[] { 1, 3, 5, 7 };
+        var numberOfOps = numbers.Length - 1;
+        var limit = 1UL << 2 * numberOfOps;
+        
+        for (var result = 0; result <= 10; result++)
+        {
+            for (ulong key = 0UL; key  < limit ; key++)
+            {
+                var tbs = new TwoBitSet(key);
+                var ops = Enumerable.Range(0, numberOfOps)
+                    .Select(i => tbs[i])
+                    .Cast<Operation>()
+                    .ToArray();
+                
+                var problem = new Problem(numbers, ops);
+                if (problem.Eval() == result)
+                {
+                    var p = new Problem(numbers, ops);
+                    Console.WriteLine($"{p} = {result}");
+                    break;
+                }
+            }
+        }
     }
 
     private static void ProtectionProxyExercise()
