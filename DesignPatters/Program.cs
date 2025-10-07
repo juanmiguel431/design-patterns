@@ -204,19 +204,19 @@ class Program
         var goblin = new BigCreature("Goblin", 2, 2);
         Console.WriteLine(goblin);
 
-        var root = new CreatureModifier(goblin);
+        var root = new CreatureModifier();
         Console.WriteLine("Let's double the goblin's attack");
-        root.Add(new DoubleAttackModifier(goblin));
+        root.Add(new DoubleAttackModifier());
 
-        Console.WriteLine($"Let's increase the goblin's defense");
-        root.Add(new IncreaseDefenseModifier(goblin));
+        Console.WriteLine("Let's increase the goblin's defense");
+        root.Add(new IncreaseDefenseModifier(5));
 
-        Console.WriteLine("Let's not allow no new bonuses");
-        root.Add(new NoBonusesModifier(goblin));
+        Console.WriteLine("Let's not allow new bonuses");
+        root.Add(new NoBonusesModifier());
         
-        root.Add(new DoubleAttackModifier(goblin)); // This will be ignored
+        root.Add(new DoubleAttackModifier()); // This will be ignored
         
-        root.Handle();
+        root.Handle(goblin);
         Console.WriteLine(goblin);
     }
 

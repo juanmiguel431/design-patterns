@@ -2,12 +2,8 @@
 
 public class NoBonusesModifier : CreatureModifier
 {
-    public NoBonusesModifier(BigCreature creature) : base(creature)
+    public override void Handle(BigCreature creature)
     {
-    }
-    
-    public override void Handle()
-    {
-        Console.WriteLine($"No bonuses for {Creature.Name}");
+        Console.WriteLine($"No bonuses for {creature.Name}");
     }
 }

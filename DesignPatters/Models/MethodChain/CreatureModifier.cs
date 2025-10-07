@@ -2,13 +2,7 @@
 
 public class CreatureModifier
 {
-    protected readonly BigCreature Creature;
     private CreatureModifier? _next; // Linked List
-
-    public CreatureModifier(BigCreature creature)
-    {
-        Creature = creature;
-    }
 
     public void Add(CreatureModifier modifier)
     {
@@ -22,8 +16,8 @@ public class CreatureModifier
         }
     }
 
-    public virtual void Handle()
+    public virtual void Handle(BigCreature creature)
     {
-        _next?.Handle();
+        _next?.Handle(creature);
     }
 }

@@ -2,14 +2,10 @@
 
 public class DoubleAttackModifier : CreatureModifier
 {
-    public DoubleAttackModifier(BigCreature creature) : base(creature)
+    public override void Handle(BigCreature creature)
     {
-    }
-
-    public override void Handle()
-    {
-        Console.WriteLine($"Doubling {Creature.Name}'s attack");
-        Creature.Attack *= 2;
-        base.Handle();
+        Console.WriteLine($"Doubling {creature.Name}'s attack");
+        creature.Attack *= 2;
+        base.Handle(creature);
     }
 }
