@@ -16,6 +16,7 @@ using DesignPatters.Models.Facade;
 using DesignPatters.Models.Flyweight;
 using DesignPatters.Models.Html;
 using DesignPatters.Models.Journals;
+using DesignPatters.Models.MethodChain;
 using DesignPatters.Models.NeuralNetworks;
 using DesignPatters.Models.Persons;
 using DesignPatters.Models.Persons.Employees;
@@ -190,9 +191,33 @@ class Program
         
         // Protection Proxy Pattern - Exercise
         // ProtectionProxyExercise();
-        BitFragging();
+        // BitFragging();
+        
+        // Chain of Responsibility - Method Chain
+        ChainOfResponsibility();
 
         Console.WriteLine("End");
+    }
+
+    private static void ChainOfResponsibility()
+    {
+        var goblin = new BigCreature("Goblin", 2, 2);
+        Console.WriteLine(goblin);
+
+        var root = new CreatureModifier(goblin);
+        Console.WriteLine("Let's double the goblin's attack");
+        root.Add(new DoubleAttackModifier(goblin));
+
+        Console.WriteLine($"Let's increase the goblin's defense");
+        root.Add(new IncreaseDefenseModifier(goblin));
+
+        Console.WriteLine("Let's not allow no new bonuses");
+        root.Add(new NoBonusesModifier(goblin));
+        
+        root.Add(new DoubleAttackModifier(goblin)); // This will be ignored
+        
+        root.Handle();
+        Console.WriteLine(goblin);
     }
 
     private static void BitFragging()
