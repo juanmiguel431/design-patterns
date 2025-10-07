@@ -1,6 +1,4 @@
-﻿using System.Reflection.Metadata;
-
-namespace DesignPatters.Models.MethodChain;
+﻿namespace DesignPatters.Models.MethodChain;
 
 public class BigCreature
 {
