@@ -194,9 +194,30 @@ class Program
         // BitFragging();
         
         // Chain of Responsibility - Method Chain
-        ChainOfResponsibility();
+        // ChainOfResponsibility();
+        BrokerChain();
 
         Console.WriteLine("End");
+    }
+
+    private static void BrokerChain()
+    {
+        var game = new Game();
+        var goblin = new SmallCreature(game, "Strong Goblin", 3, 3);
+
+        Console.WriteLine(goblin);
+        
+        using (new TripleAttackModifier(game, goblin))
+        {
+            Console.WriteLine(goblin);
+
+            using (new IncrementDefenseModifier(game, goblin, 7))
+            {
+                Console.WriteLine(goblin);
+            }
+        }
+
+        Console.WriteLine(goblin);
     }
 
     private static void ChainOfResponsibility()
