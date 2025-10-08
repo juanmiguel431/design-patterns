@@ -213,12 +213,20 @@ class Program
         var commands = new List<BankAccountCommand>
         {
             new(ba, BankAccountCommand.Action.Deposit, 100),
-            new(ba, BankAccountCommand.Action.Withdraw, 50),
+            new(ba, BankAccountCommand.Action.Withdraw, 1000),
         };
         
         commands.ForEach(c => c.Execute());
 
         Console.WriteLine(ba);
+
+        foreach (var command in Enumerable.Reverse(commands))
+        {
+            command.Undo();
+        }
+
+        Console.WriteLine(ba);
+        
     }
 
     private static void ChainOfResponsibilityExercise()
