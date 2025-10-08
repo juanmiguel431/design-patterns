@@ -195,9 +195,32 @@ class Program
         
         // Chain of Responsibility - Method Chain
         // ChainOfResponsibility();
-        BrokerChain();
+        // BrokerChain();
+
+        // Chain of Responsibility - Exercise
+        ChainOfResponsibilityExercise();
 
         Console.WriteLine("End");
+    }
+
+    private static void ChainOfResponsibilityExercise()
+    {
+        var game = new SimpleGame();
+        var goblin = new Goblin(game);
+        game.Creatures.Add(goblin);
+        Console.WriteLine(goblin);
+
+        var goblinKing = new GoblinKing(game);
+        game.Creatures.Add(goblinKing);
+        Console.WriteLine(goblinKing);
+        Console.WriteLine(goblin);
+        
+        var goblin2 = new Goblin(game);
+        game.Creatures.Add(goblin2);
+        Console.WriteLine(goblin2);
+        
+        game.Creatures.Remove(goblinKing);
+        Console.WriteLine(goblin);
     }
 
     private static void BrokerChain()
