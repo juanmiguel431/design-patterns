@@ -198,9 +198,27 @@ class Program
         // BrokerChain();
 
         // Chain of Responsibility - Exercise
-        ChainOfResponsibilityExercise();
+        // ChainOfResponsibilityExercise();
+
+        
+        // Command Pattern
+        CommandPattern();
 
         Console.WriteLine("End");
+    }
+
+    private static void CommandPattern()
+    {
+        var ba = new BankAccount();
+        var commands = new List<BankAccountCommand>
+        {
+            new(ba, BankAccountCommand.Action.Deposit, 100),
+            new(ba, BankAccountCommand.Action.Withdraw, 50),
+        };
+        
+        commands.ForEach(c => c.Execute());
+
+        Console.WriteLine(ba);
     }
 
     private static void ChainOfResponsibilityExercise()
