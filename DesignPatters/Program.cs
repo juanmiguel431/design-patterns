@@ -203,7 +203,17 @@ class Program
         // Command Pattern
         // CommandPattern();
         // CompositeBankAccountCommands();
-        ExecuteMoneyTransfer();
+        // ExecuteMoneyTransfer();
+        
+        // Command Pattern - Exercise
+        var account = new Account() { Balance = 100 };
+        account.Process(new Command()
+        {
+            TheAction = Command.Action.Deposit,
+            Amount = 100
+        });
+
+        Console.WriteLine(account);
 
         Console.WriteLine("End");
     }
