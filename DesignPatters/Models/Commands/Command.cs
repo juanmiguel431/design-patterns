@@ -23,19 +23,19 @@ public class Account
         {
             case Command.Action.Deposit:
                 Balance += c.Amount;
-                c.Success = true;
                 break;
             case Command.Action.Withdraw:
             {
                 if (c.Amount > Balance) return;
             
                 Balance -= c.Amount;
-                c.Success = true;
                 break;
             }
             default:
                 throw new ArgumentOutOfRangeException(paramName: nameof(c));
         }
+
+        c.Success = true;
     }
 
     public override string ToString()
