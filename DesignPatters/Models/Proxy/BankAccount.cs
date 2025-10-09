@@ -2,30 +2,36 @@
 
 public class BankAccount : IBankAccount
 {
-    private int _balance;
-    private const int OverdraftLimit = -500;
+    private readonly string _name;
+    private decimal _balance;
+    private const decimal OverdraftLimit = -500;
 
-    public void Deposit(int amount)
+    public BankAccount(string name = "Unnamed")
     {
-        _balance += amount;
-        Console.WriteLine($"Deposited ${amount}, balance is now {_balance}");
+        _name = name;
     }
 
-    public bool Withdraw(int amount)
+    public void Deposit(decimal amount)
+    {
+        _balance += amount;
+        Console.WriteLine($"{_name} - Deposited ${amount}, balance is now ${_balance}");
+    }
+
+    public bool Withdraw(decimal amount)
     {
         if (_balance - amount < OverdraftLimit)
         {
-            Console.WriteLine("Insufficient funds");
+            Console.WriteLine($"{_name} - Insufficient funds");
             return false;
         }
 
         _balance -= amount;
-        Console.WriteLine($"Withdrew ${amount}, balance is now {_balance}");
+        Console.WriteLine($"{_name} - Withdrew ${amount}, balance is now ${_balance}");
         return true;
     }
 
     public override string ToString()
     {
-        return $"Balance: ${_balance}";
+        return $"{_name} - Balance: ${_balance}";
     }
 }

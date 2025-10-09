@@ -12,9 +12,9 @@ public class BankAccountCommand : IUserCommand
     }
     
     private readonly Action _action;
-    private readonly int _amount;
+    private readonly decimal _amount;
     
-    public BankAccountCommand(IBankAccount bankAccount, Action action, int amount)
+    public BankAccountCommand(IBankAccount bankAccount, Action action, decimal amount)
     {
         _bankAccount = bankAccount ?? throw new ArgumentNullException(nameof(bankAccount));
         _action = action;
@@ -51,5 +51,7 @@ public class BankAccountCommand : IUserCommand
             default:
                 throw new ArgumentOutOfRangeException();
         }
+
+        Success = false;
     }
 }

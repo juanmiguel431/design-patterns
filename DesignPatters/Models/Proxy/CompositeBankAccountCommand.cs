@@ -10,10 +10,6 @@ public class CompositeBankAccountCommand: List<BankAccountCommand>, IUserCommand
     {
     }
 
-    public CompositeBankAccountCommand(int capacity) : base(capacity)
-    {
-    }
-
     public virtual void Execute()
     {
         ForEach(cmd => cmd.Execute());

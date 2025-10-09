@@ -202,8 +202,33 @@ class Program
 
         // Command Pattern
         // CommandPattern();
+        // CompositeBankAccountCommands();
+        ExecuteMoneyTransfer();
+
+        Console.WriteLine("End");
+    }
+
+    private static void ExecuteMoneyTransfer()
+    {
+        var from = new BankAccount("Juan");
+        from.Deposit(100);
+        var to = new BankAccount("Miguel");
         
-        var ba = new BankAccount();
+        var mtc = new MoneyTransferCommand(from, to, 75);
+        mtc.Execute();
+
+        Console.WriteLine(from);
+        Console.WriteLine(to);
+        
+        mtc.Undo();
+        
+        Console.WriteLine(from);
+        Console.WriteLine(to);
+    }
+
+    private static void CompositeBankAccountCommands()
+    {
+        var ba = new BankAccount("Juan");
         var deposit = new BankAccountCommand(ba, BankAccountCommand.Action.Deposit, 100);
         var withdraw = new BankAccountCommand(ba, BankAccountCommand.Action.Withdraw, 5000);
 
@@ -214,13 +239,11 @@ class Program
         
         composite.Undo();
         Console.WriteLine(ba);
-
-        Console.WriteLine("End");
     }
 
     private static void CommandPattern()
     {
-        var ba = new BankAccount();
+        var ba = new BankAccount("Juan");
         var commands = new List<BankAccountCommand>
         {
             new(ba, BankAccountCommand.Action.Deposit, 100),
