@@ -200,9 +200,20 @@ class Program
         // Chain of Responsibility - Exercise
         // ChainOfResponsibilityExercise();
 
-        
         // Command Pattern
-        CommandPattern();
+        // CommandPattern();
+        
+        var ba = new BankAccount();
+        var deposit = new BankAccountCommand(ba, BankAccountCommand.Action.Deposit, 100);
+        var withdraw = new BankAccountCommand(ba, BankAccountCommand.Action.Withdraw, 5000);
+
+        var composite = new CompositeBankAccountCommand([deposit, withdraw]);
+        composite.Execute();
+
+        Console.WriteLine(ba);
+        
+        composite.Undo();
+        Console.WriteLine(ba);
 
         Console.WriteLine("End");
     }

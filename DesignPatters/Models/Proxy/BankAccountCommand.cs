@@ -3,6 +3,7 @@ namespace DesignPatters.Models.Proxy;
 public class BankAccountCommand : IUserCommand
 {
     private readonly IBankAccount _bankAccount;
+    public bool Success { get; set; }
 
     public enum Action
     {
@@ -12,7 +13,6 @@ public class BankAccountCommand : IUserCommand
     
     private readonly Action _action;
     private readonly int _amount;
-    private bool _isSucceeded;
     
     public BankAccountCommand(IBankAccount bankAccount, Action action, int amount)
     {
@@ -27,10 +27,10 @@ public class BankAccountCommand : IUserCommand
         {
             case Action.Deposit:
                 _bankAccount.Deposit(_amount);
-                _isSucceeded = true;
+                Success = true;
                 break;
             case Action.Withdraw:
-                _isSucceeded = _bankAccount.Withdraw(_amount);
+                Success = _bankAccount.Withdraw(_amount);
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
@@ -39,7 +39,7 @@ public class BankAccountCommand : IUserCommand
 
     public void Undo()
     {
-        if (!_isSucceeded) return;
+        if (!Success) return;
         switch (_action)
         {
             case Action.Withdraw:
