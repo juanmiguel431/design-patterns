@@ -33,6 +33,8 @@ public class Account
                 c.Success = true;
                 break;
             }
+            default:
+                throw new ArgumentOutOfRangeException(paramName: nameof(c));
         }
     }
 
