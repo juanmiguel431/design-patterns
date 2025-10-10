@@ -15,6 +15,7 @@ using DesignPatters.Models.Drinks;
 using DesignPatters.Models.Facade;
 using DesignPatters.Models.Flyweight;
 using DesignPatters.Models.Html;
+using DesignPatters.Models.Interpreter;
 using DesignPatters.Models.Journals;
 using DesignPatters.Models.MethodChain;
 using DesignPatters.Models.NeuralNetworks;
@@ -206,6 +207,21 @@ class Program
         // ExecuteMoneyTransfer();
         
         // Command Pattern - Exercise
+        // CommandPatterExercise();
+
+        // Interpreter Pattern
+        var input = "(13+4)-(12+1)";
+        var tokens = Token.Lex(input);
+
+        Console.WriteLine(string.Join("\t", tokens));
+
+        Console.WriteLine("End");
+    }
+
+
+
+    private static void CommandPatterExercise()
+    {
         var account = new Account() { Balance = 100 };
         account.Process(new Command()
         {
@@ -214,8 +230,6 @@ class Program
         });
 
         Console.WriteLine(account);
-
-        Console.WriteLine("End");
     }
 
     private static void ExecuteMoneyTransfer()
