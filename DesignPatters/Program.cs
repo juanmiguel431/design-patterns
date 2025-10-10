@@ -211,7 +211,7 @@ class Program
 
         // Interpreter Pattern
         var input = "(13+4)-(12+1)";
-        var tokens = Token.Lex(input);
+        var tokens = Lexer.Lex(input);
 
         Console.WriteLine(string.Join("\t", tokens));
 
