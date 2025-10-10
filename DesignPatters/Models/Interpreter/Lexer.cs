@@ -7,7 +7,7 @@ public class Lexer
     public static List<Token> Lex(string input)
     {
         var result = new List<Token>();
-        for (int i = 0; i < input.Length; i++)
+        for (var i = 0; i < input.Length; i++)
         {
             switch (input[i])
             {
@@ -25,7 +25,7 @@ public class Lexer
                     break;
                 default:
                     var sb = new StringBuilder(input[i].ToString());
-                    for (var j = 0; j < input.Length; j++)
+                    for (var j = i + 1; j < input.Length; j++)
                     {
                         if (char.IsDigit(input[j]))
                         {
@@ -44,4 +44,6 @@ public class Lexer
         
         return result;
     }
+
+
 }

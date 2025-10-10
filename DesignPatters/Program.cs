@@ -210,14 +210,22 @@ class Program
         // CommandPatterExercise();
 
         // Interpreter Pattern
-        var input = "(13+4)-(12+1)";
-        var tokens = Lexer.Lex(input);
-
-        Console.WriteLine(string.Join("\t", tokens));
+        InterpreterPattern();
 
         Console.WriteLine("End");
     }
 
+    private static void InterpreterPattern()
+    {
+        var input = "(13+4)-(12+1)";
+        var tokens = Lexer.Lex(input);
+
+        Console.WriteLine(string.Join("\t", tokens));
+        
+        var parsed = Parser.Parse(tokens);
+
+        Console.WriteLine($"{input} = {parsed.Value}");
+    }
 
 
     private static void CommandPatterExercise()

@@ -20,6 +20,4 @@ public class Token
     {
         return $"`{Text}`";
     }
-    
-
 }
