@@ -220,10 +220,22 @@ class Program
         
         // Iterator Pattern
         // IteratorObjectBinaryTree();
-        IteratorMethod();
+        // IteratorMethod();
+        IteratorAndGetEnumerator();
 
 
         Console.WriteLine("End");
+    }
+
+    private static void IteratorAndGetEnumerator()
+    {
+        var root = new Node<int>(1, new Node<int>(2), new Node<int>(3));
+        var tree = new BinaryTree<int>(root);
+
+        foreach (var node in tree)
+        {
+            Console.WriteLine(node.Value);
+        }
     }
 
     private static void IteratorMethod()

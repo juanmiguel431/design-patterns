@@ -2,10 +2,15 @@ namespace DesignPatters.Models.Iterator;
 
 public class BinaryTree<T>
 {
-    public Node<T> Root { get; set; }
+    private readonly Node<T> _root;
     public BinaryTree(Node<T> root)
     {
-        Root = root;
+        _root = root;
+    }
+
+    public InOrderIterator<T> GetEnumerator()
+    {
+        return new InOrderIterator<T>(_root);
     }
 
     public IEnumerable<Node<T>> InOrder
@@ -29,7 +34,7 @@ public class BinaryTree<T>
                 }
             }
 
-            foreach (var node in Traverse(Root))
+            foreach (var node in Traverse(_root))
             {
                 yield return node;
             }
