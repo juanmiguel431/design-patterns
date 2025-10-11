@@ -213,7 +213,8 @@ class Program
         // InterpreterPattern();
         
         // Interpreter Pattern - Exercise
-        InterpreterPatternExercise();
+        // InterpreterPatternExercise();
+        InterpreterPatternExerciseV2();
 
         Console.WriteLine("End");
     }
@@ -221,6 +222,17 @@ class Program
     private static void InterpreterPatternExercise()
     {
         var ep = new ExpressionProcessor();
+        ep.Variables.Add('x', 3);
+        const string expression = "10-2-x";
+        var result = ep.Calculate(expression);
+        
+        Console.WriteLine($"{expression} = {result}");
+    }
+    
+    
+    private static void InterpreterPatternExerciseV2()
+    {
+        var ep = new ExpressionProcessorV2();
         ep.Variables.Add('x', 3);
         const string expression = "10-2-x";
         var result = ep.Calculate(expression);
