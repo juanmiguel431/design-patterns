@@ -1,17 +1,29 @@
+using System.Collections;
+
 namespace DesignPatters.Models.Iterator;
 
-public class BinaryTree<T>
+public class BinaryTree<T> : IEnumerable<T>
 {
     private readonly Node<T> _root;
     public BinaryTree(Node<T> root)
     {
         _root = root;
     }
-
-    public InOrderIterator<T> GetEnumerator()
+    
+    public IEnumerator<T> GetEnumerator()
     {
         return new InOrderIterator<T>(_root);
     }
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
+    }
+
+    // public InOrderIterator<T> GetEnumerator()
+    // {
+    //     return new InOrderIterator<T>(_root);
+    // }
 
     public IEnumerable<Node<T>> InOrder
     {

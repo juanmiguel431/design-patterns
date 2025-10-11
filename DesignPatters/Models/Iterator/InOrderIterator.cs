@@ -1,54 +1,73 @@
+using System.Collections;
+
 namespace DesignPatters.Models.Iterator;
 
-public class InOrderIterator<T>
+public class InOrderIterator<T>: IEnumerator<T>
 {
     private readonly Node<T> _root;
-    public Node<T> Current { get; set; }
-    private bool _yieldedStart;
+    private Node<T> _current;
+    private bool _started;
+    
+    public T Current
+    {
+        get
+        {
+            if (!_started || _current == null)
+                throw new InvalidOperationException("Enumeration has not started or has already finished.");
+            
+            return _current.Value;
+        }
+    }
+
+    object IEnumerator.Current => Current!;
 
     public InOrderIterator(Node<T> root)
     {
         _root = root;
-        Current = root;
-        while (Current.Left is not null)
+        _current = root;
+        while (_current.Left is not null)
         {
-            Current = Current.Left;
+            _current = _current.Left;
         }
     }
     
     public bool MoveNext()
     {
-        if (!_yieldedStart)
+        if (!_started)
         {
-            _yieldedStart = true;
+            _started = true;
             return true;
         }
 
-        if (Current.Right is not null)
+        if (_current.Right is not null)
         {
-            Current = Current.Right;
-            while (Current.Left is not null)
+            _current = _current.Right;
+            while (_current.Left is not null)
             {
-                Current = Current.Left;
+                _current = _current.Left;
             }
             
             return true;
         }
 
-        var parent = Current.Parent;
-        while (parent is not null && Current == parent.Right)
+        var parent = _current.Parent;
+        while (parent is not null && _current == parent.Right)
         {
-            Current = parent;
+            _current = parent;
             parent = parent.Parent;
         }
             
-        Current = parent;
-        return Current is not null;
+        _current = parent;
+        return _current is not null;
     }
     
     public void Reset()
     {
-        Current = _root;
-        _yieldedStart = false;
+        _current = _root;
+        _started = false;
+    }
+
+    public void Dispose()
+    {
     }
 }

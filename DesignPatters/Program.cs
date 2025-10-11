@@ -223,7 +223,6 @@ class Program
         // IteratorMethod();
         IteratorAndGetEnumerator();
 
-
         Console.WriteLine("End");
     }
 
@@ -234,7 +233,7 @@ class Program
 
         foreach (var node in tree)
         {
-            Console.WriteLine(node.Value);
+            Console.WriteLine(node);
         }
     }
 
@@ -265,7 +264,7 @@ class Program
         var it = new InOrderIterator<int>(root);
         while (it.MoveNext())
         {
-            Console.Write(it.Current.Value);
+            Console.Write(it.Current);
             Console.Write(',');
         }
     }
