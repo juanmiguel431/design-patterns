@@ -227,9 +227,37 @@ class Program
         // ArrayBackedProperties();
         
         // Iterator Pattern - Exercise
-        BuildAndDisplayBinaryTreePreOrder();
+        // BuildAndDisplayBinaryTreePreOrder();
+        IteratorExercise();
+
 
         Console.WriteLine("End");
+    }
+
+    private static void IteratorExercise()
+    {
+        var eight = new Node<int>(8);
+        var nine = new Node<int>(9);
+        var four = new Node<int>(4, eight, nine);
+        var ten = new Node<int>(10);
+        var eleven = new Node<int>(11);
+        var five = new Node<int>(5, ten, eleven);
+        var two = new Node<int>(2, four, five);
+        
+        var twelve = new Node<int>(12);
+        var thirteen = new Node<int>(13);
+        var six = new Node<int>(6, twelve, thirteen);
+        var fourteen = new Node<int>(14);
+        var fifteen = new Node<int>(15);
+        var seven = new Node<int>(7, fourteen, fifteen);
+        var three = new Node<int>(3, six, seven);
+        
+        var root = new Node<int>(1, two, three);
+
+        foreach (var i in root.PreOrder)
+        {
+            Console.WriteLine(i);
+        }
     }
 
     private static void BuildAndDisplayBinaryTreePreOrder()
