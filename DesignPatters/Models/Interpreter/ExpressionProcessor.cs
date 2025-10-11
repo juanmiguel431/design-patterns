@@ -143,11 +143,11 @@ public class Expression
                         }
                         else
                         {
-                            result.Add(new ExpressionToken(ExpressionToken.Type.Number, sb.ToString()));
                             break;
                         }
                     }
                     
+                    result.Add(new ExpressionToken(ExpressionToken.Type.Number, sb.ToString()));
                     break;
             }
         }
