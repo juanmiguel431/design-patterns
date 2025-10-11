@@ -90,7 +90,7 @@ public class ExpressionProcessor
             return new Integer(0);
         }
         
-        if (lhs is not null)
+        if (result is null && lhs is not null)
         {
             return lhs;
         }
