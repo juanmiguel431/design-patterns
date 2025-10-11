@@ -210,9 +210,22 @@ class Program
         // CommandPatterExercise();
 
         // Interpreter Pattern
-        InterpreterPattern();
+        // InterpreterPattern();
+        
+        // Interpreter Pattern - Exercise
+        InterpreterPatternExercise();
 
         Console.WriteLine("End");
+    }
+
+    private static void InterpreterPatternExercise()
+    {
+        var ep = new ExpressionProcessor();
+        ep.Variables.Add('x', 3);
+        const string expression = "10-2-x";
+        var result = ep.Calculate(expression);
+        
+        Console.WriteLine($"{expression} = {result}");
     }
 
     private static void InterpreterPattern()

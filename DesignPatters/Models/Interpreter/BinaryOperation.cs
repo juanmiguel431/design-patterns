@@ -7,6 +7,17 @@ public class BinaryOperation : IElement
         Addition, Subtraction
     }
 
+    public BinaryOperation(IElement left, IElement right, Type myType)
+    {
+        Left = left;
+        Right = right;
+        MyType = myType;
+    }
+
+    public BinaryOperation()
+    {
+    }
+
     public int Value
     {
         get
