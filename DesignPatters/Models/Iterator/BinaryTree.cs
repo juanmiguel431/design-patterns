@@ -25,6 +25,34 @@ public class BinaryTree<T> : IEnumerable<T>
     //     return new InOrderIterator<T>(_root);
     // }
 
+    public IEnumerable<Node<T>> InPreOrder
+    {
+        get
+        {
+            IEnumerable<Node<T>> Traverse(Node<T> current)
+            {
+                yield return current;
+
+                if (current.Left is not null)
+                {
+                    foreach (var left in Traverse(current.Left)) 
+                        yield return left;
+                }
+                
+                if (current.Right is not null)
+                {
+                    foreach (var right in Traverse(current.Right)) 
+                        yield return right;
+                }
+            }
+
+            foreach (var node in Traverse(_root))
+            {
+                yield return node;
+            }
+        }
+    }
+
     public IEnumerable<Node<T>> InOrder
     {
         get
