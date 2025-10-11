@@ -16,6 +16,7 @@ using DesignPatters.Models.Facade;
 using DesignPatters.Models.Flyweight;
 using DesignPatters.Models.Html;
 using DesignPatters.Models.Interpreter;
+using DesignPatters.Models.Iterator;
 using DesignPatters.Models.Journals;
 using DesignPatters.Models.MethodChain;
 using DesignPatters.Models.NeuralNetworks;
@@ -214,9 +215,36 @@ class Program
         
         // Interpreter Pattern - Exercise
         // InterpreterPatternExercise();
-        InterpreterPatternExerciseV2();
+        // InterpreterPatternExerciseV2();
+
+        
+        // Iterator Pattern
+        IteratorObjectBinaryTree();
+
 
         Console.WriteLine("End");
+    }
+
+    private static void IteratorObjectBinaryTree()
+    {
+        //     1
+        //    /  \
+        //   2    3
+        
+        // In-order: 2,1,3
+        // Pre-order: 1,2,3
+        // Post-order: 2,3,1
+
+        var root = new Node<int>(1, 
+            new Node<int>(2),
+            new Node<int>(3));
+        
+        var it = new InOrderIterator<int>(root);
+        while (it.MoveNext())
+        {
+            Console.Write(it.Current.Value);
+            Console.Write(',');
+        }
     }
 
     private static void InterpreterPatternExercise()
