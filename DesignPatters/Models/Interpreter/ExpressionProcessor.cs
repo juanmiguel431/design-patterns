@@ -85,7 +85,15 @@ public class ExpressionProcessor
             }
         }
 
-        if (result is null) return new Integer(0);
+        if (result is null && lhs is null)
+        {
+            return new Integer(0);
+        }
+        
+        if (lhs is not null)
+        {
+            return lhs;
+        }
         
         return result;
     }
