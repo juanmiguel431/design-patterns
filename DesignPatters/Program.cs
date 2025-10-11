@@ -221,9 +221,24 @@ class Program
         // Iterator Pattern
         // IteratorObjectBinaryTree();
         // IteratorMethod();
-        IteratorAndGetEnumerator();
+        // IteratorAndGetEnumerator();
+        
+        // Array backed-properties
+        ArrayBackedProperties();
 
         Console.WriteLine("End");
+    }
+
+    private static void ArrayBackedProperties()
+    {
+        var creature = new GameCreature()
+        {
+            Strength = 5,
+            Agility = 6,
+            Intelligence = 10,
+        };
+
+        Console.WriteLine(string.Join(",", creature));
     }
 
     private static void IteratorAndGetEnumerator()
