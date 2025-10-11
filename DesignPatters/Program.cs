@@ -219,10 +219,21 @@ class Program
 
         
         // Iterator Pattern
-        IteratorObjectBinaryTree();
+        // IteratorObjectBinaryTree();
+        IteratorMethod();
 
 
         Console.WriteLine("End");
+    }
+
+    private static void IteratorMethod()
+    {
+        //     1
+        //    /  \
+        //   2    3
+        var root = new Node<int>(1, new Node<int>(2), new Node<int>(3));
+        var tree = new BinaryTree<int>(root);
+        Console.WriteLine(string.Join(",", tree.InOrder.Select(x => x.Value)));
     }
 
     private static void IteratorObjectBinaryTree()
