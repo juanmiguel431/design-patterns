@@ -6,7 +6,6 @@ using DesignPatters.Filters;
 using DesignPatters.Models;
 using DesignPatters.Models.Animals;
 using DesignPatters.Models.Cars;
-using DesignPatters.Models.Chat;
 using DesignPatters.Models.Commands;
 using DesignPatters.Models.Composite;
 using DesignPatters.Models.Drinks;
@@ -16,6 +15,8 @@ using DesignPatters.Models.Html;
 using DesignPatters.Models.Interpreter;
 using DesignPatters.Models.Iterator;
 using DesignPatters.Models.Journals;
+using DesignPatters.Models.Mediator;
+using DesignPatters.Models.Mediator.Chat;
 using DesignPatters.Models.MethodChain;
 using DesignPatters.Models.NeuralNetworks;
 using DesignPatters.Models.Persons;
@@ -229,6 +230,38 @@ class Program
         // IteratorExercise();
 
         // Mediator Pattern
+        // MediatorPattern();
+        MediatorEventBroker();
+
+
+        Console.WriteLine("End");
+    }
+
+    private static void MediatorEventBroker()
+    {
+        var cb = new ContainerBuilder();
+        cb.RegisterType<EventBroker>().SingleInstance();
+        cb.RegisterType<FootballCouch>();
+        cb.Register((c, p) =>
+        {
+            return new FootballPlayer(c.Resolve<EventBroker>(), p.Named<string>("name"));
+        });
+        
+        using var c = cb.Build();
+        var coach = c.Resolve<FootballCouch>();
+        var player1 = c.Resolve<FootballPlayer>(new NamedParameter("name", "John"));
+        var player2 = c.Resolve<FootballPlayer>(new NamedParameter("name", "Chris"));
+
+        player1.Score();
+        player1.Score();
+        player1.Score(); // Ignored by the coach
+        
+        player1.AssaultReferee();
+        player2.Score();
+    }
+
+    private static void MediatorPattern()
+    {
         var chatRoom = new ChatRoom();
         var john = new ChatPerson("John");
         var jane = new ChatPerson("Jane");
@@ -244,8 +277,6 @@ class Program
         simon.Say("Hi everyone");
         
         jane.PrivateMessage("Simon", "Glad you could join us!");
-        
-        Console.WriteLine("End");
     }
 
     private static void IteratorExercise()

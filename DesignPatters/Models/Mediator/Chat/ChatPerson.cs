@@ -1,4 +1,4 @@
-﻿namespace DesignPatters.Models.Chat;
+﻿namespace DesignPatters.Models.Mediator.Chat;
 
 public class ChatPerson
 {
