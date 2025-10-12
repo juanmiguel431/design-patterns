@@ -9,7 +9,7 @@ public class ChatRoom
         var joinMsg = $"{chatPerson.Name} joins the chat";
         Broadcast("room", joinMsg);
         
-        chatPerson.Room = this;
+        chatPerson.SetRoom(this);
         _people.Add(chatPerson);
     }
 
