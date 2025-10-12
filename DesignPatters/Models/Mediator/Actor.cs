@@ -2,10 +2,10 @@
 
 public class Actor
 {
-    protected EventBroker _broker;
+    protected readonly EventBroker Broker;
 
     public Actor(EventBroker broker)
     {
-        _broker = broker ?? throw new ArgumentNullException(nameof(broker));
+        Broker = broker ?? throw new ArgumentNullException(nameof(broker));
     }
 }
