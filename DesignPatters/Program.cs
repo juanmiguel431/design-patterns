@@ -17,6 +17,7 @@ using DesignPatters.Models.Iterator;
 using DesignPatters.Models.Journals;
 using DesignPatters.Models.Mediator;
 using DesignPatters.Models.Mediator.Chat;
+using DesignPatters.Models.Mediator.MediatR;
 using DesignPatters.Models.MethodChain;
 using DesignPatters.Models.NeuralNetworks;
 using DesignPatters.Models.Persons;
@@ -33,6 +34,10 @@ using DesignPatters.Models.Themes;
 using DesignPatters.Models.Vectors;
 using DesignPatters.Specifications;
 using DesignPatters.Specifications.ProductSpecifications;
+using MediatR;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using MoreLinq;
 
 namespace DesignPatters;
@@ -231,10 +236,36 @@ class Program
 
         // Mediator Pattern
         // MediatorPattern();
-        MediatorEventBroker();
-
+        // MediatorEventBroker();
+        // MediatR
+        await MediatRSample(args);
 
         Console.WriteLine("End");
+    }
+
+    private static async Task MediatRSample(string[] args)
+    {
+        var builder = Host.CreateApplicationBuilder(args);
+        
+        builder.Services.AddMediatR(cfg => 
+        {
+            cfg.RegisterServicesFromAssembly(typeof(Program).Assembly);
+            cfg.LicenseKey = GetMediatorKey();
+        });
+        
+        builder.Logging.AddFilter("LuckyPennySoftware.MediatR.License", LogLevel.None);
+
+        var app = builder.Build();
+        
+        var mediator = app.Services.GetRequiredService<IMediator>();
+
+        var response = await mediator.Send(new PingCommand());
+        Console.WriteLine($"We got a response at {response.Timestamp}");
+    }
+
+    private static string GetMediatorKey()
+    {
+        return string.Empty;
     }
 
     private static void MediatorEventBroker()
