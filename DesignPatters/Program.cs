@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Specialized;
-using System.Diagnostics;
-using System.Reflection;
+﻿using System.Diagnostics;
 using System.Text;
 using Autofac;
 using Autofac.Features.Metadata;
@@ -9,6 +6,7 @@ using DesignPatters.Filters;
 using DesignPatters.Models;
 using DesignPatters.Models.Animals;
 using DesignPatters.Models.Cars;
+using DesignPatters.Models.Chat;
 using DesignPatters.Models.Commands;
 using DesignPatters.Models.Composite;
 using DesignPatters.Models.Drinks;
@@ -228,9 +226,25 @@ class Program
         
         // Iterator Pattern - Exercise
         // BuildAndDisplayBinaryTreePreOrder();
-        IteratorExercise();
+        // IteratorExercise();
 
-
+        // Mediator Pattern
+        var chatRoom = new ChatRoom();
+        var john = new ChatPerson("John");
+        var jane = new ChatPerson("Jane");
+        
+        chatRoom.Join(john);
+        chatRoom.Join(jane);
+        
+        john.Say("Hi");
+        jane.Say("oh, hey John");
+        
+        var simon = new ChatPerson("Simon");
+        chatRoom.Join(simon);
+        simon.Say("Hi everyone");
+        
+        jane.PrivateMessage("Simon", "Glad you could join us!");
+        
         Console.WriteLine("End");
     }
 
