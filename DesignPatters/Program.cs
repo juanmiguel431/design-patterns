@@ -241,9 +241,21 @@ class Program
         // MediatorEventBroker();
         // MediatR
         // await MediatRSample(args);
-        await MediatRSampleAutoFac();
+        // await MediatRSampleAutoFac();
+        MediatorExercise();
 
         Console.WriteLine("End");
+    }
+
+    private static void MediatorExercise()
+    {
+        var mediator = new SampleMediator();
+        var participant1 = new Participant(mediator);
+        var participant2 = new Participant(mediator);
+        
+        participant1.Say(2);
+        participant1.Say(2);
+        participant2.Say(4);
     }
 
     private static async Task MediatRSampleAutoFac()
