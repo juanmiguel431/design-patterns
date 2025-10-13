@@ -8,7 +8,14 @@ public class Participant
     public Participant(SampleMediator mediator)
     {
         _mediator = mediator;
-        mediator.Register(this);
+        _mediator.Alert += Alert;
+    }
+    
+    private void Alert(Participant sender, int n)
+    {
+        if (sender == this) return;
+        
+        Value += n;
     }
 
     public void Say(int n)
