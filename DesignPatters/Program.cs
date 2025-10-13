@@ -35,6 +35,8 @@ using DesignPatters.Models.Vectors;
 using DesignPatters.Specifications;
 using DesignPatters.Specifications.ProductSpecifications;
 using MediatR;
+using MediatR.Extensions.Autofac.DependencyInjection;
+using MediatR.Extensions.Autofac.DependencyInjection.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -238,9 +240,31 @@ class Program
         // MediatorPattern();
         // MediatorEventBroker();
         // MediatR
-        await MediatRSample(args);
+        // await MediatRSample(args);
+        await MediatRSampleAutoFac();
 
         Console.WriteLine("End");
+    }
+
+    private static async Task MediatRSampleAutoFac()
+    {
+        var builder = new ContainerBuilder();
+
+        var configuration = MediatRConfigurationBuilder
+            .Create(GetMediatorKey(), typeof(Program).Assembly)
+            .WithAllOpenGenericHandlerTypesRegistered()
+            .Build();
+
+        // this will add all your Request- and Notificationhandler
+        // that are located in the same project as your program-class
+        builder.RegisterMediatR(configuration);
+        
+        var container = builder.Build();
+        
+        var mediator = container.Resolve<IMediator>();
+        
+        var response = await mediator.Send(new PingCommand());
+        Console.WriteLine($"We got a response at {response.Timestamp}");
     }
 
     private static async Task MediatRSample(string[] args)
