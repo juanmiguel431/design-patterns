@@ -17,26 +17,6 @@ public class Participant
     }
 }
 
-public class SampleMediator
-{
-    private readonly List<Participant> _participants = [];
-    
-    public void Register(Participant participant)
-    {
-        _participants.Add(participant);
-    }
-    
-    public void Publish(Participant source, int n)
-    {
-        foreach (var participant in _participants)
-        {
-            if (participant == source) continue;
-            
-            participant.Value += n;
-        }
-    }
-}
-
 
 // Our system has any number of instances of Participant  classes. Each Participant has a Value integer, initially zero.
 //
