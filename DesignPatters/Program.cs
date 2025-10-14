@@ -253,11 +253,29 @@ class Program
         // MementoExercise();
 
         // Null Object Pattern
-        var log = new ConsoleLog();
-        var ba = new SimpleBankAccount(null);
-        ba.Deposit(100);
+        NullObjectPattern();
 
         Console.WriteLine("End");
+    }
+
+    private static void NullObjectPattern()
+    {
+        var log = new ConsoleLog();
+        // var ba = new SimpleBankAccount(null);
+        // ba.Deposit(100);
+
+        var cb = new ContainerBuilder();
+
+        // cb.Register(ctx => new SimpleBankAccount(null));
+        
+        cb.RegisterType<SimpleBankAccount>();
+        cb.RegisterType<NullLog>().As<ILog>();
+        // cb.RegisterType<ConsoleLog>().As<ILog>();
+        // cb.RegisterInstance(log).As<ILog>();
+        
+        using var container = cb.Build();
+        var ba = container.Resolve<SimpleBankAccount>();
+        ba.Deposit(100);
     }
 
     private static void MementoExercise()

@@ -4,9 +4,9 @@ namespace DesignPatters.Models.NullObjectPattern;
 
 public class SimpleBankAccount
 {
-    ILog? _log;
+    ILog _log;
     private int _balance;
-    public SimpleBankAccount([CanBeNull] ILog log)
+    public SimpleBankAccount(ILog log)
     {
         _log = log;
         // _log = log ?? throw new ArgumentNullException(nameof(log));
@@ -15,6 +15,6 @@ public class SimpleBankAccount
     public void Deposit(int amount)
     {
         _balance += amount;
-        _log?.Info($"Deposited ${amount}, balance is now ${_balance}");
+        _log.Info($"Deposited ${amount}, balance is now ${_balance}");
     }
 }
