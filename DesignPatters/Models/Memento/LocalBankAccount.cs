@@ -2,36 +2,67 @@
 
 public class LocalBankAccount
 {
-    public int Balance { get; set; }
+    private readonly List<Memento> _changes = [];
+    private int _current;
+
+    private int _balance;
     
     public LocalBankAccount(int balance)
     {
-        Balance = balance;
+        _balance = balance;
+        _changes.Add(new Memento(_balance));
     }
 
     public Memento Deposit(int amount)
     {
-        Balance += amount;
-        return new Memento(Balance);
+        _balance += amount;
+        var m = new Memento(_balance);
+        _changes.Add(m);
+        _current++;
+        return m;
     }
     
-    public void Restore(Memento memento)
+    public Memento? Restore(Memento? memento)
     {
-        Balance = memento.Balance;
+        if (memento is not null)
+        {
+            _balance = memento.Balance;
+            _changes.Add(memento);
+            _current++;
+            return memento;
+        }
+
+        return null;
+    }
+
+    public Memento? Undo()
+    {
+        if (_current > 0)
+        {
+            _current -= 1;
+            var m = _changes[_current];
+            _balance = m.Balance;
+            return m;
+        }
+        
+        return null;
+    }
+
+    public Memento Redo()
+    {
+        if ((_current + 1) < _changes.Count)
+        {
+            _current += 1;
+            var m = _changes[_current];
+            _balance = m.Balance;
+            return m;
+        }
+        
+        return null;
     }
 
     public override string ToString()
     {
-        return $"{nameof(Balance)}: {Balance}";
-    }
-}
-
-public class Memento
-{
-    public int Balance { get; }
-    
-    public Memento(int balance)
-    {
-        Balance = balance;
+        return $"{nameof(_balance)}: {_balance}";
     }
 }

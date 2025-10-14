@@ -243,12 +243,28 @@ class Program
         // MediatR
         // await MediatRSample(args);
         // await MediatRSampleAutoFac();
-        MediatorExercise();
+        // MediatorExercise();
         
         // Memento Pattern
-        MementoPatterPart1();
+        // MementoPatterPart1();
+        MementoImproved();
 
         Console.WriteLine("End");
+    }
+
+    private static void MementoImproved()
+    {
+        var ba = new LocalBankAccount(100);
+        ba.Deposit(50);
+        ba.Deposit(25);
+        Console.WriteLine(ba);
+
+        ba.Undo();
+        Console.WriteLine($"Undo 1: {ba}");
+        ba.Undo();
+        Console.WriteLine($"Undo 2: {ba}");
+        ba.Redo();
+        Console.WriteLine($"Redo: {ba}");
     }
 
     private static void MementoPatterPart1()
