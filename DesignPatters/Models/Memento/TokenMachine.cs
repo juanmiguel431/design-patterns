@@ -1,0 +1,36 @@
+﻿namespace DesignPatters.Models.Memento;
+
+public class TokenMachine
+{
+    private List<TokenEx> _tokens = [];
+    public IReadOnlyCollection<TokenEx> Tokens => _tokens.AsReadOnly();
+
+    public override string ToString()
+    {
+        return $"{nameof(Tokens)}: {string.Join(",", _tokens.Select(p => p.Value))}";
+    }
+
+    public MementoEx AddToken(int value)
+    {
+        _tokens.Add(new TokenEx(value));
+        return new MementoEx(_tokens.Select(p => new TokenEx(p)).ToList());
+    }
+
+    public MementoEx AddToken(TokenEx token)
+    {
+        _tokens.Add(token);
+        return new MementoEx(_tokens.Select(p => new TokenEx(p)).ToList());
+    }
+
+    public void Revert(MementoEx m)
+    {
+        _tokens = m.Tokens.Select(p => new TokenEx(p.Value)).ToList();
+    }
+}
+
+// A TokenMachine  is in charge of keeping tokens. Each Token  is a reference type with a single numerical value.
+// The machine supports adding tokens and, when it does, it returns a memento representing the state of that system at that given time.
+//
+// You are asked to fill in the gaps and implement the Memento design pattern for this scenario.
+// Pay close attention to the situation where a token is fed in as a reference and its value is subsequently changed on that reference
+// - you still need to return the correct system snapshot!

@@ -247,9 +247,29 @@ class Program
         
         // Memento Pattern
         // MementoPatterPart1();
-        MementoImproved();
+        // MementoImproved();
+        // Memento Pattern - Exercise
+        MementoExercise();
+
 
         Console.WriteLine("End");
+    }
+
+    private static void MementoExercise()
+    {
+        var tokenMachine = new TokenMachine();
+
+        var token1 = new TokenEx(1);
+        var token2 = new TokenEx(2);
+        var token3 = new TokenEx(3);
+        
+        var m1 = tokenMachine.AddToken(token1);
+        var m2 = tokenMachine.AddToken(token2);
+        var m3 = tokenMachine.AddToken(token3);
+        var m4 = tokenMachine.AddToken(4);
+        var m5 = tokenMachine.AddToken(5);
+
+        tokenMachine.Revert(m2);
     }
 
     private static void MementoImproved()
