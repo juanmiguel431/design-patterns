@@ -21,6 +21,7 @@ using DesignPatters.Models.Mediator.MediatR;
 using DesignPatters.Models.Memento;
 using DesignPatters.Models.MethodChain;
 using DesignPatters.Models.NeuralNetworks;
+using DesignPatters.Models.NullObjectPattern;
 using DesignPatters.Models.Persons;
 using DesignPatters.Models.Persons.Employees;
 using DesignPatters.Models.Persons.Relations;
@@ -249,8 +250,12 @@ class Program
         // MementoPatterPart1();
         // MementoImproved();
         // Memento Pattern - Exercise
-        MementoExercise();
+        // MementoExercise();
 
+        // Null Object Pattern
+        var log = new ConsoleLog();
+        var ba = new SimpleBankAccount(null);
+        ba.Deposit(100);
 
         Console.WriteLine("End");
     }
