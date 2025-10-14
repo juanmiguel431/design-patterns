@@ -18,6 +18,7 @@ using DesignPatters.Models.Journals;
 using DesignPatters.Models.Mediator;
 using DesignPatters.Models.Mediator.Chat;
 using DesignPatters.Models.Mediator.MediatR;
+using DesignPatters.Models.Memento;
 using DesignPatters.Models.MethodChain;
 using DesignPatters.Models.NeuralNetworks;
 using DesignPatters.Models.Persons;
@@ -243,8 +244,25 @@ class Program
         // await MediatRSample(args);
         // await MediatRSampleAutoFac();
         MediatorExercise();
+        
+        // Memento Pattern
+        MementoPatterPart1();
 
         Console.WriteLine("End");
+    }
+
+    private static void MementoPatterPart1()
+    {
+        var ba = new LocalBankAccount(100);
+        var m1 = ba.Deposit(50); // 150
+        var m2 = ba.Deposit(25); // 175
+        Console.WriteLine(ba);
+        
+        ba.Restore(m1);
+        Console.WriteLine(ba);
+        
+        ba.Restore(m2);
+        Console.WriteLine(ba);
     }
 
     private static void MediatorExercise()
