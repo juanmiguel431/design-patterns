@@ -255,12 +255,27 @@ class Program
         // Null Object Pattern
         // NullObjectPattern();
         // DynamicNullObjectPattern();
+        // DynamicNullObjectPatternWithProxy();
         
+        // Null Object Pattern - Exercise
+        NullObjectPatternExercise();
+
+        Console.WriteLine("End");
+    }
+
+    private static void NullObjectPatternExercise()
+    {
+        var log = new NullLogEx();
+        var a = new AccountEx(log);
+        a.SomeOperation();
+        a.SomeOperation();
+    }
+
+    private static void DynamicNullObjectPatternWithProxy()
+    {
         var log = NullProxy<ILog>.Create();
         var ba = new SimpleBankAccount(log);
         ba.Deposit(100);
-
-        Console.WriteLine("End");
     }
 
     private static void DynamicNullObjectPattern()
