@@ -270,7 +270,7 @@ class Program
         
         cb.RegisterType<SimpleBankAccount>();
         
-        cb.Register(ctx => NullLog.Instance).As<ILog>();
+        cb.Register(ctx => ILog.Null).As<ILog>();
         // cb.RegisterType<NullLog>().As<ILog>();
         // cb.RegisterType<ConsoleLog>().As<ILog>();
         // cb.RegisterInstance(log).As<ILog>();
