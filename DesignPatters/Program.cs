@@ -269,7 +269,9 @@ class Program
         // cb.Register(ctx => new SimpleBankAccount(null));
         
         cb.RegisterType<SimpleBankAccount>();
-        cb.RegisterType<NullLog>().As<ILog>();
+        
+        cb.Register(ctx => NullLog.Instance).As<ILog>();
+        // cb.RegisterType<NullLog>().As<ILog>();
         // cb.RegisterType<ConsoleLog>().As<ILog>();
         // cb.RegisterInstance(log).As<ILog>();
         
