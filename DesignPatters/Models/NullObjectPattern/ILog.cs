@@ -2,7 +2,7 @@
 
 public interface ILog
 {
-    void Info(string msg);
+    int Info(string msg);
     void Warn(string msg);
     
     public static ILog Null => NullLog.Instance;
@@ -17,8 +17,9 @@ public interface ILog
         
         }
     
-        public void Info(string msg)
+        public int Info(string msg)
         {
+            return 0;
         }
 
         public void Warn(string msg)

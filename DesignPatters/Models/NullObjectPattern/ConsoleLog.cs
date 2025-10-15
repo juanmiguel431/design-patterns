@@ -2,9 +2,10 @@
 
 public class ConsoleLog : ILog
 {
-    public void Info(string msg)
+    public int Info(string msg)
     {
         Console.WriteLine(msg);
+        return 1;
     }
 
     public void Warn(string msg)

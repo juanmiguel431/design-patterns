@@ -254,7 +254,11 @@ class Program
 
         // Null Object Pattern
         // NullObjectPattern();
-        DynamicNullObjectPattern();
+        // DynamicNullObjectPattern();
+        
+        var log = NullProxy<ILog>.Create();
+        var ba = new SimpleBankAccount(log);
+        ba.Deposit(100);
 
         Console.WriteLine("End");
     }

@@ -15,6 +15,8 @@ public class SimpleBankAccount
     public void Deposit(int amount)
     {
         _balance += amount;
-        _log.Info($"Deposited ${amount}, balance is now ${_balance}");
+        var result = _log.Info($"Deposited ${amount}, balance is now ${_balance}");
+
+        Console.WriteLine("Deposited");
     }
 }
