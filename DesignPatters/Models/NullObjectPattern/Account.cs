@@ -35,8 +35,8 @@ public class AccountEx
 public class NullLogEx : ILogEx
 {
     public int RecordLimit { get; } = int.MaxValue;
-    
-    public int RecordCount { get; set; }
+
+    public int RecordCount { get; set; } = int.MinValue;
     public void LogInfo(string message)
     {
         RecordCount++;
