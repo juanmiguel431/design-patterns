@@ -253,9 +253,17 @@ class Program
         // MementoExercise();
 
         // Null Object Pattern
-        NullObjectPattern();
+        // NullObjectPattern();
+        DynamicNullObjectPattern();
 
         Console.WriteLine("End");
+    }
+
+    private static void DynamicNullObjectPattern()
+    {
+        var log = Null<ILog>.Instance;
+        var ba = new SimpleBankAccount(log);
+        ba.Deposit(100);
     }
 
     private static void NullObjectPattern()
