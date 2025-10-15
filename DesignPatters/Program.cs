@@ -22,6 +22,7 @@ using DesignPatters.Models.Memento;
 using DesignPatters.Models.MethodChain;
 using DesignPatters.Models.NeuralNetworks;
 using DesignPatters.Models.NullObjectPattern;
+using DesignPatters.Models.ObserverPattern;
 using DesignPatters.Models.Persons;
 using DesignPatters.Models.Persons.Employees;
 using DesignPatters.Models.Persons.Relations;
@@ -259,8 +260,26 @@ class Program
         
         // Null Object Pattern - Exercise
         NullObjectPatternExercise();
+        
+        // Observer Pattern
+        ObserverPatternEvents();
 
         Console.WriteLine("End");
+    }
+
+    private static void ObserverPatternEvents()
+    {
+        var person = new OPerson();
+        person.FallsIll += CallDoctor;
+        
+        person.CatchCold();
+        
+        person.FallsIll -= CallDoctor;
+    }
+
+    private static void CallDoctor(object? sender, FallsIllEventArgs args)
+    {
+        Console.WriteLine($"A doctor has been called to {args.Address}");
     }
 
     private static void NullObjectPatternExercise()
