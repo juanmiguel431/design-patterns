@@ -269,8 +269,23 @@ class Program
         // FireGC();
 
         // IObserver / IObservable Pattern
-        ObserverPattern();
+        // ObserverPattern();
 
+        // NotifyPropertyChanged Pattern
+        var market = new Market();
+        
+        market.PropertyChanged += (sender, args) =>
+        {
+            Console.WriteLine($"Market property changed: {args.PropertyName}");
+
+            if (args.PropertyName == nameof(market.Volatility))
+            {
+                Console.WriteLine("Volatility changed, updating prices");
+            }
+        };
+        
+        market.Volatility = 100;
+        
 
         Console.WriteLine("End");
         // Console.ReadLine();
