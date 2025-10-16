@@ -286,6 +286,12 @@ class Program
         
         market.Volatility = 100;
         
+        market.PriceAdded += (sender, price) =>
+        {
+            Console.WriteLine($"Price added: {price}");
+        };
+        
+        market.AddPrice(50);
 
         Console.WriteLine("End");
         // Console.ReadLine();
