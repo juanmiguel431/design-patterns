@@ -276,32 +276,40 @@ class Program
         // NotifyPropertyChanged();
 
         // bidirectional binding
+        BidirectionalBinding();
+
+        Console.WriteLine("End");
+        // Console.ReadLine();
+    }
+
+    private static void BidirectionalBinding()
+    {
         var product = new OProduct("Book");
         var window = new OWindow("Book");
         
-        product.PropertyChanged += (sender, args) =>
-        {
-            if (args.PropertyName == nameof(product.Name))
-            {
-                window.ProductName = product.Name;
-            }
-        };
-
-        window.PropertyChanged += (sender, eventArgs) =>
-        {
-            if (eventArgs.PropertyName == nameof(window.ProductName))
-            {
-                product.Name = window.ProductName;
-            }
-        };
+        // product.PropertyChanged += (sender, args) =>
+        // {
+        //     if (args.PropertyName == nameof(product.Name))
+        //     {
+        //         window.ProductName = product.Name;
+        //     }
+        // };
+        //
+        // window.PropertyChanged += (sender, eventArgs) =>
+        // {
+        //     if (eventArgs.PropertyName == nameof(window.ProductName))
+        //     {
+        //         product.Name = window.ProductName;
+        //     }
+        // };
+        
+        using var binding = new BidirectionalBinding(product, window, () => product.Name, () => window.ProductName);
         
         product.Name = "Smart Book";
+        window.ProductName = "Really Smart Book";
 
         Console.WriteLine(product);
         Console.WriteLine(window);
-        
-        Console.WriteLine("End");
-        // Console.ReadLine();
     }
 
     private static void NotifyPropertyChanged()
