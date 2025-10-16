@@ -49,7 +49,7 @@ namespace DesignPatters;
 
 class Program
 {
-    public static async Task Main(string[] args)
+    public static void Main(string[] args)
     {
         // Single Responsibility Principle
         // CreateAndOpenJournalFile();
@@ -259,12 +259,45 @@ class Program
         // DynamicNullObjectPatternWithProxy();
         
         // Null Object Pattern - Exercise
-        NullObjectPatternExercise();
+        // NullObjectPatternExercise();
         
         // Observer Pattern
-        ObserverPatternEvents();
+        // ObserverPatternEvents();
+
+        WeakEventPattern();
+        // FireGC();
 
         Console.WriteLine("End");
+        // Console.ReadLine();
+    }
+
+    private static void WeakEventPattern()
+    {
+        WeakReference windowRef;
+        {
+            var button = new OButton();
+            var window = new Window(button);
+
+            windowRef = new WeakReference(window);
+
+            button.Fire();
+
+            Console.WriteLine("Setting window to null");
+            window = null;
+        }
+        
+        FireGC();
+        
+        Console.WriteLine($"Is the window alive af GC? {windowRef.IsAlive}");
+    }
+
+    private static void FireGC()
+    {
+        Console.WriteLine("Starting GC");
+        GC.Collect();
+        GC.WaitForPendingFinalizers();
+        GC.Collect();
+        Console.WriteLine("GC is done!");
     }
 
     private static void ObserverPatternEvents()
