@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Reactive.Linq;
 using System.Text;
 using Autofac;
 using Autofac.Features.Metadata;
@@ -264,11 +265,29 @@ class Program
         // Observer Pattern
         // ObserverPatternEvents();
 
-        WeakEventPattern();
+        // WeakEventPattern();
         // FireGC();
+
+        // IObserver / IObservable Pattern
+        ObserverPattern();
+
 
         Console.WriteLine("End");
         // Console.ReadLine();
+    }
+
+    private static void ObserverPattern()
+    {
+        var personObserver = new PersonObserver();
+        var person = new EPerson();
+        var subscription = person.Subscribe(personObserver);
+
+        person.OfType<FallsIllEvent>().Subscribe(observer =>
+        {
+            Console.WriteLine($"This person has fallen ill: {observer.Address}");
+        });
+        
+        person.FallIll();
     }
 
     private static void WeakEventPattern()
