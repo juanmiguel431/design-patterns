@@ -273,6 +273,39 @@ class Program
         // ObserverPattern();
 
         // NotifyPropertyChanged Pattern
+        // NotifyPropertyChanged();
+
+        // bidirectional binding
+        var product = new OProduct("Book");
+        var window = new OWindows("Book");
+        
+        product.PropertyChanged += (sender, args) =>
+        {
+            if (args.PropertyName == nameof(product.Name))
+            {
+                window.ProductName = product.Name;
+            }
+        };
+
+        window.PropertyChanged += (sender, eventArgs) =>
+        {
+            if (eventArgs.PropertyName == nameof(window.ProductName))
+            {
+                product.Name = window.ProductName;
+            }
+        };
+        
+        product.Name = "Smart Book";
+
+        Console.WriteLine(product);
+        Console.WriteLine(window);
+        
+        Console.WriteLine("End");
+        // Console.ReadLine();
+    }
+
+    private static void NotifyPropertyChanged()
+    {
         var market = new Market();
         
         market.PropertyChanged += (sender, args) =>
@@ -287,6 +320,7 @@ class Program
         
         market.Volatility = 100;
         
+        // Binding List
         market.Prices.ListChanged += (sender, args) =>
         {
             if (args.ListChangedType == ListChangedType.ItemAdded)
@@ -298,9 +332,6 @@ class Program
         };
         
         market.AddPrice(50);
-
-        Console.WriteLine("End");
-        // Console.ReadLine();
     }
 
     private static void ObserverPattern()
