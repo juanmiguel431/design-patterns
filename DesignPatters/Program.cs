@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System.ComponentModel;
+using System.Diagnostics;
 using System.Reactive.Linq;
 using System.Text;
 using Autofac;
@@ -286,9 +287,14 @@ class Program
         
         market.Volatility = 100;
         
-        market.PriceAdded += (sender, price) =>
+        market.Prices.ListChanged += (sender, args) =>
         {
-            Console.WriteLine($"Price added: {price}");
+            if (args.ListChangedType == ListChangedType.ItemAdded)
+            {
+                var list = (BindingList<float>) sender!;
+                var price = list[args.NewIndex];
+                Console.WriteLine($"Binding List got a price of: {price}");
+            }
         };
         
         market.AddPrice(50);

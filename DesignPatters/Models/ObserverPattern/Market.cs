@@ -5,7 +5,8 @@ namespace DesignPatters.Models.ObserverPattern;
 
 public class Market : INotifyPropertyChanged
 {
-    private readonly List<float> _prices = [];
+    private readonly BindingList<float> _prices = [];
+    public BindingList<float> Prices => _prices;
     
     private float _volatility;
 
@@ -23,10 +24,7 @@ public class Market : INotifyPropertyChanged
     public void AddPrice(float price)
     {
         _prices.Add(price);
-        PriceAdded?.Invoke(this, price);
     }
-    
-    public event EventHandler<float>? PriceAdded;
 
     public event PropertyChangedEventHandler? PropertyChanged;
 
