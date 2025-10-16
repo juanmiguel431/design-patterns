@@ -277,7 +277,7 @@ class Program
 
         // bidirectional binding
         var product = new OProduct("Book");
-        var window = new OWindows("Book");
+        var window = new OWindow("Book");
         
         product.PropertyChanged += (sender, args) =>
         {

@@ -1,31 +1,31 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace DesignPatters.Models.ObserverPattern;
 
-public class OProduct: INotifyPropertyChanged
+public class OWindow : INotifyPropertyChanged
 {
-    private string _name;
+    private string _productName;
 
-    public OProduct(string name)
+    public OWindow(string productName)
     {
-        _name = name;
+        _productName = productName;
     }
 
-    public string Name
-    {
-        get => _name;
-        set
-        {
-            if (value == _name) return; // This prevents infinite loop
-            _name = value;
-            OnPropertyChanged();
-        }
-    }
-    
     public override string ToString()
     {
-        return $"{nameof(Name)}: {Name}";
+        return $"{nameof(ProductName)}: {ProductName}";
+    }
+
+    public string ProductName
+    {
+        get => _productName;
+        set
+        {
+            if (value == _productName) return; // This prevents infinite loop
+            _productName = value;
+            OnPropertyChanged();
+        }
     }
 
     public event PropertyChangedEventHandler? PropertyChanged;
