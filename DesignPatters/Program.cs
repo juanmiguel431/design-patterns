@@ -276,10 +276,23 @@ class Program
         // NotifyPropertyChanged();
 
         // bidirectional binding
-        BidirectionalBinding();
+        // BidirectionalBinding();
+        PropertyDependencies();
 
         Console.WriteLine("End");
         // Console.ReadLine();
+    }
+
+    private static void PropertyDependencies()
+    {
+        var person = new Developer();
+        person.PropertyChanged += (sender, args) =>
+        {
+            Console.WriteLine($"{args.PropertyName} changed.");
+        };
+        
+        person.Age = 16;
+        person.Citizen = true;
     }
 
     private static void BidirectionalBinding()
