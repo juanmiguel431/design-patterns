@@ -8,7 +8,7 @@ public class Rat : IDisposable
     public Rat(RatGame game)
     {
         _game = game;
-        game.EventHandler += UpdateAttack;
+        game.OnRatCountsChange += UpdateAttack;
         game.NotifyObservers();
     }
 
@@ -19,7 +19,7 @@ public class Rat : IDisposable
 
     public void Dispose()
     {
-        _game.EventHandler -= UpdateAttack;
+        _game.OnRatCountsChange -= UpdateAttack;
         _game.NotifyObservers();
     }
 }

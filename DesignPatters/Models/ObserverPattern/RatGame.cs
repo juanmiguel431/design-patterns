@@ -2,12 +2,12 @@ namespace DesignPatters.Models.ObserverPattern;
 
 public class RatGame
 {
-    public event EventHandler<int> EventHandler;
+    public event EventHandler<int>? OnRatCountsChange;
 
     public void NotifyObservers()
     {
-        var total = EventHandler.GetInvocationList().Length;
-        EventHandler?.Invoke(this, total);
+        var total = OnRatCountsChange?.GetInvocationList().Length ?? 0;
+        OnRatCountsChange?.Invoke(this, total);
     }
 }
 
