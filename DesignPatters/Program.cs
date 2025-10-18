@@ -38,6 +38,7 @@ using DesignPatters.Models.Proxy;
 using DesignPatters.Models.Reporting;
 using DesignPatters.Models.Shapes;
 using DesignPatters.Models.Singleton;
+using DesignPatters.Models.StatePattern;
 using DesignPatters.Models.Themes;
 using DesignPatters.Models.Vectors;
 using DesignPatters.Specifications;
@@ -291,15 +292,25 @@ class Program
         // ObserverPatternExercise();
         
         // State Pattern
+        // StatePatternClasicImpl();
+        HandMadeStateMachine();
+
+
+        Console.WriteLine("End");
+        // Console.ReadLine();
+    }
+
+    private static void HandMadeStateMachine()
+    {
+        PhoneStateMachine.Run();
+    }
+
+    private static void StatePatternClasicImpl()
+    {
         var ls = new Switch();
         ls.On();
         ls.Off();
         ls.Off();
-
-        
-        
-        Console.WriteLine("End");
-        // Console.ReadLine();
     }
 
     private static void ObserverPatternExercise()
