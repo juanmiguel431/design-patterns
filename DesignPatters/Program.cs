@@ -293,11 +293,52 @@ class Program
         
         // State Pattern
         // StatePatternClasicImpl();
-        HandMadeStateMachine();
+        // HandMadeStateMachine();
 
+        // Switch Based state Machine
+        SwitchBasedStateMachine();
 
         Console.WriteLine("End");
         // Console.ReadLine();
+    }
+
+    private static void SwitchBasedStateMachine()
+    {
+        var code = "1234";
+        var state = LockState.Locked;
+        var entry = new StringBuilder();
+
+        while (true)
+        {
+            switch (state)
+            {
+                case LockState.Locked:
+                    entry.Append(Console.ReadKey().KeyChar);
+
+                    if (entry.ToString() == code)
+                    {
+                        state = LockState.Unlocked;
+                        break;
+                    }
+
+                    if (!code.StartsWith(entry.ToString()))
+                    {
+                        state = LockState.Failed;
+                    }
+                    
+                    break;
+                case LockState.Failed:
+                    Console.CursorLeft = 0;
+                    Console.WriteLine("FAILED");
+                    entry.Clear();
+                    state = LockState.Locked;
+                    break;
+                case LockState.Unlocked:
+                    Console.CursorLeft = 0;
+                    Console.WriteLine("UNLOCKED");
+                    return;
+            }
+        }
     }
 
     private static void HandMadeStateMachine()
