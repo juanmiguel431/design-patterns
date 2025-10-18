@@ -50,6 +50,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using MoreLinq;
 using Button = DesignPatters.Models.Commands.Button;
+using Switch = DesignPatters.Models.StatePattern.Switch;
 
 namespace DesignPatters;
 
@@ -287,14 +288,27 @@ class Program
         // DeclarativeEventSubscription();
 
         // Observer Pattern - Exercise
+        // ObserverPatternExercise();
+        
+        // State Pattern
+        var ls = new Switch();
+        ls.On();
+        ls.Off();
+        ls.Off();
+
+        
+        
+        Console.WriteLine("End");
+        // Console.ReadLine();
+    }
+
+    private static void ObserverPatternExercise()
+    {
         var game = new RatGame();
         var rat1 = new Rat(game);
         var rat2 = new Rat(game);
         
         rat2.Dispose();
-        
-        Console.WriteLine("End");
-        // Console.ReadLine();
     }
 
     private static void DeclarativeEventSubscription()
