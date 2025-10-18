@@ -1,6 +1,8 @@
-﻿using System.ComponentModel;
+﻿using System.Collections;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Reactive.Linq;
+using System.Reflection;
 using System.Text;
 using Autofac;
 using Autofac.Features.Metadata;
@@ -25,6 +27,7 @@ using DesignPatters.Models.MethodChain;
 using DesignPatters.Models.NeuralNetworks;
 using DesignPatters.Models.NullObjectPattern;
 using DesignPatters.Models.ObserverPattern;
+using DesignPatters.Models.ObserverPattern.Declarative;
 using DesignPatters.Models.Persons;
 using DesignPatters.Models.Persons.Employees;
 using DesignPatters.Models.Persons.Relations;
@@ -46,6 +49,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using MoreLinq;
+using Button = DesignPatters.Models.Commands.Button;
 
 namespace DesignPatters;
 
@@ -277,10 +281,71 @@ class Program
 
         // bidirectional binding
         // BidirectionalBinding();
-        PropertyDependencies();
+        // PropertyDependencies();
+        
+        // Declarative Event Subscriptions with interfaces
+        DeclarativeEventSubscription();
 
         Console.WriteLine("End");
         // Console.ReadLine();
+    }
+
+    private static void DeclarativeEventSubscription()
+    {
+        var cb = new ContainerBuilder();
+        var assembly = Assembly.GetExecutingAssembly();
+
+        cb.RegisterAssemblyTypes(assembly)
+            .AsClosedTypesOf(typeof(ISend<>))
+            .SingleInstance();
+
+        cb.RegisterAssemblyTypes(assembly)
+            .Where(t => t.GetInterfaces().Any(i =>
+                i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IHandle<>)
+            )).OnActivated(act =>
+            {
+                // IHandle<Foo>
+                // ISend<Foo>.Sender += act.Instance.Handle;
+
+                var instanceType = act.Instance.GetType();
+                var interfaces = instanceType.GetInterfaces();
+
+                foreach (var i in interfaces)
+                {
+                    if (i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IHandle<>))
+                    {
+                        // IHandle<Foo>
+                        var genericType = i.GetGenericArguments()[0];
+                        
+                        // ISend<Foo> construct;
+                        var senderType = typeof(ISend<>).MakeGenericType(genericType);
+                        
+                        // every single ISend<Foo> in container
+                        // IEnumerable<IFoo> -> every instance of IFoo
+                        var allSenderTypes = typeof(IEnumerable<>).MakeGenericType(senderType);
+                        
+                        // IEnumerable<ISend<Foo>>
+                        var allServices = act.Context.Resolve(allSenderTypes);
+                        foreach (var service in (IEnumerable) allServices)
+                        {
+                            var eventInfo = service.GetType().GetEvent("Sender");
+                            var handleMethod = instanceType.GetMethod("Handle");
+                            var handler = Delegate.CreateDelegate(eventInfo.EventHandlerType, null, handleMethod);
+                            eventInfo.AddEventHandler(service, handler);
+                        }
+                    }
+                }
+            })
+            .SingleInstance()
+            .AsSelf();
+        
+        using var container = cb.Build();
+
+        var button = container.Resolve<DButton>();
+        var logging = container.Resolve<Logging>();
+
+        button.Fire(1);
+        button.Fire(2);
     }
 
     private static void PropertyDependencies()
