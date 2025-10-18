@@ -284,8 +284,15 @@ class Program
         // PropertyDependencies();
         
         // Declarative Event Subscriptions with interfaces
-        DeclarativeEventSubscription();
+        // DeclarativeEventSubscription();
 
+        // Observer Pattern - Exercise
+        var game = new RatGame();
+        var rat1 = new Rat(game);
+        var rat2 = new Rat(game);
+        
+        rat2.Dispose();
+        
         Console.WriteLine("End");
         // Console.ReadLine();
     }
