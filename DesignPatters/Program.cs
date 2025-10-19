@@ -302,10 +302,26 @@ class Program
         // SwitchExpressionForStateMachine();
 
         // Stateless machine
-        ConfigureHealthStateMachine();
+        // ConfigureHealthStateMachine();
+        
+        // State Pattern - Exercise
+        StatePatternExercise();
 
+        
+        
         Console.WriteLine("End");
         // Console.ReadLine();
+    }
+
+    private static void StatePatternExercise()
+    {
+        var cl = new CombinationLock([1, 2, 3, 4, 5]);
+        cl.EnterDigit(1);
+        cl.EnterDigit(2);
+        cl.EnterDigit(3);
+        cl.EnterDigit(4);
+        cl.EnterDigit(6);
+        
     }
 
     private static void ConfigureHealthStateMachine()
