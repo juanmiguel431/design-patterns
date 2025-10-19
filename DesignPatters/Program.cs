@@ -39,6 +39,7 @@ using DesignPatters.Models.Reporting;
 using DesignPatters.Models.Shapes;
 using DesignPatters.Models.Singleton;
 using DesignPatters.Models.StatePattern;
+using DesignPatters.Models.Strategy;
 using DesignPatters.Models.Themes;
 using DesignPatters.Models.Vectors;
 using DesignPatters.Specifications;
@@ -305,12 +306,27 @@ class Program
         // ConfigureHealthStateMachine();
         
         // State Pattern - Exercise
-        StatePatternExercise();
+        // StatePatternExercise();
 
-        
-        
+        // Strategy Pattern
+        StrategyPattern();
+
         Console.WriteLine("End");
         // Console.ReadLine();
+    }
+
+    private static void StrategyPattern()
+    {
+        var tp = new TextProcessor();
+        tp.SetOutputFormat(OutputFormat.Markdown);
+        tp.AppendList(["foo", "bar", "baz"]);
+        Console.WriteLine(tp);
+
+        tp.Clear();
+        
+        tp.SetOutputFormat(OutputFormat.Html);
+        tp.AppendList(["foo", "bar", "baz"]);
+        Console.WriteLine(tp);
     }
 
     private static void StatePatternExercise()
