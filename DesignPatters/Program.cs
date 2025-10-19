@@ -50,6 +50,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using MoreLinq;
+using Stateless;
 using Action = DesignPatters.Models.StatePattern.Action;
 
 namespace DesignPatters;
@@ -298,10 +299,30 @@ class Program
         // SwitchBasedStateMachine();
         
         // Switch Expression
-        SwitchExpressionForStateMachine();
+        // SwitchExpressionForStateMachine();
+
+        // Stateless machine
+        ConfigureHealthStateMachine();
 
         Console.WriteLine("End");
         // Console.ReadLine();
+    }
+
+    private static void ConfigureHealthStateMachine()
+    {
+        var stateMachine = new StateMachine<Health, HealthActivity>(Health.NonReproductive);
+
+        stateMachine.Configure(Health.NonReproductive)
+            .Permit(HealthActivity.ReachPuberty, Health.Reproductive);
+
+        stateMachine.Configure(Health.Reproductive)
+            .Permit(HealthActivity.Hysterectomy, Health.NonReproductive)
+            .PermitIf(HealthActivity.HaveUnprotectedSex, Health.Pregnant,
+                () => HealthDemo.ParentsNotWatching());
+
+        stateMachine.Configure(Health.Pregnant)
+            .Permit(HealthActivity.GiveBirth, Health.Reproductive)
+            .Permit(HealthActivity.HaveAbortion, Health.Reproductive);
     }
 
     private static void SwitchExpressionForStateMachine()
@@ -310,13 +331,13 @@ class Program
         Console.WriteLine($"The chest is {chest}");
         Console.WriteLine();
 
-        chest = Demo.Manipulate(chest, Action.Open, true);
+        chest = ChestDemo.Manipulate(chest, Action.Open, true);
         Console.WriteLine($"The chest is {chest}");
         
-        chest = Demo.Manipulate(chest, Action.Close, false);
+        chest = ChestDemo.Manipulate(chest, Action.Close, false);
         Console.WriteLine($"The chest is {chest}");
         
-        chest = Demo.Manipulate2(chest, Action.Close, false);
+        chest = ChestDemo.Manipulate2(chest, Action.Close, false);
         Console.WriteLine($"The chest is {chest}");
     }
 

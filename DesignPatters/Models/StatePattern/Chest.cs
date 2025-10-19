@@ -10,7 +10,7 @@ public enum Action
     Open, Close
 }
 
-public class Demo
+public class ChestDemo
 {
     public static Chest Manipulate(Chest chest, Action action, bool haveKey)
     {
