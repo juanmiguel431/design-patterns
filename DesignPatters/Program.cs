@@ -319,10 +319,45 @@ class Program
         // SolveQuadraticEquation();
         
         // Template Method Pattern
-        TemplateMethod();
+        // TemplateMethod();
+        
+        // Template Method - Functional Pattern
+        TemplatePatternFunctionalApproach();
+
 
         Console.WriteLine("End");
         // Console.ReadLine();
+    }
+
+    private static void TemplatePatternFunctionalApproach()
+    {
+        var numberOfPlayers = 2;
+        int currentPlayer = 0;
+        int turn = 1;
+        int maxTurns = 10;
+
+        void Start()
+        {
+            Console.WriteLine($"Starting a game of chess with {numberOfPlayers} players.");
+        }
+
+        bool HaveWinner()
+        {
+            return turn == maxTurns;
+        }
+
+        void TakeTurn()
+        {
+            Console.WriteLine($"Turn {turn++}: taken by the player {currentPlayer}.");
+            currentPlayer = (currentPlayer + 1) % numberOfPlayers;
+        }
+
+        int WinningPlayer()
+        {
+            return currentPlayer;
+        }
+        
+        GameTemplate.Run(Start, TakeTurn, HaveWinner, WinningPlayer);
     }
 
     private static void TemplateMethod()
