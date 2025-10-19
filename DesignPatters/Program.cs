@@ -40,6 +40,7 @@ using DesignPatters.Models.Shapes;
 using DesignPatters.Models.Singleton;
 using DesignPatters.Models.StatePattern;
 using DesignPatters.Models.Strategy;
+using DesignPatters.Models.TemplateMethod;
 using DesignPatters.Models.Themes;
 using DesignPatters.Models.Vectors;
 using DesignPatters.Specifications;
@@ -53,6 +54,7 @@ using Microsoft.Extensions.Logging;
 using MoreLinq;
 using Stateless;
 using Action = DesignPatters.Models.StatePattern.Action;
+using Game = DesignPatters.Models.MethodChain.Game;
 
 namespace DesignPatters;
 
@@ -314,10 +316,19 @@ class Program
         // ComparisonStrategyPattern();
         
         // Strategy Pattern - Exercise
-        SolveQuadraticEquation();
+        // SolveQuadraticEquation();
+        
+        // Template Method Pattern
+        TemplateMethod();
 
         Console.WriteLine("End");
         // Console.ReadLine();
+    }
+
+    private static void TemplateMethod()
+    {
+        var chess = new Chess();
+        chess.Run();
     }
 
     private static void SolveQuadraticEquation()
