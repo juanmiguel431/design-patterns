@@ -309,13 +309,25 @@ class Program
         // StatePatternExercise();
 
         // Strategy Pattern
-        StrategyPattern();
+        // DynamicStrategyPattern();
+        StaticStrategyPattern();
 
         Console.WriteLine("End");
         // Console.ReadLine();
     }
 
-    private static void StrategyPattern()
+    private static void StaticStrategyPattern()
+    {
+        var tp1 = new TextProcessor<MarkdownListStrategy>();
+        tp1.AppendList(["foo", "bar", "baz"]);
+        Console.WriteLine(tp1);
+        
+        var tp2 = new TextProcessor<HtmlListStrategy>();
+        tp2.AppendList(["foo", "bar", "baz"]);
+        Console.WriteLine(tp2);
+    }
+
+    private static void DynamicStrategyPattern()
     {
         var tp = new TextProcessor();
         tp.SetOutputFormat(OutputFormat.Markdown);
