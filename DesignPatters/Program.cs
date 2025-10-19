@@ -50,8 +50,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using MoreLinq;
-using Button = DesignPatters.Models.Commands.Button;
-using Switch = DesignPatters.Models.StatePattern.Switch;
+using Action = DesignPatters.Models.StatePattern.Action;
 
 namespace DesignPatters;
 
@@ -295,8 +294,22 @@ class Program
         // StatePatternClasicImpl();
         // HandMadeStateMachine();
 
-        // Switch Based state Machine
-        SwitchBasedStateMachine();
+        // Switch-Based state Machine
+        // SwitchBasedStateMachine();
+        
+        // Switch Expression
+        var chest = Chest.Locked;
+        Console.WriteLine($"The chest is {chest}");
+        Console.WriteLine();
+
+        chest = Demo.Manipulate(chest, Action.Open, true);
+        Console.WriteLine($"The chest is {chest}");
+        
+        chest = Demo.Manipulate(chest, Action.Close, false);
+        Console.WriteLine($"The chest is {chest}");
+        
+        chest = Demo.Manipulate2(chest, Action.Close, false);
+        Console.WriteLine($"The chest is {chest}");
 
         Console.WriteLine("End");
         // Console.ReadLine();
@@ -348,7 +361,7 @@ class Program
 
     private static void StatePatternClasicImpl()
     {
-        var ls = new Switch();
+        var ls = new DSwitch();
         ls.On();
         ls.Off();
         ls.Off();

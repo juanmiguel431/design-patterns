@@ -1,6 +1,6 @@
 ﻿namespace DesignPatters.Models.StatePattern;
 
-public class Switch
+public class DSwitch
 {
     public State State = new OffState();
 
@@ -17,12 +17,12 @@ public class Switch
 
 public abstract class State
 {
-    public virtual void On(Switch sw)
+    public virtual void On(DSwitch sw)
     {
         Console.WriteLine("Light is already on.");
     }
     
-    public virtual void Off(Switch sw)
+    public virtual void Off(DSwitch sw)
     {
         Console.WriteLine("Light is already off.");
     }
@@ -35,7 +35,7 @@ public class OnState : State
         Console.WriteLine("Light turned on.");
     }
 
-    public override void Off(Switch sw)
+    public override void Off(DSwitch sw)
     {
         Console.WriteLine("Turning light off...");
         sw.State = new OffState();
@@ -49,7 +49,7 @@ public class OffState : State
         Console.WriteLine("Light turned off.");
     }
     
-    public override void On(Switch sw)
+    public override void On(DSwitch sw)
     {
         Console.WriteLine("Turning light on...");
         sw.State = new OnState();
