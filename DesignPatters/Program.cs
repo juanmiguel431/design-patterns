@@ -298,6 +298,14 @@ class Program
         // SwitchBasedStateMachine();
         
         // Switch Expression
+        SwitchExpressionForStateMachine();
+
+        Console.WriteLine("End");
+        // Console.ReadLine();
+    }
+
+    private static void SwitchExpressionForStateMachine()
+    {
         var chest = Chest.Locked;
         Console.WriteLine($"The chest is {chest}");
         Console.WriteLine();
@@ -310,9 +318,6 @@ class Program
         
         chest = Demo.Manipulate2(chest, Action.Close, false);
         Console.WriteLine($"The chest is {chest}");
-
-        Console.WriteLine("End");
-        // Console.ReadLine();
     }
 
     private static void SwitchBasedStateMachine()
