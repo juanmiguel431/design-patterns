@@ -311,10 +311,22 @@ class Program
         // Strategy Pattern
         // DynamicStrategyPattern();
         // StaticStrategyPattern();
-        ComparisonStrategyPattern();
+        // ComparisonStrategyPattern();
+        
+        // Strategy Pattern - Exercise
+        SolveQuadraticEquation();
 
         Console.WriteLine("End");
         // Console.ReadLine();
+    }
+
+    private static void SolveQuadraticEquation()
+    {
+        var ordinaryDiscriminant = new OrdinaryDiscriminantStrategy();
+        var realDiscriminant = new RealDiscriminantStrategy();
+        var qr = new QuadraticEquationSolver(ordinaryDiscriminant);
+        
+        var result = qr.Solve(1, 4, 8);
     }
 
     private static void ComparisonStrategyPattern()
