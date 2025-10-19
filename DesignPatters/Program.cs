@@ -322,11 +322,25 @@ class Program
         // TemplateMethod();
         
         // Template Method - Functional Pattern
-        TemplatePatternFunctionalApproach();
+        // TemplatePatternFunctionalApproach();
 
+        // Template Method - Exercise
+        TemplateMethodExercise();
 
         Console.WriteLine("End");
         // Console.ReadLine();
+    }
+
+    private static void TemplateMethodExercise()
+    {
+        var c1 = new CardCreature(1,1);
+        var c2 = new CardCreature(1,1);
+        var creatures = new [] { c1, c2 };
+        
+        var temporaryGame = new TemporaryCardDamageGame(creatures);
+        var permanentGame = new PermanentCardDamage(creatures);
+        var winner = permanentGame.Combat(0, 1);
+
     }
 
     private static void TemplatePatternFunctionalApproach()
