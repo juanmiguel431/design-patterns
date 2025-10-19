@@ -310,10 +310,23 @@ class Program
 
         // Strategy Pattern
         // DynamicStrategyPattern();
-        StaticStrategyPattern();
+        // StaticStrategyPattern();
+        ComparisonStrategyPattern();
 
         Console.WriteLine("End");
         // Console.ReadLine();
+    }
+
+    private static void ComparisonStrategyPattern()
+    {
+        var people = new List<StudentPerson>();
+        people.Add(new StudentPerson(3, "John Doe", 18));
+        people.Add(new StudentPerson(1, "Juan Miguel", 20));
+        people.Add(new StudentPerson(2, "Luis Paulino", 22));
+        
+        people.Sort(); // Default comparer
+        people.Sort((x, y) => x.Name.CompareTo(y.Age)); // Lambda comparer
+        people.Sort(StudentPerson.NameComparer); // Comparer
     }
 
     private static void StaticStrategyPattern()
