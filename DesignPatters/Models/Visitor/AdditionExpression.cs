@@ -24,4 +24,9 @@ public class AdditionExpression : Expression
         _right.Print(sb);
         sb.Append(')');
     }
+
+    public override void Accept(IExpressionVisitor visitor)
+    {
+        visitor.Visit(this);
+    }
 }

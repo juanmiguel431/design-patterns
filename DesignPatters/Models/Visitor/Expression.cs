@@ -7,6 +7,7 @@ using DictType = Dictionary<Type, Action<Expression, StringBuilder>>;
 public abstract class Expression
 {
     public abstract void Print(StringBuilder sb);
+    public abstract void Accept(IExpressionVisitor visitor);
 }
 
 public static class ExpressionPrinter

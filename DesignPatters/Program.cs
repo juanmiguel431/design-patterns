@@ -329,10 +329,26 @@ class Program
         // TemplateMethodExercise();
         
         // Visitor Pattern
-        IntrusiveVisitor();
+        // IntrusiveVisitor();
+        ClassicVisitor();
 
         Console.WriteLine("End");
         // Console.ReadLine();
+    }
+
+    private static void ClassicVisitor()
+    {
+        var e = new AdditionExpression(
+            new DoubleExpression(1),
+            new AdditionExpression(
+                new DoubleExpression(2),
+                new DoubleExpression(3)
+            ));
+
+        var ep = new ExpressionPrinterVisitor();
+        ep.Visit(e);
+
+        Console.WriteLine(ep);
     }
 
     private static void IntrusiveVisitor()

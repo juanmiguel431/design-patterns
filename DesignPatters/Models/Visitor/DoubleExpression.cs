@@ -16,4 +16,9 @@ public class DoubleExpression : Expression
     {
         sb.Append(_value);
     }
+
+    public override void Accept(IExpressionVisitor visitor)
+    {
+        visitor.Visit(this);
+    }
 }
