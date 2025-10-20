@@ -367,6 +367,12 @@ class Program
         var newExpr = e.Reduce(st);
         var text2 = newExpr.Reduce(pt);
         Console.WriteLine(text2);
+        
+        // Dynamic
+        var dp = new DynamicExpressionPrinter();
+        var sb = new StringBuilder();
+        dp.Print((dynamic)e, sb);
+        Console.WriteLine(sb);
     }
 
     private static void IntrusiveVisitor()
