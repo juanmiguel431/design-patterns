@@ -21,4 +21,9 @@ public class DoubleExpression : Expression
     {
         visitor.Visit(this);
     }
+
+    public override T Reduce<T>(ITransformer<T> transformer)
+    {
+        return transformer.Transform(this);
+    }
 }

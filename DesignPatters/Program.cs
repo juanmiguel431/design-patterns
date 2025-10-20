@@ -353,6 +353,20 @@ class Program
         var ec = new ExpressionCalculator();
         ec.Visit(e);
         Console.WriteLine($"{ep} = {ec.Result}");
+
+        
+        // Transformers
+        var et = new EvaluationTransformer();
+        var result = et.Transform(e);
+        
+        var pt = new PrintTransformer();
+        var text = pt.Transform(e);
+        Console.WriteLine($"{text} = {result}");
+
+        var st = new SquareTransformer();
+        var newExpr = e.Reduce(st);
+        var text2 = newExpr.Reduce(pt);
+        Console.WriteLine(text2);
     }
 
     private static void IntrusiveVisitor()
