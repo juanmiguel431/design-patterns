@@ -43,6 +43,7 @@ using DesignPatters.Models.Strategy;
 using DesignPatters.Models.TemplateMethod;
 using DesignPatters.Models.Themes;
 using DesignPatters.Models.Vectors;
+using DesignPatters.Models.Visitor;
 using DesignPatters.Specifications;
 using DesignPatters.Specifications.ProductSpecifications;
 using MediatR;
@@ -325,10 +326,28 @@ class Program
         // TemplatePatternFunctionalApproach();
 
         // Template Method - Exercise
-        TemplateMethodExercise();
+        // TemplateMethodExercise();
+        
+        // Visitor Pattern
+        IntrusiveVisitor();
 
         Console.WriteLine("End");
         // Console.ReadLine();
+    }
+
+    private static void IntrusiveVisitor()
+    {
+        var e = new AdditionExpression(
+            new DoubleExpression(1),
+            new AdditionExpression(
+                new DoubleExpression(2),
+                new DoubleExpression(3)
+            ));
+
+        var sb = new StringBuilder();
+        e.Print(sb);
+
+        Console.WriteLine(sb);
     }
 
     private static void TemplateMethodExercise()
