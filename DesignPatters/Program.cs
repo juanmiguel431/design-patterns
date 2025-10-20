@@ -344,10 +344,17 @@ class Program
                 new DoubleExpression(3)
             ));
 
-        var sb = new StringBuilder();
-        e.Print(sb);
-
-        Console.WriteLine(sb);
+        var sb1 = new StringBuilder();
+        e.Print(sb1);
+        Console.WriteLine(sb1);
+        
+        var sb2 = new StringBuilder();
+        e.PrintFromExtension(sb2);
+        Console.WriteLine(sb2);
+        
+        var sb3 = new StringBuilder();
+        e.PrintFromExtensionV2(sb3);
+        Console.WriteLine(sb3);
     }
 
     private static void TemplateMethodExercise()

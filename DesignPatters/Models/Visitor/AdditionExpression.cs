@@ -7,6 +7,9 @@ public class AdditionExpression : Expression
     private readonly Expression _left;
     private readonly Expression _right;
 
+    public Expression Left => _left;
+    public Expression Right => _right;
+
     public AdditionExpression(Expression left, Expression right)
     {
         _left = left ?? throw new ArgumentNullException(nameof(left));
