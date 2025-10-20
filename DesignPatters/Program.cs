@@ -331,6 +331,7 @@ class Program
         // Visitor Pattern
         // IntrusiveVisitor();
         ClassicVisitor();
+        
 
         Console.WriteLine("End");
         // Console.ReadLine();
@@ -347,8 +348,11 @@ class Program
 
         var ep = new ExpressionPrinterVisitor();
         ep.Visit(e);
-
         Console.WriteLine(ep);
+
+        var ec = new ExpressionCalculator();
+        ec.Visit(e);
+        Console.WriteLine($"{ep} = {ec.Result}");
     }
 
     private static void IntrusiveVisitor()
