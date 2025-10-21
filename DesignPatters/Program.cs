@@ -330,11 +330,27 @@ class Program
         
         // Visitor Pattern
         // IntrusiveVisitor();
-        ClassicVisitor();
+        // ClassicVisitor();
         
+        // ACyclic Visitor
+        AcyclicVisitor();
 
         Console.WriteLine("End");
         // Console.ReadLine();
+    }
+
+    private static void AcyclicVisitor()
+    {
+        var e = new AAdditionExpression(
+            new ADoubleExpression(1),
+            new AAdditionExpression(
+                new ADoubleExpression(2),
+                new ADoubleExpression(3)
+            ));
+
+        var ep = new AExpressionPrinter();
+        ep.Visit(e);
+        Console.WriteLine(ep);
     }
 
     private static void ClassicVisitor()
