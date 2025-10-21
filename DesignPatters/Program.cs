@@ -333,10 +333,47 @@ class Program
         // ClassicVisitor();
         
         // ACyclic Visitor
-        AcyclicVisitor();
+        // AcyclicVisitor();
+        
+        // Visitor Builder
+        VisitorBuilder();
+
 
         Console.WriteLine("End");
         // Console.ReadLine();
+    }
+
+    private static void VisitorBuilder()
+    {
+        // 5 + (3 * 2) = 11
+        var e = new BAdditionExpression(
+            new BDoubleExpression(5),
+            new BMultiplicationExpression(
+                new BDoubleExpression(3),
+                new BDoubleExpression(2)
+            ));
+
+        var printer = VisitorBuilder<BExpression, string>.New
+            .For<BDoubleExpression>((visitor, dexpr) => dexpr.Value.ToString())
+            .For<BAdditionExpression>((visitor, aexpr) =>
+                $"({visitor.Visit(aexpr.Left)}) + ({visitor.Visit(aexpr.Right)})")
+            .For<BMultiplicationExpression>((visitor, aexpr) =>
+                $"({visitor.Visit(aexpr.Left)}) * ({visitor.Visit(aexpr.Right)})")
+            .Build();
+        
+        var print = printer.Visit(e);
+        
+        var evaluator = VisitorBuilder<BExpression, double>.New
+            .For<BDoubleExpression>((visitor, dexpr) => dexpr.Value)
+            .For<BAdditionExpression>((visitor, aexpr) =>
+                visitor.Visit(aexpr.Left) + visitor.Visit(aexpr.Right))
+            .For<BMultiplicationExpression>((visitor, aexpr) =>
+                visitor.Visit(aexpr.Left) * visitor.Visit(aexpr.Right))
+            .Build();
+        
+        var result = evaluator.Visit(e);
+        
+        Console.WriteLine($"{print} = {result}");
     }
 
     private static void AcyclicVisitor()
