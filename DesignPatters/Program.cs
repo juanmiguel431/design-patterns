@@ -64,279 +64,279 @@ class Program
     public static void Main(string[] args)
     {
         // Single Responsibility Principle
-        // CreateAndOpenJournalFile();
+        CreateAndOpenJournalFile();
 
         // Open Closed Principle
-        // CreateAndFilterProducts();
+        CreateAndFilterProducts();
         
         // Liskov Substitution Principle
-        // ShapesAreaCalculation();
+        ShapesAreaCalculation();
         
         // Interface Segregation Principle
-        // OldFashionedPrinter();
+        OldFashionedPrinter();
         
         // Dependency Inversion Principle
-        // CreateRelationshipsForResearch();
+        CreateRelationshipsForResearch();
 
         // Builder Pattern
-        // GenerateHtmlOutput();
-        // var personJobBuilder = new EmployeeBuilder();
-        // personJobBuilder.SetFirstName("Juan Miguel");
-        // CreateAndDisplayPersonAndEmployee();
+        GenerateHtmlOutput();
+        var personJobBuilder = new EmployeeBuilder();
+        personJobBuilder.SetFirstName("Juan Miguel");
+        CreateAndDisplayPersonAndEmployee();
 
         // Stepwise Builder
-        // StepwiseBuilder();
+        StepwiseBuilder();
 
         // Functional Builder
-        // FunctionalBuilder();
+        FunctionalBuilder();
         
         // Faceted Builder
-        // CreatePersonWithFacetedBuilder();
+        CreatePersonWithFacetedBuilder();
 
         // Builder Pattern Exercise
-        // BuilderPatternExercise();
+        BuilderPatternExercise();
 
         // Factory Pattern
-        // FactoryPattern();
+        FactoryPattern();
         
         // Asynchronous Factory Method
-        // var foo = await Foo.CreateAsync();
+        var foo = Foo.CreateAsync().Result;
 
         // Class Factory Pattern
-        // ClassFactoryPattern();
+        ClassFactoryPattern();
         
         // Object tracking with Factory Method
-        // GenerateThemesWithFactory();
+        GenerateThemesWithFactory();
 
         // Bulk Replacement with Factory Class
-        // BulkReplacementWithFactoryClass();
+        BulkReplacementWithFactoryClass();
 
         // Abstract Factory Pattern
-        // AbstractFactoryPattern();
+        AbstractFactoryPattern();
 
         // Prototype Pattern - The problem
-        // PrototypePatternTheProblem();
+        PrototypePatternTheProblem();
         
         // Prototype Pattern - Copy constructor
-        // CopyConstructor();
+        CopyConstructor();
         
         // Prototype Pattern - Clone method
-        // DeepCopyMethod();
+        DeepCopyMethod();
         
         // Prototype Pattern - Inheritance - Copy constructor
-        // DeepCopyAndInheritanceWithCopyConstructor();
+        DeepCopyAndInheritanceWithCopyConstructor();
 
         // Prototype Pattern - Inheritance - Clone method
-        // DeepCopyWithInterface();
+        DeepCopyWithInterface();
         
         // Prototype Pattern - Serialization
-        // DeepCopyWithJsonSerialization();
-        // DeepCopyWithXmlSerialization();
+        DeepCopyWithJsonSerialization();
+        DeepCopyWithXmlSerialization();
         
         // Prototype Pattern - Exercise
-        // CreateAndDisplayLines();
+        CreateAndDisplayLines();
 
         // Singleton Pattern
-        // SingletonPattern();
+        SingletonPattern();
 
         // Singleton Pattern - Mono state
-        // SingletonMonoState();
+        SingletonMonoState();
         
         // Singleton per Thread
-        // ExecutePerThreadSingletonTasks();
+        ExecutePerThreadSingletonTasks();
         
         // Ambient Context
-        // BuildWallsWithContexts();
+        BuildWallsWithContexts();
         
         // Singleton tester - Exercise
-        // SingletonTester();
+        SingletonTester();
 
         // Adapter Pattern
-        // AdapterCaching();
+        AdapterCaching();
 
         // Generic Value Adapter
-        // GenericValueAdapter();
+        GenericValueAdapter();
 
         // Adapter In Dependency Injection
-        // await AdapterInDependencyInjection();
+        AdapterInDependencyInjection().Wait();
 
         // Adapter Exercise
-        // CreateSquareAdapter();
+        CreateSquareAdapter();
 
         // Bridge Pattern
-        // BridgePattern();
+        BridgePattern();
 
         // Composite Pattern
-        // CompositePattern();
-        // RenderCircleGroup();
+        CompositePattern();
+        RenderCircleGroup();
 
         // Composite Pattern - Neural Networks
-        // EstablishNeuronConnections();
+        EstablishNeuronConnections();
 
         // Composite Pattern - Exercise
-        // CompositePatternExercise();
+        CompositePatternExercise();
 
         // Decorator Pattern
-        // DecoratorPattern();
-        // AdapterAndDecoratorPattern();
-        // DecoratorWithMultipleInheritance();
-        // HandleMultipleInheritance();
-        // DynamicDecoratorComposition();
-        // StaticDecoratorComposition();
+        DecoratorPattern();
+        AdapterAndDecoratorPattern();
+        DecoratorWithMultipleInheritance();
+        HandleMultipleInheritance();
+        DynamicDecoratorComposition();
+        StaticDecoratorComposition();
 
         // Decorator In Dependency Injection
-        // DecoratorInDependencyInjection();
+        DecoratorInDependencyInjection();
         
         // Facade Exercise
-        // FacadeExercise();
+        FacadeExercise();
 
         // Flyweight Pattern
-        // FlyweightPattern();
+        FlyweightPattern();
         
         // Flyweight Pattern - Exercise
-        // FlyweightPatternExercise();
+        FlyweightPatternExercise();
         
         // Flyweight Pattern - Factory
-        // FlyweightWithFactory();
+        FlyweightWithFactory();
 
         // Proxy Pattern - Protection
-        // ProtectionProxy();
-        // PropertyProxy();
+        ProtectionProxy();
+        PropertyProxy();
 
         // Value Proxy
-        // ValueProxy();
-        // CompositeProxy();
+        ValueProxy();
+        CompositeProxy();
 
         // Composite Proxy - Array backed properties
-        // CompositeProxyWithArrayBackedProperties();
-        // DynamicProxyForLogging();
-        // ProxyViewModel();
+        CompositeProxyWithArrayBackedProperties();
+        DynamicProxyForLogging();
+        ProxyViewModel();
         
         // Protection Proxy Pattern - Exercise
-        // ProtectionProxyExercise();
-        // BitFragging();
+        ProtectionProxyExercise();
+        BitFragging();
         
         // Chain of Responsibility - Method Chain
-        // ChainOfResponsibility();
-        // BrokerChain();
+        ChainOfResponsibility();
+        BrokerChain();
 
         // Chain of Responsibility - Exercise
-        // ChainOfResponsibilityExercise();
+        ChainOfResponsibilityExercise();
 
         // Command Pattern
-        // CommandPattern();
-        // CompositeBankAccountCommands();
-        // ExecuteMoneyTransfer();
+        CommandPattern();
+        CompositeBankAccountCommands();
+        ExecuteMoneyTransfer();
         
         // Command Pattern - Exercise
-        // CommandPatterExercise();
+        CommandPatterExercise();
 
         // Interpreter Pattern
-        // InterpreterPattern();
+        InterpreterPattern();
         
         // Interpreter Pattern - Exercise
-        // InterpreterPatternExercise();
-        // InterpreterPatternExerciseV2();
+        InterpreterPatternExercise();
+        InterpreterPatternExerciseV2();
 
         
         // Iterator Pattern
-        // IteratorObjectBinaryTree();
-        // IteratorMethod();
-        // IteratorAndGetEnumerator();
+        IteratorObjectBinaryTree();
+        IteratorMethod();
+        IteratorAndGetEnumerator();
         
         // Array backed-properties
-        // ArrayBackedProperties();
+        ArrayBackedProperties();
         
         // Iterator Pattern - Exercise
-        // BuildAndDisplayBinaryTreePreOrder();
-        // IteratorExercise();
+        BuildAndDisplayBinaryTreePreOrder();
+        IteratorExercise();
 
         // Mediator Pattern
-        // MediatorPattern();
-        // MediatorEventBroker();
+        MediatorPattern();
+        MediatorEventBroker();
         // MediatR
-        // await MediatRSample(args);
-        // await MediatRSampleAutoFac();
-        // MediatorExercise();
+        MediatRSample(args).Wait();
+        MediatRSampleAutoFac().Wait();
+        MediatorExercise();
         
         // Memento Pattern
-        // MementoPatterPart1();
-        // MementoImproved();
+        MementoPatterPart1();
+        MementoImproved();
         // Memento Pattern - Exercise
-        // MementoExercise();
+        MementoExercise();
 
         // Null Object Pattern
-        // NullObjectPattern();
-        // DynamicNullObjectPattern();
-        // DynamicNullObjectPatternWithProxy();
+        NullObjectPattern();
+        DynamicNullObjectPattern();
+        DynamicNullObjectPatternWithProxy();
         
         // Null Object Pattern - Exercise
-        // NullObjectPatternExercise();
+        NullObjectPatternExercise();
         
         // Observer Pattern
-        // ObserverPatternEvents();
+        ObserverPatternEvents();
 
-        // WeakEventPattern();
-        // FireGC();
+        WeakEventPattern();
+        FireGC();
 
         // IObserver / IObservable Pattern
-        // ObserverPattern();
+        ObserverPattern();
 
         // NotifyPropertyChanged Pattern
-        // NotifyPropertyChanged();
+        NotifyPropertyChanged();
 
         // bidirectional binding
-        // BidirectionalBinding();
-        // PropertyDependencies();
+        BidirectionalBinding();
+        PropertyDependencies();
         
         // Declarative Event Subscriptions with interfaces
-        // DeclarativeEventSubscription();
+        DeclarativeEventSubscription();
 
         // Observer Pattern - Exercise
-        // ObserverPatternExercise();
+        ObserverPatternExercise();
         
         // State Pattern
-        // StatePatternClasicImpl();
-        // HandMadeStateMachine();
+        StatePatternClasicImpl();
+        HandMadeStateMachine();
 
         // Switch-Based state Machine
-        // SwitchBasedStateMachine();
+        SwitchBasedStateMachine();
         
         // Switch Expression
-        // SwitchExpressionForStateMachine();
+        SwitchExpressionForStateMachine();
 
         // Stateless machine
-        // ConfigureHealthStateMachine();
+        ConfigureHealthStateMachine();
         
         // State Pattern - Exercise
-        // StatePatternExercise();
+        StatePatternExercise();
 
         // Strategy Pattern
-        // DynamicStrategyPattern();
-        // StaticStrategyPattern();
-        // ComparisonStrategyPattern();
+        DynamicStrategyPattern();
+        StaticStrategyPattern();
+        ComparisonStrategyPattern();
         
         // Strategy Pattern - Exercise
-        // SolveQuadraticEquation();
+        SolveQuadraticEquation();
         
         // Template Method Pattern
-        // TemplateMethod();
+        TemplateMethod();
         
         // Template Method - Functional Pattern
-        // TemplatePatternFunctionalApproach();
+        TemplatePatternFunctionalApproach();
 
         // Template Method - Exercise
-        // TemplateMethodExercise();
+        TemplateMethodExercise();
         
         // Visitor Pattern
-        // IntrusiveVisitor();
-        // ClassicVisitor();
+        IntrusiveVisitor();
+        ClassicVisitor();
         
         // ACyclic Visitor
-        // AcyclicVisitor();
+        AcyclicVisitor();
         
         // Visitor Builder
-        // VisitorBuilder();
+        VisitorBuilder();
 
         // Visitor - Exercise
         VisitorExercise();
