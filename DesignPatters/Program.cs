@@ -336,11 +336,25 @@ class Program
         // AcyclicVisitor();
         
         // Visitor Builder
-        VisitorBuilder();
+        // VisitorBuilder();
 
+        // Visitor - Exercise
+        VisitorExercise();
 
         Console.WriteLine("End");
         // Console.ReadLine();
+    }
+
+    private static void VisitorExercise()
+    {
+        var e = new AdditionExpressionE(
+            new ValueE(2),
+            new ValueE(3));
+        
+        var ep = new ExpressionPrinterE();
+        ep.Visit(e);
+
+        Console.WriteLine(ep);
     }
 
     private static void VisitorBuilder()
