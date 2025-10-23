@@ -68,7 +68,7 @@ class Program
         
         // Continuation Passing Style
         var solver = new QuadraticEquationResolver();
-        var solutions = solver.Start(1, 10, 16);
+        var success = solver.Start(1, 10, 16, out var result);
         
         // Single Responsibility Principle
         CreateAndOpenJournalFile();
