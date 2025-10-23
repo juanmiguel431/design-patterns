@@ -66,6 +66,10 @@ class Program
     {
         ConstructAndCompareStrings();
         
+        // Continuation Passing Style
+        var solver = new QuadraticEquationResolver();
+        var solutions = solver.Start(1, 10, 16);
+        
         // Single Responsibility Principle
         CreateAndOpenJournalFile();
 
