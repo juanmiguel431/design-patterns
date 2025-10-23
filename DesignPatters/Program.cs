@@ -8,6 +8,7 @@ using Autofac;
 using Autofac.Features.Metadata;
 using DesignPatters.Filters;
 using DesignPatters.Models;
+using DesignPatters.Models.AdditionalLectures;
 using DesignPatters.Models.Animals;
 using DesignPatters.Models.Cars;
 using DesignPatters.Models.Commands;
@@ -63,6 +64,8 @@ class Program
 {
     public static void Main(string[] args)
     {
+        ConstructAndCompareStrings();
+        
         // Single Responsibility Principle
         CreateAndOpenJournalFile();
 
@@ -343,6 +346,24 @@ class Program
 
         Console.WriteLine("End");
         // Console.ReadLine();
+    }
+
+    private static void ConstructAndCompareStrings()
+    {
+        var text = "testing!";
+        var constructed = new str(text);
+        if (constructed.Equals(text))
+        {
+            Console.WriteLine("they are equal");
+        }
+        
+        str fooStr = "foo";
+        str barStr = "bar";
+        var com = fooStr + barStr;
+        if (com.Equals("foobar"))
+        {
+            Console.WriteLine("they are equal");
+        }
     }
 
     private static void VisitorExercise()
