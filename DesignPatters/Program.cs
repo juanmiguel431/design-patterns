@@ -62,23 +62,18 @@ namespace DesignPatters;
 
 class Program
 {
+    internal static readonly string[] sourceArray = new []{"AND", "OR", "XOR"};
+    
     public static void Main(string[] args)
     {
         ConstructAndCompareStrings();
         
         // Continuation Passing Style
-        var solver = new QuadraticEquationResolver();
-        var success = solver.Start(1, 10, 16, out var result);
-        
+        ContinuationPassingStyle();
+
         // Local Inversion of Control
-        var list = new List<int>();
-        var list2 = new List<int>();
-        list.Add(24);
-        
-        24.AddTo(list).AddTo(list2);
-        24.AddTo(list, list2);
-        
-        
+        LocalInversionOfControl();
+
         // Single Responsibility Principle
         CreateAndOpenJournalFile();
 
@@ -359,6 +354,37 @@ class Program
 
         Console.WriteLine("End");
         // Console.ReadLine();
+    }
+
+    private static void ContinuationPassingStyle()
+    {
+        var solver = new QuadraticEquationResolver();
+        var success = solver.Start(1, 10, 16, out var result);
+    }
+
+    private static void LocalInversionOfControl()
+    {
+        var list = new List<int>();
+        var list2 = new List<int>();
+        list.Add(24);
+        
+        24.AddTo(list).AddTo(list2);
+        24.AddTo(list, list2);
+
+        var optCode = "AND";
+        if (optCode == "AND" || optCode == "OR" || optCode == "XOR") { }
+        if (sourceArray.Contains(optCode)) { }
+        if ("AND OR XOR".Split(' ').Contains(optCode)) { }
+        if (optCode.IsOneOf("AND", "OR", "XOR")) { } // Better
+        
+        var lawyer = new Lawyer();
+        if (lawyer.Names.Count == 0) { }
+        if (!lawyer.Names.Any()) { }
+        if (lawyer.HasNo(p => p.Names)) { } // Better
+        if (lawyer.HasSome(p => p.Names)) { } // Better
+        
+        if (lawyer.HasSomeV2(p => p.Names)) { } // Better
+        if (lawyer.HasSomeV2(p => p.Names).And.HasNoV2(p => p.Children)) { } // Better
     }
 
     private static void ConstructAndCompareStrings()
