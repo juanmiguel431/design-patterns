@@ -70,6 +70,15 @@ class Program
         var solver = new QuadraticEquationResolver();
         var success = solver.Start(1, 10, 16, out var result);
         
+        // Local Inversion of Control
+        var list = new List<int>();
+        var list2 = new List<int>();
+        list.Add(24);
+        
+        24.AddTo(list).AddTo(list2);
+        24.AddTo(list, list2);
+        
+        
         // Single Responsibility Principle
         CreateAndOpenJournalFile();
 
