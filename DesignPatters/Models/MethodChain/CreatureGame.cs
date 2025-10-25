@@ -1,6 +1,6 @@
 ﻿namespace DesignPatters.Models.MethodChain;
 
-public class Game
+public class CreatureGame
 {
     public event EventHandler<Query> Queries;
     public void PerformQuery(object? sender, Query q)

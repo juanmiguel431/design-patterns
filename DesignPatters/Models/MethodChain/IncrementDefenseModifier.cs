@@ -4,7 +4,7 @@ public class IncrementDefenseModifier : SmallCreatureModifier
 {
     private readonly int _value;
 
-    public IncrementDefenseModifier(Game game, SmallCreature creature, int value) : base(game, creature)
+    public IncrementDefenseModifier(CreatureGame game, SmallCreature creature, int value) : base(game, creature)
     {
         _value = value;
     }

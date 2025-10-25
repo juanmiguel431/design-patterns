@@ -55,8 +55,6 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using MoreLinq;
 using Stateless;
-using Action = DesignPatters.Models.StatePattern.Action;
-using Game = DesignPatters.Models.MethodChain.Game;
 
 namespace DesignPatters;
 
@@ -737,13 +735,13 @@ class Program
         Console.WriteLine($"The chest is {chest}");
         Console.WriteLine();
 
-        chest = ChestDemo.Manipulate(chest, Action.Open, true);
+        chest = ChestDemo.Manipulate(chest, ChestAction.Open, true);
         Console.WriteLine($"The chest is {chest}");
         
-        chest = ChestDemo.Manipulate(chest, Action.Close, false);
+        chest = ChestDemo.Manipulate(chest, ChestAction.Close, false);
         Console.WriteLine($"The chest is {chest}");
         
-        chest = ChestDemo.Manipulate2(chest, Action.Close, false);
+        chest = ChestDemo.Manipulate2(chest, ChestAction.Close, false);
         Console.WriteLine($"The chest is {chest}");
     }
 
@@ -1420,7 +1418,7 @@ class Program
 
     private static void BrokerChain()
     {
-        var game = new Game();
+        var game = new CreatureGame();
         var goblin = new SmallCreature(game, "Strong Goblin", 3, 3);
 
         Console.WriteLine(goblin);

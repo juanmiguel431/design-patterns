@@ -2,12 +2,12 @@
 
 public class SmallCreature
 {
-    private Game _game;
+    private CreatureGame _game;
     private string _name;
     private int _attack;
     private int _defense;
 
-    public SmallCreature(Game game, string name, int attack, int defense)
+    public SmallCreature(CreatureGame game, string name, int attack, int defense)
     {
         _game = game;
         _name = name;

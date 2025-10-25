@@ -2,7 +2,7 @@
 
 public class TripleAttackModifier : SmallCreatureModifier
 {
-    public TripleAttackModifier(Game game, SmallCreature creature) : base(game, creature)
+    public TripleAttackModifier(CreatureGame game, SmallCreature creature) : base(game, creature)
     {
     }
 

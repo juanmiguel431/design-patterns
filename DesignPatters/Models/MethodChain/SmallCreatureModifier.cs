@@ -2,10 +2,10 @@
 
 public abstract class SmallCreatureModifier : IDisposable
 {
-    protected Game Game;
+    protected CreatureGame Game;
     protected SmallCreature Creature;
 
-    protected SmallCreatureModifier(Game game, SmallCreature creature)
+    protected SmallCreatureModifier(CreatureGame game, SmallCreature creature)
     {
         Game = game ?? throw new ArgumentNullException(nameof(game));
         Creature = creature ?? throw new ArgumentNullException(nameof(creature));
