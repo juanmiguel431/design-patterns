@@ -45,4 +45,10 @@ public static class Maybe
         
         return evaluator(o);
     }
+    
+    public static TResult WithValue<TInput, TResult>(this TInput o, Func<TInput, TResult> evaluator)
+    where TInput : struct
+    {
+        return evaluator(o);
+    }
 }
