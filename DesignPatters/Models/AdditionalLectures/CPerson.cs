@@ -34,6 +34,11 @@ public class CPerson
         {
             if (ageCommand.Target == this)
             {
+                if (command.Register)
+                {
+                    _broker.AllEvents.Add(new AgeChangedEvent(this, _age, ageCommand.Age));
+                }
+                
                 _age = ageCommand.Age;
             }
         }

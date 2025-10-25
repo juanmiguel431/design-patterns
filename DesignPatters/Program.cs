@@ -369,8 +369,23 @@ class Program
         
         // person.Age = 15; // Lets use the Event Broker
         eb.ExecuteCommand(new ChangeAgeCommand(person, 15));
-        Console.WriteLine(person);
+        // Console.WriteLine(person._age); // We read the values using queries.
         var age = eb.ExecuteQuery<int>(new AgeQuery { Person = person });
+        Console.WriteLine(age);
+
+        foreach (var cEvent in eb.AllEvents)
+        {
+            Console.WriteLine(cEvent);
+        }
+        
+        eb.UndoLastCommand();
+        
+        foreach (var cEvent in eb.AllEvents)
+        {
+            Console.WriteLine(cEvent);
+        }
+        
+        age = eb.ExecuteQuery<int>(new AgeQuery { Person = person });
         Console.WriteLine(age);
     }
 

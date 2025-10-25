@@ -20,4 +20,17 @@ public class CEventBroker
         Query?.Invoke(this, query);
         return (T)query.Result;
     }
+
+    public void UndoLastCommand()
+    {
+        var e = AllEvents.LastOrDefault();
+        if (e is AgeChangedEvent ageChangedEvent)
+        {
+            ExecuteCommand(new ChangeAgeCommand(ageChangedEvent.Target, ageChangedEvent.OldValue)
+            {
+                Register = false
+            });
+            AllEvents.Remove(e);
+        }
+    }
 }
