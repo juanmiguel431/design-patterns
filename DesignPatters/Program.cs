@@ -76,6 +76,9 @@ class Program
         
         // Beyond the elvis operator
         BeyondTheElvisOperator();
+        
+        // Command and Query Responsibility Segregation
+        CommandAndQueryResponsibilitySegregation();
 
         // Single Responsibility Principle
         CreateAndOpenJournalFile();
@@ -359,6 +362,18 @@ class Program
         // Console.ReadLine();
     }
 
+    private static void CommandAndQueryResponsibilitySegregation()
+    {
+        var eb = new CEventBroker();
+        var person = new CPerson(eb);
+        
+        // person.Age = 15; // Lets use the Event Broker
+        eb.ExecuteCommand(new ChangeAgeCommand(person, 15));
+        Console.WriteLine(person);
+        var age = eb.ExecuteQuery<int>(new AgeQuery { Person = person });
+        Console.WriteLine(age);
+    }
+
     private static void BeyondTheElvisOperator()
     {
         // The problem
@@ -402,12 +417,12 @@ class Program
 
     private static void CheckAddress(Address heroAddress)
     {
-        throw new NotImplementedException();
+        Console.WriteLine("Checking address");
     }
 
     private static bool HasMedicalRecord(Hero hero)
     {
-        throw new NotImplementedException();
+        return true;
     }
 
     private static void ContinuationPassingStyle()
