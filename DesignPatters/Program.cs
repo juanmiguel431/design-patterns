@@ -73,6 +73,9 @@ class Program
 
         // Local Inversion of Control
         LocalInversionOfControl();
+        
+        // Beyond the elvis operator
+        BeyondTheElvisOperator();
 
         // Single Responsibility Principle
         CreateAndOpenJournalFile();
@@ -354,6 +357,57 @@ class Program
 
         Console.WriteLine("End");
         // Console.ReadLine();
+    }
+
+    private static void BeyondTheElvisOperator()
+    {
+        // The problem
+        var postalCode = "UNKNOWN";
+        var hero = new Hero();
+
+        if (hero != null && hero.Address != null && hero.Address.PostalCode != null)
+        {
+            postalCode = hero.Address.PostalCode;
+        }
+        
+        postalCode = hero?.Address?.PostalCode ?? "UNKNOWN";
+
+        // This is the real world
+        if (hero != null)
+        {
+            if (HasMedicalRecord(hero) && hero.Address != null)
+            {
+                CheckAddress(hero.Address);
+
+                if (hero.Address.PostalCode != null)
+                {
+                    postalCode = hero.Address.PostalCode;
+                }
+                else
+                {
+                    postalCode = "UNKNOWN";
+                }
+            }
+        }
+        
+        // The solution
+        postalCode = hero.With(x => x.Address).With(x => x.PostalCode);
+        
+        postalCode = hero
+            .If(HasMedicalRecord)
+            .With(p => p.Address)
+            .Do(CheckAddress)
+            .Return(p => p.PostalCode, "UNKNOWN");
+    }
+
+    private static void CheckAddress(Address heroAddress)
+    {
+        throw new NotImplementedException();
+    }
+
+    private static bool HasMedicalRecord(Hero hero)
+    {
+        throw new NotImplementedException();
     }
 
     private static void ContinuationPassingStyle()
