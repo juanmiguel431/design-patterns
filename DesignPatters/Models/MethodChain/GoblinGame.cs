@@ -5,12 +5,14 @@ public class GoblinGame
     public readonly IList<BaseCreature> Creatures = [];
 }
 
-public class DefenseQuery
+public abstract class GameQuery : EventArgs { }
+
+public class DefenseQuery : GameQuery
 {
     public int Defense { get; set; }
 }
 
-public class AttackQuery
+public class AttackQuery : GameQuery
 {
     public int Attack { get; set; }
 }
@@ -31,7 +33,7 @@ public abstract class BaseCreature
             var query = new AttackQuery { Attack = _attack };
             foreach (var creature in _game.Creatures)
             {
-                creature.PerformAttackQuery(this, query);
+                creature.PerformQuery(this, query);
             }
             
             return query.Attack;
@@ -49,7 +51,7 @@ public abstract class BaseCreature
             var query = new DefenseQuery { Defense = _defense };
             foreach (var creature in _game.Creatures)
             {
-                creature.PerformDefenseQuery(this, query);
+                creature.PerformQuery(this, query);
             }
             
             return query.Defense;
@@ -66,8 +68,7 @@ public abstract class BaseCreature
         _game = game;
     }
     
-    protected abstract void PerformDefenseQuery(object? sender, DefenseQuery e);
-    protected abstract void PerformAttackQuery(object? sender, AttackQuery e);
+    protected abstract void PerformQuery(object? sender, GameQuery e);
 }
 
 public class SimpleGoblin : BaseCreature
@@ -77,22 +78,25 @@ public class SimpleGoblin : BaseCreature
         _attack = attack;
         _defense = defense;
     }
-
-    protected override void PerformDefenseQuery(object? sender, DefenseQuery e)
-    {
-        if (sender == this) return;
-        
-        e.Defense++;
-    }
-
-    protected override void PerformAttackQuery(object? sender, AttackQuery e)
+    
+    protected override void PerformQuery(object? sender, GameQuery e)
     {
         if (sender == this) return;
 
-        // if (sender is GoblinMaster)
-        if (this is GoblinMaster)
+        switch (e)
         {
-            e.Attack++;
+            case DefenseQuery defenseQuery:
+                defenseQuery.Defense++;
+                break;
+            case AttackQuery attackQuery:
+            {
+                if (this is GoblinMaster)
+                {
+                    attackQuery.Attack++;
+                }
+
+                break;
+            }
         }
     }
 }
