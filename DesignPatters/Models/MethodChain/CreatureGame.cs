@@ -2,7 +2,7 @@
 
 public class CreatureGame
 {
-    public event EventHandler<Query> Queries;
+    public event EventHandler<Query>? Queries;
     public void PerformQuery(object? sender, Query q)
     {
         Queries?.Invoke(sender, q);
