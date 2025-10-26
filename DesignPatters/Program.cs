@@ -238,6 +238,9 @@ class Program
         // Chain of Responsibility - Exercise
         ChainOfResponsibilityExercise();
 
+        // Chain of Responsibility - Exercise v2
+        ChainOfResponsibilityExerciseV2();
+
         // Command Pattern
         CommandPattern();
         CompositeBankAccountCommands();
@@ -1413,6 +1416,26 @@ class Program
         Console.WriteLine(goblin2);
         
         game.Creatures.Remove(goblinKing);
+        Console.WriteLine(goblin);
+    }
+    
+    private static void ChainOfResponsibilityExerciseV2()
+    {
+        var game = new GoblinGame();
+        var goblin = new SimpleGoblin(game);
+        game.Creatures.Add(goblin);
+        Console.WriteLine(goblin);
+
+        var goblinMaster = new GoblinMaster(game);
+        game.Creatures.Add(goblinMaster);
+        Console.WriteLine(goblinMaster);
+        Console.WriteLine(goblin);
+        
+        var goblin2 = new SimpleGoblin(game);
+        game.Creatures.Add(goblin2);
+        Console.WriteLine(goblin2);
+        
+        game.Creatures.Remove(goblinMaster);
         Console.WriteLine(goblin);
     }
 
